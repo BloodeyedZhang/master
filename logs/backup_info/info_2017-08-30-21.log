@@ -1,0 +1,57 @@
+[21:04:56][Shutdown Hook] - Shutting down 'user' pool immediately [Shutdown Hook]
+[21:04:56][Shutdown Hook] - 'user' pool has been closed down by Shutdown Hook in 53 milliseconds.
+[21:04:56][Shutdown Hook] - Shutting down 'data' pool immediately [Shutdown Hook]
+[21:04:56][Shutdown Hook] - 'data' pool has been closed down by Shutdown Hook in 18 milliseconds.
+[21:04:56][Shutdown Hook] - Stopping Prototyper thread
+[21:04:56][Shutdown Hook] - Stopping HouseKeeper thread
+[21:11:11][game_server_parent.master.ServerStartup.main()] - 本服serverId为10001
+[21:11:11][game_server_parent.master.ServerStartup.main()] - 初始化数据库连接池……
+[21:11:11][game_server_parent.master.ServerStartup.main()] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[21:11:11][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[21:11:13][game_server_parent.master.ServerStartup.main()] - socket启动端口为9528,正在监听客户端的连接
+[21:16:04][Shutdown Hook] - Shutting down 'user' pool immediately [Shutdown Hook]
+[21:16:04][Shutdown Hook] - 'user' pool has been closed down by Shutdown Hook in 23 milliseconds.
+[21:16:04][Shutdown Hook] - Shutting down 'data' pool immediately [Shutdown Hook]
+[21:16:04][Shutdown Hook] - 'data' pool has been closed down by Shutdown Hook in 16 milliseconds.
+[21:16:04][Shutdown Hook] - Stopping Prototyper thread
+[21:16:04][Shutdown Hook] - Stopping HouseKeeper thread
+[21:16:24][game_server_parent.master.ServerStartup.main()] - 本服serverId为10001
+[21:16:24][game_server_parent.master.ServerStartup.main()] - 初始化数据库连接池……
+[21:16:24][game_server_parent.master.ServerStartup.main()] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[21:16:24][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[21:16:25][game_server_parent.master.ServerStartup.main()] - socket启动端口为9528,正在监听客户端的连接
+[21:16:33][Shutdown Hook] - Shutting down 'data' pool immediately [Shutdown Hook]
+[21:16:33][Shutdown Hook] - 'data' pool has been closed down by Shutdown Hook in 21 milliseconds.
+[21:16:33][Shutdown Hook] - Shutting down 'user' pool immediately [Shutdown Hook]
+[21:16:33][Shutdown Hook] - 'user' pool has been closed down by Shutdown Hook in 36 milliseconds.
+[21:16:33][Shutdown Hook] - Stopping Prototyper thread
+[21:16:33][Shutdown Hook] - Stopping HouseKeeper thread
+[21:18:51][game_server_parent.master.ServerStartup.main()] - socket启动端口为0,正在监听客户端的连接
+[21:19:43][game_server_parent.master.ServerStartup.main()] - 本服serverId为10001
+[21:19:43][game_server_parent.master.ServerStartup.main()] - 初始化数据库连接池……
+[21:19:43][game_server_parent.master.ServerStartup.main()] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[21:19:43][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[21:19:44][game_server_parent.master.ServerStartup.main()] - socket启动端口为9528,正在监听客户端的连接
+[21:20:27][Shutdown Hook] - Shutting down 'user' pool immediately [Shutdown Hook]
+[21:20:27][Shutdown Hook] - 'user' pool has been closed down by Shutdown Hook in 24 milliseconds.
+[21:20:27][Shutdown Hook] - Shutting down 'data' pool immediately [Shutdown Hook]
+[21:20:27][Shutdown Hook] - 'data' pool has been closed down by Shutdown Hook in 25 milliseconds.
+[21:20:27][Shutdown Hook] - Stopping Prototyper thread
+[21:20:27][Shutdown Hook] - Stopping HouseKeeper thread
+[21:22:34][game_server_parent.master.ServerStartup.main()] - 本服serverId为10001
+[21:22:34][game_server_parent.master.ServerStartup.main()] - 初始化数据库连接池……
+[21:22:34][game_server_parent.master.ServerStartup.main()] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[21:22:34][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[21:22:36][game_server_parent.master.ServerStartup.main()] - socket启动端口为9528,正在监听客户端的连接
+[21:27:13][Shutdown Hook] - Shutting down 'user' pool immediately [Shutdown Hook]
+[21:27:13][Shutdown Hook] - 'user' pool has been closed down by Shutdown Hook in 32 milliseconds.
+[21:27:13][Shutdown Hook] - Shutting down 'data' pool immediately [Shutdown Hook]
+[21:27:13][Shutdown Hook] - 'data' pool has been closed down by Shutdown Hook in 16 milliseconds.
+[21:27:13][Shutdown Hook] - Stopping Prototyper thread
+[21:27:13][Shutdown Hook] - Stopping HouseKeeper thread
+[21:27:25][game_server_parent.master.ServerStartup.main()] - 本服serverId为10001
+[21:27:25][game_server_parent.master.ServerStartup.main()] - 初始化数据库连接池……
+[21:27:25][game_server_parent.master.ServerStartup.main()] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[21:27:26][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[21:27:27][game_server_parent.master.ServerStartup.main()] - socket启动端口为9528,正在监听客户端的连接
+[21:27:27][game_server_parent.master.ServerStartup.main()] - SkillListener捕捉到事件EventPlayerLevelUp [upLevel=2, playerId=2815129814757736448, EventType=LEVEL_UP]

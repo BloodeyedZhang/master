@@ -1,0 +1,4 @@
+[16:17:54][game_server_parent.master.ServerStartup.main()] - 本服serverId为10001
+[16:17:54][game_server_parent.master.ServerStartup.main()] - socket启动端口为9528,正在监听客户端的连接
+[16:18:33][game_server_parent.master.ServerStartup.main()] - 本服serverId为10001
+[16:18:33][game_server_parent.master.ServerStartup.main()] - socket启动端口为9528,正在监听客户端的连接

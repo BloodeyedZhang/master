@@ -1,0 +1,95 @@
+[19:17:31][NioProcessor-2] - client exception
+java.io.IOException: Զ������ǿ�ȹر���һ�����е����ӡ�
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(Unknown Source)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(Unknown Source)
+	at sun.nio.ch.IOUtil.read(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:273)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:44)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:690)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+[19:39:49][main] - 本服serverId为0,后台端口为8080
+[20:46:42][main] - 本服serverId为0,后台端口为8080
+[20:46:42][main] - 初始化数据库连接池……
+[20:46:42][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[20:46:42][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[20:46:43][main] - socket启动端口为0,正在监听客户端的连接
+[20:46:43][main] - 游戏服务启动，耗时[1084]毫秒
+[20:47:17][NioProcessor-6] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:47:17][NioProcessor-7] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:47:17][NioProcessor-8] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:47:17][NioProcessor-9] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:47:22][NioProcessor-5] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:47:52][NioProcessor-6] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:47:59][NioProcessor-7] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:47:59][NioProcessor-8] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:47:59][NioProcessor-9] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:48:08][NioProcessor-5] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:48:08][NioProcessor-6] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:48:08][NioProcessor-7] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:48:21][NioProcessor-8] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:48:21][NioProcessor-9] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:48:21][NioProcessor-5] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:48:21][NioProcessor-6] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:48:26][NioProcessor-7] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:48:56][NioProcessor-8] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:49:08][NioProcessor-9] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:50:05][main] - 本服serverId为0,后台端口为8080
+[20:50:05][main] - 初始化数据库连接池……
+[20:50:06][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[20:50:06][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[20:50:06][main] - socket启动端口为0,正在监听客户端的连接
+[20:50:06][main] - 游戏服务启动，耗时[886]毫秒
+[20:51:35][NioProcessor-6] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:51:38][NioProcessor-7] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:54:07][NioProcessor-8] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:54:10][NioProcessor-9] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:54:12][NioProcessor-5] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:57:30][NioProcessor-6] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:57:39][NioProcessor-7] - 非法后台登录,remoteIp=[0:0:0:0:0:0:0:1]
+[20:58:33][NioProcessor-8] - 收到http后台命令，参数为HttpCommandParams [cmd=1, params={name=kingston}]
+[20:58:33][NioProcessor-8] - 收到后台命令，准备停服
+[21:03:49][main] - 本服serverId为0,后台端口为8080
+[21:03:49][main] - 初始化数据库连接池……
+[21:03:49][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[21:03:49][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[21:03:50][main] - socket启动端口为0,正在监听客户端的连接
+[21:03:50][main] - 游戏服务启动，耗时[790]毫秒
+[21:05:29][main] - 本服serverId为10001,后台端口为8080
+[21:05:29][main] - 初始化数据库连接池……
+[21:05:29][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[21:05:29][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[21:05:30][main] - socket启动端口为9528,正在监听客户端的连接
+[21:05:30][main] - 游戏服务启动，耗时[862]毫秒
+[21:14:09][main] - 本服serverId为10001,后台端口为8080
+[21:14:09][main] - 初始化数据库连接池……
+[21:14:09][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[21:14:09][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[21:14:09][main] - socket启动端口为9528,正在监听客户端的连接
+[21:14:09][main] - 游戏服务启动，耗时[852]毫秒
+[21:18:37][NioProcessor-6] - 收到http后台命令，参数为HttpCommandParams [cmd=1, params={name=kingston}]
+[21:18:37][NioProcessor-6] - 收到后台命令，准备停服
+[21:18:42][Thread-4] - 游戏进程准备关闭
+[21:18:42][Shutdown Hook] - Shutting down 'data' pool immediately [Shutdown Hook]
+[21:18:42][Thread-4] - ---------> socket server stop at port:9528
+[21:18:42][Thread-4] - ---------> http server stop at port:8080
+[21:18:42][Thread-4] - 游戏服务正常关闭，耗时[3]毫秒
+[21:18:42][Shutdown Hook] - 'data' pool has been closed down by Shutdown Hook in 3 milliseconds.
+[21:18:42][Shutdown Hook] - Shutting down 'user' pool immediately [Shutdown Hook]
+[21:18:42][Shutdown Hook] - 'user' pool has been closed down by Shutdown Hook in 5 milliseconds.
+[21:18:42][Shutdown Hook] - Stopping Prototyper thread
+[21:18:42][Shutdown Hook] - Stopping HouseKeeper thread
+[21:55:25][main] - 本服serverId为10001,后台端口为8080
+[21:55:25][main] - 初始化数据库连接池……
+[21:55:25][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[21:55:26][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[21:55:26][main] - socket启动端口为9528,正在监听客户端的连接
+[21:55:26][main] - 游戏服务启动，耗时[966]毫秒

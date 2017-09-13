@@ -1,0 +1,11 @@
+[16:01:27][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:5961
+[16:01:55][NioProcessor-2] - 客户端连接错误/127.0.0.1:5961， server exception 远程主机强迫关闭了一个现有的连接。
+[16:01:55][NioProcessor-2] - 客户端/127.0.0.1:5961 断开连接
+[16:02:57][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:6029
+[16:03:01][NioProcessor-3] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[16:10:45][NioProcessor-3] - 客户端连接错误/127.0.0.1:6029， server exception 远程主机强迫关闭了一个现有的连接。
+[16:10:45][NioProcessor-3] - 客户端/127.0.0.1:6029 断开连接
+[16:11:09][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:6443
+[16:11:12][NioProcessor-4] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[16:16:54][NioProcessor-4] - 客户端连接错误/127.0.0.1:6443， server exception 远程主机强迫关闭了一个现有的连接。
+[16:16:54][NioProcessor-4] - 客户端/127.0.0.1:6443 断开连接
