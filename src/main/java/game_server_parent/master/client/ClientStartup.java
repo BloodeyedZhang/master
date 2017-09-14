@@ -33,7 +33,8 @@ public class ClientStartup {
         SocketRobot robot = new SocketRobot("kingston");
         robot.buildConnection();
         robot.login();
-//        robot.selectedPlayer(10000L);
+        //robot.login();
+        robot.selectedPlayer(10000L);
 //        
 //        Thread.sleep(3000L);
 //        ReqGmExecMessage reqGm = new ReqGmExecMessage();

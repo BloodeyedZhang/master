@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.mina.core.session.IoSession;
 
+import game_server_parent.master.db.BaseEntity;
+import game_server_parent.master.db.DbService;
 import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.database.user.storage.Kapai;
 import game_server_parent.master.game.gm.message.ResGmResultMessage;
@@ -49,9 +51,10 @@ public class LoginManager {
             if(player==null) {
                 MessagePusher.pushMessage(session, new ResLoginMessage(LoginDataPool.LOGIN_FAIL, "用户不存在"));
             } else {
+                player.setId(accountId);
                 PlayerManager.getInstance().add2Online(player);
                 
-                ResLoginMessage response = new ResLoginMessage(LoginDataPool.LOGIN_SUCC, "登录成功");
+                ResLoginMessage response = new ResLoginMessage(LoginDataPool.LOGIN_SUCC, player.getId()+"登录成功");
                 
                 CombineMessage combineMessage = new CombineMessage();  
                 combineMessage.addMessage(response);  

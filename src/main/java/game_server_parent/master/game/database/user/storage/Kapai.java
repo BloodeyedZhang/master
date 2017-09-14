@@ -21,41 +21,48 @@ import game_server_parent.master.utils.IdGenerator;
  * @version 
  * 
  */
-@Entity
+@Entity(readOnly = true)
 public class Kapai extends BaseEntity<Long> {
     
-    @Id
+    //@Id
     @Column
     @Protobuf(fieldType = FieldType.INT64, order=1, required = true)
     private long id;
     
     @Column
-    @Protobuf(fieldType = FieldType.INT64, order=2, required = true)
+    @Protobuf(order=2)
+    private int kapai_id;
+    
+    @Column
+    @Protobuf(fieldType = FieldType.INT64, order=3, required = true)
     private long player_id;
     
     @Column
-    @Protobuf(order=3)
+    @Protobuf(order=4)
     private int dalei;
     
     @Column
-    @Protobuf(order=4)
+    @Protobuf(order=5)
     private int bingzhong;
     
     @Column
-    @Protobuf(order=5)
+    @Protobuf(order=6)
     private int pinzhi;
     
     @Column
-    @Protobuf(order=6)
+    @Protobuf(order=7)
     private int jiachengbi;
     
     @Column
-    @Protobuf(order=7)
+    @Protobuf(order=8)
     private int s_dengji;
     
     @Column
-    @Protobuf(order=8)
+    @Protobuf(order=9)
     private int jingyan;
+    @Column
+    @Protobuf(order=10)
+    private int xingji;
 
     public Kapai() {
         this.id = IdGenerator.getNextId();
@@ -126,10 +133,26 @@ public class Kapai extends BaseEntity<Long> {
         this.id = id;
     }
 
+    public int getXingji() {
+        return xingji;
+    }
+
+    public void setXingji(int xingji) {
+        this.xingji = xingji;
+    }
+
+    public int getKapai_id() {
+        return kapai_id;
+    }
+
+    public void setKapai_id(int kapai_id) {
+        this.kapai_id = kapai_id;
+    }
+
     @Override
     public String toString() {
-        return "Kapai [id=" + id + ", player_id=" + player_id + ", dalei=" + dalei
+        return "Kapai [id=" + id +", kapai_id=" + kapai_id+ ", player_id=" + player_id + ", dalei=" + dalei
                 + ", bingzhong=" + bingzhong + ", pinzhi=" + pinzhi + ", jiachengbi=" + jiachengbi
-                + ", s_dengji=" + s_dengji+ ", jingyan=" + jingyan+ "]";
+                + ", s_dengji=" + s_dengji+ ", jingyan=" + jingyan+ ", xingji=" + xingji+ "]";
     }
 }

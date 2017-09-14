@@ -7,6 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.sun.org.apache.xml.internal.resolver.helpers.Debug;
+
 /**
  * <p>Filename:AbstractCacheable.java</p>
  * <p>Description: Cacheable骨架实现 </p>
@@ -71,6 +73,10 @@ public class AbstractCacheable extends Cacheable {
         }
         if (logger.isDebugEnabled()) {
             System.err.println(saveSql);
+            
+        }
+        if(logger.isInfoEnabled()) {
+            logger.info("[save]"+saveSql);
         }
     }
 }

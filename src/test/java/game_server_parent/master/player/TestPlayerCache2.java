@@ -37,6 +37,7 @@ public class TestPlayerCache2 {
     public void testQueryPlayer() {
         try {
             long playerId = 10000L;
+            
             //预先保证用户数据表playerId = 10000的数据存在
             Player player = PlayerManager.getInstance().get(playerId);
             //改变内存里的玩家名称
@@ -45,6 +46,7 @@ public class TestPlayerCache2 {
             String playerName = player.getName();
             //通过同一个id再次获取玩家数据
             Player player2 = PlayerManager.getInstance().get(playerId);
+            System.out.println("playerId:"+player.getId()+";playerId2:"+player2.getId());
             //验证新的玩家就是内存里的玩家，因为如果又是从数据库里读取，那么名称肯定跟内存的不同！！
             assertTrue(playerName.equals(player2.getName()));
         } catch (Exception e) {
