@@ -1,0 +1,36 @@
+[10:06:17][NioProcessor-4] - 客户端连接错误/127.0.0.1:18050， server exception 远程主机强迫关闭了一个现有的连接。
+[10:06:17][NioProcessor-4] - 客户端/127.0.0.1:18050 断开连接
+[10:24:42][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:38964
+[10:24:47][NioProcessor-1] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[10:25:10][NioProcessor-1] - 客户端连接错误/127.0.0.1:38964， server exception 远程主机强迫关闭了一个现有的连接。
+[10:25:10][NioProcessor-1] - 客户端/127.0.0.1:38964 断开连接
+[10:41:54][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:39282
+[10:41:57][NioProcessor-2] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[10:42:09][NioProcessor-2] - 客户端连接错误/127.0.0.1:39282， server exception 远程主机强迫关闭了一个现有的连接。
+[10:42:09][NioProcessor-2] - 客户端/127.0.0.1:39282 断开连接
+[10:44:27][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:39310
+[10:44:31][NioProcessor-3] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[10:44:54][NioProcessor-3] - 客户端连接错误/127.0.0.1:39310， server exception 远程主机强迫关闭了一个现有的连接。
+[10:44:54][NioProcessor-3] - 客户端/127.0.0.1:39310 断开连接
+[10:47:04][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:39333
+[10:47:07][NioProcessor-4] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[10:47:20][NioProcessor-4] - 客户端连接错误/127.0.0.1:39333， server exception 远程主机强迫关闭了一个现有的连接。
+[10:47:20][NioProcessor-4] - 客户端/127.0.0.1:39333 断开连接
+[10:48:15][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:39356
+[10:48:17][NioProcessor-1] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[10:48:38][NioProcessor-1] - 客户端连接错误/127.0.0.1:39356， server exception 远程主机强迫关闭了一个现有的连接。
+[10:48:38][NioProcessor-1] - 客户端/127.0.0.1:39356 断开连接
+[10:50:46][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:39385
+[10:50:48][NioProcessor-2] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[10:52:08][NioProcessor-2] - 客户端连接错误/127.0.0.1:39385， server exception 远程主机强迫关闭了一个现有的连接。
+[10:52:08][NioProcessor-2] - 客户端/127.0.0.1:39385 断开连接
+[10:52:11][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:39398
+[10:52:14][NioProcessor-3] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[10:52:41][NioProcessor-3] - 客户端连接错误/127.0.0.1:39398， server exception 远程主机强迫关闭了一个现有的连接。
+[10:52:41][NioProcessor-3] - 客户端/127.0.0.1:39398 断开连接
+[10:52:44][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:39413
+[10:52:46][NioProcessor-4] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[10:54:32][NioProcessor-4] - 客户端连接错误/127.0.0.1:39413， server exception 远程主机强迫关闭了一个现有的连接。
+[10:54:32][NioProcessor-4] - 客户端/127.0.0.1:39413 断开连接
+[10:56:43][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:39454
+[10:56:45][NioProcessor-1] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]

@@ -14,5 +14,12 @@ package game_server_parent.master.game.kapai;
  */
 public class KapaiDataPool {
 
-    public static final int RES_SELECT_PLAYER_KAPAI_LIST = 1;
+    public static final int RES_SELECT_PLAYER_KAPAI_LIST = 501;
+    public static final int RES_KAPAI_REMOVE = 502;
+    
+    public static final int REQ_KAPAI_NEW = 2;
+    
+    public static final int REQ_KAPAI_UPDATE = 3;
+    
+    public static final int REQ_KAPAI_SELL = 4;
 }

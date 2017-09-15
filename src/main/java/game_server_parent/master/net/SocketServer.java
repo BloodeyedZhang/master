@@ -12,6 +12,7 @@ import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.buffer.SimpleBufferAllocator;
 import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
 import org.apache.mina.core.service.SimpleIoProcessorPool;
+import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.transport.socket.DefaultSocketSessionConfig;
 import org.apache.mina.transport.socket.SocketSessionConfig;
@@ -66,11 +67,9 @@ public class SocketServer {
         acceptor.setReuseAddress(true);
         acceptor.getSessionConfig().setAll(getSessionConfig());
         
-        //暂时写死在代码里，后期使用独立配置文件  
-//        int port = 9527;  
         logger.info("socket启动端口为{},正在监听客户端的连接", serverPort);  
         DefaultIoFilterChainBuilder filterChain = acceptor.getFilterChain();  
-        filterChain.addLast("codec", new ProtocolCodecFilter(MessageCodecFactory.getInstance()));   
+        filterChain.addLast("codec", new ProtocolCodecFilter(MessageCodecFactory.getInstance()));
         acceptor.setHandler( new ServerSocketIoHandler() );//指定业务逻辑处理器   
         acceptor.setDefaultLocalAddress(new InetSocketAddress(serverPort) );//设置端口号   
         acceptor.bind();//启动监听 
@@ -79,6 +78,7 @@ public class SocketServer {
     private SocketSessionConfig getSessionConfig() {
         SocketSessionConfig config = new DefaultSocketSessionConfig();
         config.setKeepAlive(true);
+        config.setIdleTime(IdleStatus.BOTH_IDLE, 30);
         config.setReuseAddress(true);
 
         return config;

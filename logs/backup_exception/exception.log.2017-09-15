@@ -1,0 +1,219 @@
+09-15 10:15:12 DEBUG MessageDecoder.java:45 - _decode
+09-15 11:53:58 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:9379， server exception java.lang.IllegalArgumentException: Invalid class [game_server_parent.master.game.heartBeat.message.ClientHeartBeatMessage] no field use annotation @com.baidu.bjf.remoting.protobuf.annotation.Protobuf at class game_server_parent.master.game.heartBeat.message.ClientHeartBeatMessage
+09-15 11:54:28 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:9379， server exception java.lang.IllegalArgumentException: Invalid class [game_server_parent.master.game.heartBeat.message.ClientHeartBeatMessage] no field use annotation @com.baidu.bjf.remoting.protobuf.annotation.Protobuf at class game_server_parent.master.game.heartBeat.message.ClientHeartBeatMessage
+09-15 11:54:58 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:9379， server exception java.lang.IllegalArgumentException: Invalid class [game_server_parent.master.game.heartBeat.message.ClientHeartBeatMessage] no field use annotation @com.baidu.bjf.remoting.protobuf.annotation.Protobuf at class game_server_parent.master.game.heartBeat.message.ClientHeartBeatMessage
+09-15 13:47:50 DEBUG MessageDecoder.java:45 - _decode
+09-15 13:48:01 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10001， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 13:48:32 DEBUG MessageDecoder.java:45 - _decode
+09-15 13:49:33 DEBUG MessageDecoder.java:45 - _decode
+09-15 13:49:39 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10015， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 13:52:08 ERROR LoggerUtils.java:27 - 
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketAdaptor.bind(Unknown Source)
+	at org.apache.mina.transport.socket.nio.NioSocketAcceptor.open(NioSocketAcceptor.java:198)
+	at org.apache.mina.transport.socket.nio.NioSocketAcceptor.open(NioSocketAcceptor.java:51)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor.registerHandles(AbstractPollingIoAcceptor.java:547)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor.access$400(AbstractPollingIoAcceptor.java:68)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor$Acceptor.run(AbstractPollingIoAcceptor.java:422)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+09-15 13:52:08 ERROR LoggerUtils.java:27 - 
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketAdaptor.bind(Unknown Source)
+	at org.apache.mina.transport.socket.nio.NioSocketAcceptor.open(NioSocketAcceptor.java:198)
+	at org.apache.mina.transport.socket.nio.NioSocketAcceptor.open(NioSocketAcceptor.java:51)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor.registerHandles(AbstractPollingIoAcceptor.java:547)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor.access$400(AbstractPollingIoAcceptor.java:68)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor$Acceptor.run(AbstractPollingIoAcceptor.java:422)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+09-15 14:05:07 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:06:00 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:06:10 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:06:20 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:06:30 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:06:40 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:06:50 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:07:20 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:07:20 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:08:11 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:09:00 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:10:46 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:10:57 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:11:07 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:11:17 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:11:27 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:11:37 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:11:47 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:11:57 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:12:07 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:12:17 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:12:27 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:12:37 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:12:47 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:12:57 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:13:07 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:13:17 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:13:27 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:13:37 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:13:47 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:13:57 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:14:03 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:14:14 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:54:49 DEBUG MessageDecoder.java:45 - _decode
+09-15 14:59:52 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:00:02 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:00:12 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:00:22 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:00:32 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:00:42 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:00:52 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:01:02 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:03:08 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10790， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:03:13 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10795， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:03:18 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10797， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:03:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10798， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:03:28 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10800， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:03:33 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10802， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:03:38 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10807， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:03:43 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10808， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:03:48 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10809， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:03:53 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10810， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:13 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10813， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:17 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10814， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:19 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10815， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:22 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10817， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:24 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10822， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:27 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10825， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:29 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10833， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:32 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10841， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:34 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10844， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:34 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10854， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:37 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10863， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:37 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10868， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:39 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10870， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:39 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10879， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:39 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10880， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:42 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10883， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:42 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10884， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:42 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10889， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:42 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10891， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10842， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10823， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10821， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10820， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10839， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10826， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10818， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10832， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10816， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10828， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10837， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10819， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10838， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10830， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10840， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10824， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10827， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10836， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10829， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10831， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10835， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:44 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10897， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:47 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10905， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:47 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10906， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:47 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10915， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10916， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10920， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10901， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10861， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10904， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10899， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10886， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10894， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10875， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10873， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10896， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10890， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10893， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:04:49 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10888， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10910， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10909， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10914， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10911， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10913， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10907， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10912， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10919， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10895， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10918， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:05:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:10908， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:07:05 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:07:06 ERROR LoggerUtils.java:27 - 
+java.lang.IllegalArgumentException: argument type mismatch
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.listener.ListenerManager.fireEvent(ListenerManager.java:69)
+	at game_server_parent.master.listener.EventDispatcher.lambda$0(EventDispatcher.java:79)
+	at java.util.concurrent.CopyOnWriteArrayList.forEach(Unknown Source)
+	at java.util.concurrent.CopyOnWriteArraySet.forEach(Unknown Source)
+	at game_server_parent.master.listener.EventDispatcher.triggerEvent(EventDispatcher.java:77)
+	at game_server_parent.master.listener.EventDispatcher.fireEvent(EventDispatcher.java:65)
+	at game_server_parent.master.game.login.LoginController.reqAccountRelogin(LoginController.java:40)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.net.context.MessageTask.action(MessageTask.java:44)
+	at game_server_parent.master.net.context.TaskHandlerContext$TaskWorker.run(TaskHandlerContext.java:80)
+	at java.lang.Thread.run(Unknown Source)
+09-15 15:10:29 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:10:29 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:10:30 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:11:00 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:11:02 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:11:34 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:12:04 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:12:34 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:13:04 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:13:34 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:14:04 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:14:34 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:15:04 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:15:35 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:16:05 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:16:35 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:17:05 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:17:35 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:17:53 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:18:24 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:18:54 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:19:24 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:19:38 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:11091， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:20:22 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:11138， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:20:22 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:11139， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:21:23 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:21:28 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:21:32 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:11169， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:21:37 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:11173， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:21:42 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:11174， server exception 远程主机强迫关闭了一个现有的连接。
+09-15 15:21:54 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:21:57 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:22:27 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:22:57 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:23:27 DEBUG MessageDecoder.java:45 - _decode
+09-15 15:23:57 DEBUG MessageDecoder.java:45 - _decode

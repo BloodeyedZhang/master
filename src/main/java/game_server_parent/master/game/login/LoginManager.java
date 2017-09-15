@@ -15,6 +15,7 @@ import game_server_parent.master.game.login.message.ResLoginMessage;
 import game_server_parent.master.game.player.PlayerManager;
 import game_server_parent.master.game.scene.message.ResPlayerEnterSceneMessage;
 import game_server_parent.master.net.MessagePusher;
+import game_server_parent.master.net.SessionManager;
 import game_server_parent.master.net.SessionProperties;
 import game_server_parent.master.net.combine.CombineMessage;
 
@@ -45,29 +46,25 @@ public class LoginManager {
      * @param accoundId 账号流水号
      * @param password  账号密码
      */
-    public void handleAccountLogin(IoSession session, long accountId, String password) {
+    public boolean handleAccountLogin(IoSession session, long accountId, String password) {
         if("winturn".equals(password)) {
             Player player = PlayerManager.getInstance().get(accountId);
             if(player==null) {
                 MessagePusher.pushMessage(session, new ResLoginMessage(LoginDataPool.LOGIN_FAIL, "用户不存在"));
             } else {
                 player.setId(accountId);
+                SessionManager.INSTANCE.registerNewPlayer(accountId, session);
                 PlayerManager.getInstance().add2Online(player);
                 
                 ResLoginMessage response = new ResLoginMessage(LoginDataPool.LOGIN_SUCC, player.getId()+"登录成功");
                 
-                CombineMessage combineMessage = new CombineMessage();  
-                combineMessage.addMessage(response);  
-                combineMessage.addMessage(new ResPlayerEnterSceneMessage());  
-               // combineMessage.addMessage(ResGmResultMessage.buildSuccResult("执行gm成功"));
-                List<Kapai> kapais = KapaiManager.getInstance().getPlayerKapaiList(accountId);
-                combineMessage.addMessage(new ResSelectPlayerKapaiMessage(kapais));
-                
-                MessagePusher.pushMessage(session, combineMessage);
+                MessagePusher.pushMessage(session, response);
+                return true;
             }
         } else {
             MessagePusher.pushMessage(session, new ResLoginMessage(LoginDataPool.LOGIN_FAIL, "登录失败"));
         }
+        return false;
     }
     
     /**

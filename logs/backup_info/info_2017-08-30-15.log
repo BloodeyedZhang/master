@@ -1,6 +1,0 @@
-[15:01:10][game_server_parent.master.ServerStartup.main()] - 本服serverId为10001
-[15:01:10][game_server_parent.master.ServerStartup.main()] - 初始化数据库连接池……
-[15:01:10][game_server_parent.master.ServerStartup.main()] - Proxool 0.9.1 (23-Aug-2008 11:10)
-[15:24:54][game_server_parent.master.ServerStartup.main()] - 本服serverId为10001
-[15:24:54][game_server_parent.master.ServerStartup.main()] - 初始化数据库连接池……
-[15:24:54][game_server_parent.master.ServerStartup.main()] - Proxool 0.9.1 (23-Aug-2008 11:10)

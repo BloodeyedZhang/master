@@ -21,17 +21,18 @@ import game_server_parent.master.utils.IdGenerator;
  * @version 
  * 
  */
-@Entity(readOnly = true)
+@Entity
 public class Kapai extends BaseEntity<Long> {
-    
+    @Id
+    @Column
+    @Protobuf(order=2)
+    private int kapai_id;
     //@Id
     @Column
     @Protobuf(fieldType = FieldType.INT64, order=1, required = true)
     private long id;
     
-    @Column
-    @Protobuf(order=2)
-    private int kapai_id;
+
     
     @Column
     @Protobuf(fieldType = FieldType.INT64, order=3, required = true)

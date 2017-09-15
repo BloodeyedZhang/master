@@ -46,7 +46,7 @@ public class SocketRobot {
         NioSocketConnector connector = new NioSocketConnector();  
         connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(MessageCodecFactory.getInstance()));  
         connector.setHandler(new ClientHandler());  
-  
+        
         int port = ServerConfig.getInstance().getServerPort();
         
         logger.info("开始连接socket服务端{}",port);

@@ -2,9 +2,14 @@ package game_server_parent.master.game.login;
 
 import org.apache.mina.core.session.IoSession;
 
+import game_server_parent.master.game.login.events.EventLogin;
+import game_server_parent.master.game.login.events.EventReLogin;
 import game_server_parent.master.game.login.message.ReqLoginMessage;
+import game_server_parent.master.game.login.message.ReqReLoginMessage;
 import game_server_parent.master.game.login.message.ReqSelectPlayerMessage;
 import game_server_parent.master.game.login.message.ResLoginMessage;
+import game_server_parent.master.listener.EventDispatcher;
+import game_server_parent.master.listener.EventType;
 import game_server_parent.master.net.annotation.Controller;
 import game_server_parent.master.net.annotation.RequestMapping;
 
@@ -25,7 +30,14 @@ public class LoginController {
 
     @RequestMapping
     public void reqAccountLogin(IoSession session, ReqLoginMessage request) {
-        LoginManager.getInstance().handleAccountLogin(session, request.getAccountId(), request.getPassword());
+        //LoginManager.getInstance().handleAccountLogin(session, request.getAccountId(), request.getPassword());
+        
+        EventDispatcher.getInstance().fireEvent(new EventLogin(EventType.LOGIN, session, request));
+    }
+    
+    @RequestMapping
+    public void reqAccountRelogin(IoSession session, ReqReLoginMessage request) {
+        EventDispatcher.getInstance().fireEvent(new EventReLogin(EventType.RELOGIN, session, request));
     }
     
     @RequestMapping

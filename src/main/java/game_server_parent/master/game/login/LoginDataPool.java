@@ -17,6 +17,8 @@ public class LoginDataPool {
     //cmd请求协议枚举
     /** 请求－登录 */
     public static final int REQ_LOGIN = 1;
+    /** 请求－重新登录 */
+    public static final int REQ_RELOGIN = 3;
     /** 请求－选择角色 */
     public static final int REQ_SELECT_PLAYER = 2;
     

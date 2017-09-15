@@ -14,6 +14,7 @@ package game_server_parent.master.game;
  */
 public interface Modules {
     //------------------底层功能支持模块（从0到100）-----------------
+    int BASE = 2;
     int GM = 1;
     
     //------------------业务功能模块（101开始）---------------------

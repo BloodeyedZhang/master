@@ -1,9 +1,18 @@
 package game_server_parent.master.net;
 
+import game_server_parent.master.game.heartBeat.events.EventHeartBeat;
+import game_server_parent.master.game.heartBeat.message.ReqClientHeartBeatMessage;
+import game_server_parent.master.listener.EventDispatcher;
+import game_server_parent.master.listener.EventType;
 import game_server_parent.master.logs.LoggerUtils;
+import game_server_parent.master.net.combine.CombineMessage;
 import game_server_parent.master.net.dispatch.MessageDispatcher;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import org.apache.mina.core.service.IoHandlerAdapter;
+import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +31,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ServerSocketIoHandler extends IoHandlerAdapter {
     private static Logger logger = LoggerFactory.getLogger(ServerSocketIoHandler.class);
+    
     @Override 
     public void sessionCreated(IoSession session) { 
         //显示客户端的ip和端口 
@@ -29,6 +39,7 @@ public class ServerSocketIoHandler extends IoHandlerAdapter {
         logger.info("打开一个客户端连接{}",session.getRemoteAddress().toString());
         session.setAttributeIfAbsent(SessionProperties.DISTRIBUTE_KEY,
                 SessionManager.INSTANCE.getNextDistributeKey());
+
     } 
     
     @Override 
@@ -45,6 +56,17 @@ public class ServerSocketIoHandler extends IoHandlerAdapter {
      public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
          LoggerUtils.error("客户端连接错误{}， server exception {}", session.getRemoteAddress().toString(), cause.getLocalizedMessage());
      }
+
+    @Override
+    public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
+        // TODO Auto-generated method stub
+        super.sessionIdle(session, status);
+        logger.info("客户端{} 空闲"+status, session.getRemoteAddress().toString());
+        
+        //if(status.equals(IdleStatus.READER_IDLE)){
+            EventDispatcher.getInstance().fireEvent(new EventHeartBeat(EventType.HEARTBEAT_TIMEOUT, session));
+       // }
+    }
 
     @Override
     public void sessionClosed(IoSession session) throws Exception {

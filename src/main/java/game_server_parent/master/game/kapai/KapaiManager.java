@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentMap;
 import game_server_parent.master.cache.CacheService;
 import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.database.user.storage.Kapai;
+import game_server_parent.master.game.database.user.storage.KapaiId;
 import game_server_parent.master.orm.utils.DbUtils;
 
 /**
@@ -35,6 +36,11 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         kapai.setPlayer_id(player_id);
         kapai.setDalei(dalei);
         kapai.setBingzhong(bingzhong);
+        kapai.setPinzhi(1);
+        kapai.setS_dengji(1);
+        kapai.setXingji(1);
+        int nextId = this.getNextId();
+        kapai.setKapai_id(nextId);
         //设为插入状态
         kapai.setInsert();
 
@@ -43,7 +49,7 @@ public class KapaiManager extends CacheService<Long, Kapai> {
     
     @Override
     public Kapai load(Long id) throws Exception {
-        String sql = "SELECT * FROM Kapai where Id = {0}";
+        String sql = "SELECT * FROM Kapai where kapai_id = {0}";
         sql = MessageFormat.format(sql, String.valueOf(id));
         Kapai kapai = DbUtils.queryOne(DbUtils.DB_USER, sql, Kapai.class);
         return kapai;
@@ -55,5 +61,18 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         List<Kapai> kapai_list = DbUtils.queryMany(DbUtils.DB_USER, sql, Kapai.class);
         return kapai_list;
     }
+    
+    public int getNextId() {
+        String sql = "select nextval('seq_kapai_num') as nextId;";
+        KapaiId kapaiId = DbUtils.queryOne(DbUtils.DB_USER, sql, KapaiId.class);
+        return kapaiId.getNextId();
+    }
+    
+    public int getCurId() {
+        String sql = "select currval('seq_kapai_num') as nextId;";
+        KapaiId kapaiId = DbUtils.queryOne(DbUtils.DB_USER, sql, KapaiId.class);
+        return kapaiId.getNextId();
+    }
+    
 
 }

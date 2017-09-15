@@ -1,0 +1,43 @@
+[10:14:55][main] - 本服serverId为10001,后台端口为8080
+[10:14:55][main] - 初始化数据库连接池……
+[10:14:55][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[10:14:55][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[10:14:57][main] - socket启动端口为9528,正在监听客户端的连接
+[10:14:57][main] - 游戏服务启动，耗时[3091]毫秒
+[10:15:04][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:7831
+[10:15:13][NioProcessor-2] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[10:48:47][main] - 本服serverId为10001,后台端口为8080
+[10:48:47][main] - 初始化数据库连接池……
+[10:48:47][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[10:48:47][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[10:48:48][main] - socket启动端口为9528,正在监听客户端的连接
+[10:48:48][main] - 游戏服务启动，耗时[852]毫秒
+[10:48:56][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:8976
+[10:49:26][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:49:56][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:50:26][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:50:56][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:51:26][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:51:56][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:52:26][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:52:56][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:53:26][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:53:56][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:54:26][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:54:56][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:55:26][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:55:56][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:56:26][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:56:56][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:57:26][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:57:56][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:58:26][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:58:56][NioProcessor-2] - 客户端/127.0.0.1:8976 空闲
+[10:59:04][main] - 本服serverId为10001,后台端口为8080
+[10:59:04][main] - 初始化数据库连接池……
+[10:59:04][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[10:59:04][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[10:59:05][main] - socket启动端口为9528,正在监听客户端的连接
+[10:59:05][main] - 游戏服务启动，耗时[816]毫秒
+[10:59:13][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:9055
+[10:59:43][NioProcessor-2] - 客户端/127.0.0.1:9055 空闲both idle

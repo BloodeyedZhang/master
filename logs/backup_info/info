@@ -1,11 +1,693 @@
-[16:01:27][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:5961
-[16:01:55][NioProcessor-2] - 客户端连接错误/127.0.0.1:5961， server exception 远程主机强迫关闭了一个现有的连接。
-[16:01:55][NioProcessor-2] - 客户端/127.0.0.1:5961 断开连接
-[16:02:57][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:6029
-[16:03:01][NioProcessor-3] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
-[16:10:45][NioProcessor-3] - 客户端连接错误/127.0.0.1:6029， server exception 远程主机强迫关闭了一个现有的连接。
-[16:10:45][NioProcessor-3] - 客户端/127.0.0.1:6029 断开连接
-[16:11:09][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:6443
-[16:11:12][NioProcessor-4] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
-[16:16:54][NioProcessor-4] - 客户端连接错误/127.0.0.1:6443， server exception 远程主机强迫关闭了一个现有的连接。
-[16:16:54][NioProcessor-4] - 客户端/127.0.0.1:6443 断开连接
+[15:00:02][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:00:02][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:00:02][NioProcessor-2] - 收到消息-->ClientHeartBeatMessage 
+[15:00:02][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:00:12][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:00:12][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:00:12][NioProcessor-2] - 收到消息-->ClientHeartBeatMessage 
+[15:00:12][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:00:22][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:00:22][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:00:22][NioProcessor-2] - 收到消息-->ClientHeartBeatMessage 
+[15:00:22][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:00:32][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:00:32][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:00:32][NioProcessor-2] - 收到消息-->ClientHeartBeatMessage 
+[15:00:32][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:00:42][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:00:42][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:00:42][NioProcessor-2] - 收到消息-->ClientHeartBeatMessage 
+[15:00:42][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:00:52][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:00:52][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:00:52][NioProcessor-2] - 收到消息-->ClientHeartBeatMessage 
+[15:00:52][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:01:02][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:01:02][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:01:02][NioProcessor-2] - 收到消息-->ClientHeartBeatMessage 
+[15:01:02][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:01:12][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:01:12][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:01:22][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:01:22][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:01:32][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:01:32][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:01:42][NioProcessor-2] - 客户端/127.0.0.1:10766 空闲both idle
+[15:01:42][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:01:42][NioProcessor-2] - 客户端/127.0.0.1:10766 断开连接
+[15:03:08][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10790
+[15:03:08][NioProcessor-3] - 客户端连接错误/127.0.0.1:10790， server exception 远程主机强迫关闭了一个现有的连接。
+[15:03:08][NioProcessor-3] - 客户端/127.0.0.1:10790 断开连接
+[15:03:13][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10795
+[15:03:13][NioProcessor-4] - 客户端连接错误/127.0.0.1:10795， server exception 远程主机强迫关闭了一个现有的连接。
+[15:03:13][NioProcessor-4] - 客户端/127.0.0.1:10795 断开连接
+[15:03:18][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10797
+[15:03:18][NioProcessor-1] - 客户端连接错误/127.0.0.1:10797， server exception 远程主机强迫关闭了一个现有的连接。
+[15:03:18][NioProcessor-1] - 客户端/127.0.0.1:10797 断开连接
+[15:03:23][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10798
+[15:03:23][NioProcessor-2] - 客户端连接错误/127.0.0.1:10798， server exception 远程主机强迫关闭了一个现有的连接。
+[15:03:23][NioProcessor-2] - 客户端/127.0.0.1:10798 断开连接
+[15:03:28][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10800
+[15:03:28][NioProcessor-3] - 客户端连接错误/127.0.0.1:10800， server exception 远程主机强迫关闭了一个现有的连接。
+[15:03:28][NioProcessor-3] - 客户端/127.0.0.1:10800 断开连接
+[15:03:33][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10802
+[15:03:33][NioProcessor-4] - 客户端连接错误/127.0.0.1:10802， server exception 远程主机强迫关闭了一个现有的连接。
+[15:03:33][NioProcessor-4] - 客户端/127.0.0.1:10802 断开连接
+[15:03:38][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10807
+[15:03:38][NioProcessor-1] - 客户端连接错误/127.0.0.1:10807， server exception 远程主机强迫关闭了一个现有的连接。
+[15:03:38][NioProcessor-1] - 客户端/127.0.0.1:10807 断开连接
+[15:03:43][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10808
+[15:03:43][NioProcessor-2] - 客户端连接错误/127.0.0.1:10808， server exception 远程主机强迫关闭了一个现有的连接。
+[15:03:43][NioProcessor-2] - 客户端/127.0.0.1:10808 断开连接
+[15:03:48][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10809
+[15:03:48][NioProcessor-3] - 客户端连接错误/127.0.0.1:10809， server exception 远程主机强迫关闭了一个现有的连接。
+[15:03:48][NioProcessor-3] - 客户端/127.0.0.1:10809 断开连接
+[15:03:53][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10810
+[15:03:53][NioProcessor-4] - 客户端连接错误/127.0.0.1:10810， server exception 远程主机强迫关闭了一个现有的连接。
+[15:03:53][NioProcessor-4] - 客户端/127.0.0.1:10810 断开连接
+[15:03:58][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10811
+[15:04:02][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10812
+[15:04:08][NioProcessor-1] - 客户端/127.0.0.1:10811 空闲both idle
+[15:04:08][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:12][NioProcessor-2] - 客户端/127.0.0.1:10812 空闲both idle
+[15:04:12][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:13][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10813
+[15:04:13][NioProcessor-3] - 客户端连接错误/127.0.0.1:10813， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:13][NioProcessor-3] - 客户端/127.0.0.1:10813 断开连接
+[15:04:17][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10814
+[15:04:17][NioProcessor-4] - 客户端连接错误/127.0.0.1:10814， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:17][NioProcessor-4] - 客户端/127.0.0.1:10814 断开连接
+[15:04:18][NioProcessor-1] - 客户端/127.0.0.1:10811 空闲both idle
+[15:04:18][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:18][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10815
+[15:04:19][NioProcessor-1] - 客户端连接错误/127.0.0.1:10815， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:19][NioProcessor-1] - 客户端/127.0.0.1:10815 断开连接
+[15:04:19][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10816
+[15:04:22][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10817
+[15:04:22][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10818
+[15:04:22][NioProcessor-3] - 客户端连接错误/127.0.0.1:10817， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:22][NioProcessor-3] - 客户端/127.0.0.1:10817 断开连接
+[15:04:23][NioProcessor-2] - 客户端/127.0.0.1:10812 空闲both idle
+[15:04:23][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:24][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10819
+[15:04:24][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10822
+[15:04:24][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10820
+[15:04:24][NioProcessor-3] - 客户端连接错误/127.0.0.1:10822， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:24][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10821
+[15:04:24][NioProcessor-3] - 客户端/127.0.0.1:10822 断开连接
+[15:04:27][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10824
+[15:04:27][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10823
+[15:04:27][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10825
+[15:04:27][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10826
+[15:04:27][NioProcessor-2] - 客户端连接错误/127.0.0.1:10825， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:27][NioProcessor-2] - 客户端/127.0.0.1:10825 断开连接
+[15:04:29][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10828
+[15:04:29][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10827
+[15:04:29][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10829
+[15:04:29][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10831
+[15:04:29][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10830
+[15:04:29][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10832
+[15:04:29][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10833
+[15:04:29][NioProcessor-3] - 客户端连接错误/127.0.0.1:10833， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:29][NioProcessor-3] - 客户端/127.0.0.1:10833 断开连接
+[15:04:30][NioProcessor-1] - 客户端/127.0.0.1:10811 空闲both idle
+[15:04:30][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:30][NioProcessor-2] - 客户端/127.0.0.1:10816 空闲both idle
+[15:04:30][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:32][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10835
+[15:04:32][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10836
+[15:04:32][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10837
+[15:04:32][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10838
+[15:04:32][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10839
+[15:04:32][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10841
+[15:04:32][NioProcessor-2] - 客户端连接错误/127.0.0.1:10841， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:32][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10840
+[15:04:32][NioProcessor-2] - 客户端/127.0.0.1:10841 断开连接
+[15:04:32][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10842
+[15:04:33][NioProcessor-4] - 客户端/127.0.0.1:10818 空闲both idle
+[15:04:33][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:33][NioProcessor-2] - 客户端/127.0.0.1:10812 空闲both idle
+[15:04:33][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:34][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10843
+[15:04:34][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10844
+[15:04:34][NioProcessor-1] - 客户端连接错误/127.0.0.1:10844， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:34][NioProcessor-1] - 客户端/127.0.0.1:10844 断开连接
+[15:04:34][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10845
+[15:04:34][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10847
+[15:04:34][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10849
+[15:04:34][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10848
+[15:04:34][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10851
+[15:04:34][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10846
+[15:04:34][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10850
+[15:04:34][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10852
+[15:04:34][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10854
+[15:04:34][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10856
+[15:04:34][NioProcessor-3] - 客户端连接错误/127.0.0.1:10854， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:34][NioProcessor-3] - 客户端/127.0.0.1:10854 断开连接
+[15:04:34][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10855
+[15:04:34][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10853
+[15:04:34][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10857
+[15:04:35][NioProcessor-4] - 客户端/127.0.0.1:10821 空闲both idle
+[15:04:35][NioProcessor-1] - 客户端/127.0.0.1:10819 空闲both idle
+[15:04:35][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:35][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:35][NioProcessor-2] - 客户端/127.0.0.1:10820 空闲both idle
+[15:04:35][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:37][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10858
+[15:04:37][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10861
+[15:04:37][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10860
+[15:04:37][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10859
+[15:04:37][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10862
+[15:04:37][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10863
+[15:04:37][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10864
+[15:04:37][NioProcessor-4] - 客户端连接错误/127.0.0.1:10863， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:37][NioProcessor-4] - 客户端/127.0.0.1:10863 断开连接
+[15:04:37][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10865
+[15:04:37][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10866
+[15:04:37][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10868
+[15:04:37][NioProcessor-4] - 客户端连接错误/127.0.0.1:10868， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:37][NioProcessor-4] - 客户端/127.0.0.1:10868 断开连接
+[15:04:37][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10867
+[15:04:38][NioProcessor-3] - 客户端/127.0.0.1:10823 空闲both idle
+[15:04:38][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:38][NioProcessor-4] - 客户端/127.0.0.1:10826 空闲both idle
+[15:04:38][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:38][NioProcessor-1] - 客户端/127.0.0.1:10824 空闲both idle
+[15:04:38][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:39][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10869
+[15:04:39][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10870
+[15:04:39][NioProcessor-3] - 客户端连接错误/127.0.0.1:10870， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:39][NioProcessor-3] - 客户端/127.0.0.1:10870 断开连接
+[15:04:39][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10871
+[15:04:39][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10872
+[15:04:39][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10873
+[15:04:39][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10875
+[15:04:39][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10876
+[15:04:39][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10877
+[15:04:39][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10874
+[15:04:39][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10878
+[15:04:39][NioProcessor-3] - 客户端/127.0.0.1:10878 断开连接
+[15:04:39][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10879
+[15:04:39][NioProcessor-4] - 客户端连接错误/127.0.0.1:10879， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:39][NioProcessor-4] - 客户端/127.0.0.1:10879 断开连接
+[15:04:39][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10880
+[15:04:39][NioProcessor-1] - 客户端连接错误/127.0.0.1:10880， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:39][NioProcessor-1] - 客户端/127.0.0.1:10880 断开连接
+[15:04:40][NioProcessor-2] - 客户端/127.0.0.1:10832 空闲both idle
+[15:04:40][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:40][NioProcessor-2] - 客户端/127.0.0.1:10816 空闲both idle
+[15:04:40][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:40][NioProcessor-2] - 客户端/127.0.0.1:10828 空闲both idle
+[15:04:40][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:40][NioProcessor-3] - 客户端/127.0.0.1:10829 空闲both idle
+[15:04:40][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:40][NioProcessor-4] - 客户端/127.0.0.1:10831 空闲both idle
+[15:04:40][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:40][NioProcessor-1] - 客户端/127.0.0.1:10830 空闲both idle
+[15:04:40][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:40][NioProcessor-1] - 客户端/127.0.0.1:10811 空闲both idle
+[15:04:40][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:40][NioProcessor-1] - 客户端/127.0.0.1:10827 空闲both idle
+[15:04:40][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:40][NioProcessor-1] - 客户端/127.0.0.1:10811 断开连接
+[15:04:42][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10881
+[15:04:42][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10882
+[15:04:42][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10883
+[15:04:42][NioProcessor-4] - 客户端连接错误/127.0.0.1:10883， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:42][NioProcessor-4] - 客户端/127.0.0.1:10883 断开连接
+[15:04:42][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10884
+[15:04:42][NioProcessor-1] - 客户端连接错误/127.0.0.1:10884， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:42][NioProcessor-1] - 客户端/127.0.0.1:10884 断开连接
+[15:04:42][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10885
+[15:04:42][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10886
+[15:04:42][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10887
+[15:04:42][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10888
+[15:04:42][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10889
+[15:04:42][NioProcessor-2] - 客户端连接错误/127.0.0.1:10889， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:42][NioProcessor-2] - 客户端/127.0.0.1:10889 断开连接
+[15:04:42][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10890
+[15:04:42][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10891
+[15:04:42][NioProcessor-4] - 客户端连接错误/127.0.0.1:10891， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:42][NioProcessor-4] - 客户端/127.0.0.1:10891 断开连接
+[15:04:43][NioProcessor-1] - 客户端/127.0.0.1:10840 空闲both idle
+[15:04:43][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:43][NioProcessor-1] - 客户端/127.0.0.1:10836 空闲both idle
+[15:04:43][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:43][NioProcessor-2] - 客户端/127.0.0.1:10837 空闲both idle
+[15:04:43][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:43][NioProcessor-2] - 客户端/127.0.0.1:10812 空闲both idle
+[15:04:43][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:43][NioProcessor-3] - 客户端/127.0.0.1:10838 空闲both idle
+[15:04:43][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:43][NioProcessor-2] - 客户端/127.0.0.1:10812 断开连接
+[15:04:43][NioProcessor-3] - 客户端/127.0.0.1:10842 空闲both idle
+[15:04:43][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:43][NioProcessor-4] - 客户端/127.0.0.1:10835 空闲both idle
+[15:04:43][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:43][NioProcessor-4] - 客户端/127.0.0.1:10839 空闲both idle
+[15:04:43][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:43][NioProcessor-4] - 客户端/127.0.0.1:10818 空闲both idle
+[15:04:43][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:44][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10893
+[15:04:44][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10894
+[15:04:44][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10895
+[15:04:44][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10896
+[15:04:44][NioProcessor-3] - 客户端/127.0.0.1:10866 断开连接
+[15:04:44][NioProcessor-3] - 客户端连接错误/127.0.0.1:10842， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-3] - 客户端连接错误/127.0.0.1:10823， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-3] - 客户端/127.0.0.1:10850 断开连接
+[15:04:44][NioProcessor-3] - 客户端/127.0.0.1:10842 断开连接
+[15:04:44][NioProcessor-3] - 客户端/127.0.0.1:10846 断开连接
+[15:04:44][NioProcessor-3] - 客户端/127.0.0.1:10823 断开连接
+[15:04:44][NioProcessor-4] - 客户端连接错误/127.0.0.1:10821， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10821 断开连接
+[15:04:44][NioProcessor-2] - 客户端连接错误/127.0.0.1:10820， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10820 断开连接
+[15:04:44][NioProcessor-4] - 客户端连接错误/127.0.0.1:10839， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-4] - 客户端连接错误/127.0.0.1:10826， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10853 断开连接
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10857 断开连接
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10845 断开连接
+[15:04:44][NioProcessor-4] - 客户端连接错误/127.0.0.1:10818， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10839 断开连接
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10849 断开连接
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10826 断开连接
+[15:04:44][NioProcessor-2] - 客户端连接错误/127.0.0.1:10832， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10847 断开连接
+[15:04:44][NioProcessor-2] - 客户端连接错误/127.0.0.1:10816， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-2] - 客户端连接错误/127.0.0.1:10828， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10887 断开连接
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10855 断开连接
+[15:04:44][NioProcessor-2] - 客户端连接错误/127.0.0.1:10837， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10832 断开连接
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10816 断开连接
+[15:04:44][NioProcessor-1] - 客户端连接错误/127.0.0.1:10819， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10828 断开连接
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10869 断开连接
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10874 断开连接
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10865 断开连接
+[15:04:44][NioProcessor-2] - 客户端/127.0.0.1:10837 断开连接
+[15:04:44][NioProcessor-3] - 客户端/127.0.0.1:10862 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10819 断开连接
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10851 断开连接
+[15:04:44][NioProcessor-1] - 客户端连接错误/127.0.0.1:10830， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-1] - 客户端连接错误/127.0.0.1:10840， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10843 断开连接
+[15:04:44][NioProcessor-1] - 客户端连接错误/127.0.0.1:10824， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-1] - 客户端连接错误/127.0.0.1:10827， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-1] - 客户端连接错误/127.0.0.1:10836， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10872 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10830 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10864 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10860 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10856 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10840 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10824 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10827 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10836 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10848 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10852 断开连接
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10867 断开连接
+[15:04:44][NioProcessor-3] - 客户端连接错误/127.0.0.1:10838， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10818 断开连接
+[15:04:44][NioProcessor-3] - 客户端连接错误/127.0.0.1:10829， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-3] - 客户端/127.0.0.1:10858 断开连接
+[15:04:44][NioProcessor-4] - 客户端连接错误/127.0.0.1:10831， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-3] - 客户端/127.0.0.1:10838 断开连接
+[15:04:44][NioProcessor-4] - 客户端连接错误/127.0.0.1:10835， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10831 断开连接
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10871 断开连接
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10876 断开连接
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10835 断开连接
+[15:04:44][NioProcessor-3] - 客户端/127.0.0.1:10829 断开连接
+[15:04:44][NioProcessor-4] - 客户端/127.0.0.1:10859 断开连接
+[15:04:44][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10897
+[15:04:44][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10898
+[15:04:44][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10900
+[15:04:44][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10899
+[15:04:44][NioProcessor-1] - 客户端连接错误/127.0.0.1:10897， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:44][NioProcessor-1] - 客户端/127.0.0.1:10897 断开连接
+[15:04:44][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10901
+[15:04:44][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10902
+[15:04:44][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10903
+[15:04:44][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10904
+[15:04:47][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10905
+[15:04:47][NioProcessor-1] - 客户端连接错误/127.0.0.1:10905， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:47][NioProcessor-1] - 客户端/127.0.0.1:10905 断开连接
+[15:04:47][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10906
+[15:04:47][NioProcessor-2] - 客户端连接错误/127.0.0.1:10906， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:47][NioProcessor-2] - 客户端/127.0.0.1:10906 断开连接
+[15:04:47][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10907
+[15:04:47][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10908
+[15:04:47][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10909
+[15:04:47][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10910
+[15:04:47][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10912
+[15:04:47][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10911
+[15:04:47][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10913
+[15:04:47][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10914
+[15:04:47][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10915
+[15:04:47][NioProcessor-3] - 客户端连接错误/127.0.0.1:10915， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:47][NioProcessor-3] - 客户端/127.0.0.1:10915 断开连接
+[15:04:48][NioProcessor-2] - 客户端/127.0.0.1:10861 空闲both idle
+[15:04:48][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:49][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10916
+[15:04:49][NioProcessor-4] - 客户端连接错误/127.0.0.1:10916， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-4] - 客户端/127.0.0.1:10916 断开连接
+[15:04:49][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10918
+[15:04:49][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10917
+[15:04:49][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:10919
+[15:04:49][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:10920
+[15:04:49][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:10921
+[15:04:49][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10922
+[15:04:49][NioProcessor-4] - 客户端连接错误/127.0.0.1:10920， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-4] - 客户端/127.0.0.1:10920 断开连接
+[15:04:49][NioProcessor-1] - 客户端连接错误/127.0.0.1:10901， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-1] - 客户端/127.0.0.1:10901 断开连接
+[15:04:49][NioProcessor-2] - 客户端连接错误/127.0.0.1:10861， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-2] - 客户端/127.0.0.1:10861 断开连接
+[15:04:49][NioProcessor-4] - 客户端连接错误/127.0.0.1:10904， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-4] - 客户端/127.0.0.1:10904 断开连接
+[15:04:49][NioProcessor-3] - 客户端连接错误/127.0.0.1:10899， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-3] - 客户端/127.0.0.1:10899 断开连接
+[15:04:49][NioProcessor-3] - 客户端连接错误/127.0.0.1:10886， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-3] - 客户端/127.0.0.1:10886 断开连接
+[15:04:49][NioProcessor-2] - 客户端连接错误/127.0.0.1:10894， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-2] - 客户端/127.0.0.1:10894 断开连接
+[15:04:49][NioProcessor-3] - 客户端连接错误/127.0.0.1:10875， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-3] - 客户端/127.0.0.1:10875 断开连接
+[15:04:49][NioProcessor-2] - 客户端连接错误/127.0.0.1:10873， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-2] - 客户端/127.0.0.1:10873 断开连接
+[15:04:49][NioProcessor-4] - 客户端连接错误/127.0.0.1:10896， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-4] - 客户端/127.0.0.1:10896 断开连接
+[15:04:49][NioProcessor-3] - 客户端连接错误/127.0.0.1:10890， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-3] - 客户端/127.0.0.1:10890 断开连接
+[15:04:49][NioProcessor-1] - 客户端连接错误/127.0.0.1:10893， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-1] - 客户端/127.0.0.1:10893 断开连接
+[15:04:49][NioProcessor-1] - 客户端连接错误/127.0.0.1:10888， server exception 远程主机强迫关闭了一个现有的连接。
+[15:04:49][NioProcessor-1] - 客户端/127.0.0.1:10888 断开连接
+[15:04:49][NioProcessor-3] - 客户端/127.0.0.1:10903 断开连接
+[15:04:50][NioProcessor-1] - 客户端/127.0.0.1:10877 空闲both idle
+[15:04:50][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:51][NioProcessor-4] - 客户端/127.0.0.1:10900 断开连接
+[15:04:51][NioProcessor-2] - 客户端/127.0.0.1:10917 断开连接
+[15:04:51][NioProcessor-2] - 客户端/127.0.0.1:10898 断开连接
+[15:04:51][NioProcessor-2] - 客户端/127.0.0.1:10902 断开连接
+[15:04:51][NioProcessor-2] - 客户端/127.0.0.1:10922 断开连接
+[15:04:51][NioProcessor-1] - 客户端/127.0.0.1:10921 断开连接
+[15:04:53][NioProcessor-2] - 客户端/127.0.0.1:10885 空闲both idle
+[15:04:53][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:53][NioProcessor-2] - 客户端/127.0.0.1:10881 空闲both idle
+[15:04:53][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:53][NioProcessor-3] - 客户端/127.0.0.1:10882 空闲both idle
+[15:04:53][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:54][NioProcessor-3] - 客户端/127.0.0.1:10895 空闲both idle
+[15:04:54][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:58][NioProcessor-4] - 客户端/127.0.0.1:10908 空闲both idle
+[15:04:58][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:58][NioProcessor-4] - 客户端/127.0.0.1:10912 空闲both idle
+[15:04:58][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:58][NioProcessor-1] - 客户端/127.0.0.1:10913 空闲both idle
+[15:04:58][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:58][NioProcessor-1] - 客户端/127.0.0.1:10909 空闲both idle
+[15:04:58][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:58][NioProcessor-2] - 客户端/127.0.0.1:10910 空闲both idle
+[15:04:58][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:58][NioProcessor-2] - 客户端/127.0.0.1:10914 空闲both idle
+[15:04:58][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:58][NioProcessor-3] - 客户端/127.0.0.1:10907 空闲both idle
+[15:04:58][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:58][NioProcessor-3] - 客户端/127.0.0.1:10911 空闲both idle
+[15:04:58][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:59][NioProcessor-1] - 客户端/127.0.0.1:10918 空闲both idle
+[15:04:59][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:04:59][NioProcessor-3] - 客户端/127.0.0.1:10919 空闲both idle
+[15:04:59][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:00][NioProcessor-1] - 客户端/127.0.0.1:10877 空闲both idle
+[15:05:00][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:03][NioProcessor-2] - 客户端/127.0.0.1:10885 空闲both idle
+[15:05:03][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:03][NioProcessor-2] - 客户端/127.0.0.1:10881 空闲both idle
+[15:05:03][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:03][NioProcessor-3] - 客户端/127.0.0.1:10882 空闲both idle
+[15:05:03][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:04][NioProcessor-3] - 客户端/127.0.0.1:10895 空闲both idle
+[15:05:04][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:08][NioProcessor-4] - 客户端/127.0.0.1:10908 空闲both idle
+[15:05:08][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:08][NioProcessor-4] - 客户端/127.0.0.1:10912 空闲both idle
+[15:05:08][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:08][NioProcessor-1] - 客户端/127.0.0.1:10913 空闲both idle
+[15:05:08][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:08][NioProcessor-1] - 客户端/127.0.0.1:10909 空闲both idle
+[15:05:08][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:08][NioProcessor-2] - 客户端/127.0.0.1:10910 空闲both idle
+[15:05:08][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:08][NioProcessor-2] - 客户端/127.0.0.1:10914 空闲both idle
+[15:05:08][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:08][NioProcessor-3] - 客户端/127.0.0.1:10907 空闲both idle
+[15:05:08][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:08][NioProcessor-3] - 客户端/127.0.0.1:10911 空闲both idle
+[15:05:08][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:09][NioProcessor-1] - 客户端/127.0.0.1:10918 空闲both idle
+[15:05:09][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:09][NioProcessor-3] - 客户端/127.0.0.1:10919 空闲both idle
+[15:05:09][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:10][NioProcessor-1] - 客户端/127.0.0.1:10877 空闲both idle
+[15:05:10][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:13][NioProcessor-2] - 客户端/127.0.0.1:10885 空闲both idle
+[15:05:13][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:13][NioProcessor-2] - 客户端/127.0.0.1:10881 空闲both idle
+[15:05:13][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:13][NioProcessor-3] - 客户端/127.0.0.1:10882 空闲both idle
+[15:05:13][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:14][NioProcessor-3] - 客户端/127.0.0.1:10895 空闲both idle
+[15:05:14][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:18][NioProcessor-4] - 客户端/127.0.0.1:10908 空闲both idle
+[15:05:18][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:18][NioProcessor-4] - 客户端/127.0.0.1:10912 空闲both idle
+[15:05:18][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:18][NioProcessor-2] - 客户端/127.0.0.1:10910 空闲both idle
+[15:05:18][NioProcessor-1] - 客户端/127.0.0.1:10913 空闲both idle
+[15:05:18][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:18][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:18][NioProcessor-1] - 客户端/127.0.0.1:10909 空闲both idle
+[15:05:18][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:18][NioProcessor-2] - 客户端/127.0.0.1:10914 空闲both idle
+[15:05:18][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:18][NioProcessor-3] - 客户端/127.0.0.1:10907 空闲both idle
+[15:05:18][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:18][NioProcessor-3] - 客户端/127.0.0.1:10911 空闲both idle
+[15:05:18][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:19][NioProcessor-1] - 客户端/127.0.0.1:10918 空闲both idle
+[15:05:19][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:19][NioProcessor-3] - 客户端/127.0.0.1:10919 空闲both idle
+[15:05:19][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:20][NioProcessor-1] - 客户端/127.0.0.1:10877 空闲both idle
+[15:05:20][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:20][NioProcessor-1] - 客户端/127.0.0.1:10877 断开连接
+[15:05:23][NioProcessor-2] - 客户端/127.0.0.1:10885 空闲both idle
+[15:05:23][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:23][NioProcessor-2] - 客户端/127.0.0.1:10881 空闲both idle
+[15:05:23][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:23][NioProcessor-2] - 客户端/127.0.0.1:10885 断开连接
+[15:05:23][NioProcessor-2] - 客户端/127.0.0.1:10881 断开连接
+[15:05:23][NioProcessor-3] - 客户端/127.0.0.1:10882 空闲both idle
+[15:05:23][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:05:23][NioProcessor-3] - 客户端/127.0.0.1:10882 断开连接
+[15:05:23][NioProcessor-2] - 客户端连接错误/127.0.0.1:10910， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-2] - 客户端/127.0.0.1:10910 断开连接
+[15:05:23][NioProcessor-1] - 客户端连接错误/127.0.0.1:10909， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-2] - 客户端连接错误/127.0.0.1:10914， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-1] - 客户端/127.0.0.1:10909 断开连接
+[15:05:23][NioProcessor-3] - 客户端连接错误/127.0.0.1:10911， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-3] - 客户端/127.0.0.1:10911 断开连接
+[15:05:23][NioProcessor-2] - 客户端/127.0.0.1:10914 断开连接
+[15:05:23][NioProcessor-1] - 客户端连接错误/127.0.0.1:10913， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-1] - 客户端/127.0.0.1:10913 断开连接
+[15:05:23][NioProcessor-3] - 客户端连接错误/127.0.0.1:10907， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-3] - 客户端/127.0.0.1:10907 断开连接
+[15:05:23][NioProcessor-4] - 客户端连接错误/127.0.0.1:10912， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-4] - 客户端/127.0.0.1:10912 断开连接
+[15:05:23][NioProcessor-3] - 客户端连接错误/127.0.0.1:10919， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-3] - 客户端/127.0.0.1:10919 断开连接
+[15:05:23][NioProcessor-3] - 客户端连接错误/127.0.0.1:10895， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-3] - 客户端/127.0.0.1:10895 断开连接
+[15:05:23][NioProcessor-1] - 客户端连接错误/127.0.0.1:10918， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-1] - 客户端/127.0.0.1:10918 断开连接
+[15:05:23][NioProcessor-4] - 客户端连接错误/127.0.0.1:10908， server exception 远程主机强迫关闭了一个现有的连接。
+[15:05:23][NioProcessor-4] - 客户端/127.0.0.1:10908 断开连接
+[15:05:42][main] - 本服serverId为10001,后台端口为8080
+[15:05:43][main] - 初始化数据库连接池……
+[15:05:43][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[15:05:43][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[15:05:43][main] - socket启动端口为9528,正在监听客户端的连接
+[15:05:43][main] - 游戏服务启动，耗时[895]毫秒
+[15:07:05][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:10988
+[15:07:06][NioProcessor-2] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[15:07:06][message-task-handler-thread-1] - 
+java.lang.IllegalArgumentException: argument type mismatch
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.listener.ListenerManager.fireEvent(ListenerManager.java:69)
+	at game_server_parent.master.listener.EventDispatcher.lambda$0(EventDispatcher.java:79)
+	at java.util.concurrent.CopyOnWriteArrayList.forEach(Unknown Source)
+	at java.util.concurrent.CopyOnWriteArraySet.forEach(Unknown Source)
+	at game_server_parent.master.listener.EventDispatcher.triggerEvent(EventDispatcher.java:77)
+	at game_server_parent.master.listener.EventDispatcher.fireEvent(EventDispatcher.java:65)
+	at game_server_parent.master.game.login.LoginController.reqAccountRelogin(LoginController.java:40)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.net.context.MessageTask.action(MessageTask.java:44)
+	at game_server_parent.master.net.context.TaskHandlerContext$TaskWorker.run(TaskHandlerContext.java:80)
+	at java.lang.Thread.run(Unknown Source)
+[15:07:36][NioProcessor-2] - 客户端/127.0.0.1:10988 空闲both idle
+[15:07:36][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:10:27][main] - 本服serverId为10001,后台端口为8080
+[15:10:27][main] - 初始化数据库连接池……
+[15:10:27][main] - Proxool 0.9.1 (23-Aug-2008 11:10)
+[15:10:27][HouseKeeper] - Proxool statistics legend: "s - r  (a/t/o)" > s=served, r=refused (only shown if non-zero), a=active, t=total, o=offline (being tested)
+[15:10:28][main] - socket启动端口为9528,正在监听客户端的连接
+[15:10:28][main] - 游戏服务启动，耗时[823]毫秒
+[15:10:29][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:11090
+[15:10:29][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:11091
+[15:10:30][NioProcessor-2] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[15:10:30][NioProcessor-3] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[15:10:30][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:10:30][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:11:00][NioProcessor-2] - 客户端/127.0.0.1:11090 空闲both idle
+[15:11:00][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:11:00][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:11:00][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:11:00][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:11:00][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:11:02][NioProcessor-3] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[15:11:30][NioProcessor-2] - 客户端/127.0.0.1:11090 空闲both idle
+[15:11:30][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:11:32][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:11:32][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:11:34][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:11:34][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:12:00][NioProcessor-2] - 客户端/127.0.0.1:11090 空闲both idle
+[15:12:00][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:12:04][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:12:04][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:12:04][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:12:04][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:12:30][NioProcessor-2] - 客户端/127.0.0.1:11090 空闲both idle
+[15:12:30][NioProcessor-2] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:12:30][NioProcessor-2] - 客户端/127.0.0.1:11090 断开连接
+[15:12:34][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:12:34][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:12:34][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:12:34][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:13:04][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:13:04][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:13:04][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:13:04][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:13:34][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:13:34][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:13:34][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:13:34][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:14:04][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:14:04][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:14:04][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:14:04][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:14:34][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:14:34][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:14:34][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:14:34][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:15:04][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:15:04][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:15:04][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:15:04][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:15:34][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:15:34][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:15:35][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:15:35][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:16:05][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:16:05][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:16:05][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:16:05][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:16:35][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:16:35][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:16:35][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:16:35][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:17:05][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:17:05][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:17:05][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:17:05][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:17:35][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:17:35][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:17:35][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:17:35][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:17:53][NioProcessor-3] - 收到消息-->ReqKapaiNewMessage [id=0, dalei=1, bingzhong=1011]
+[15:17:53][message-task-handler-thread-1] - KapaiListener捕捉到事件EventKapaiNew [playerId=10000,eventType=KAPAI_NEW, dalei=1, bingzhong=1011]
+[15:17:54][message-task-handler-thread-1] - AttrChangeListener捕捉到事件EventKapaiNew [playerId=10000,eventType=KAPAI_NEW, dalei=1, bingzhong=1011]
+[15:17:54][db-save-service-thread-1] - [save] INSERT INTO kapai (`player_id`,`kapai_id`,`xingji`,`id`,`s_dengji`,`bingzhong`,`pinzhi`,`dalei`,`jiachengbi`,`jingyan`) VALUES ('10000','10019','1','2815129903901507591','1','1011','1','1','0','0')
+[15:18:24][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:18:24][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:18:24][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:18:24][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:18:54][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:18:54][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:18:54][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:18:54][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:19:24][NioProcessor-3] - 客户端/127.0.0.1:11091 空闲both idle
+[15:19:24][NioProcessor-3] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:19:24][NioProcessor-3] - 收到消息-->ClientHeartBeatMessage 
+[15:19:24][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:19:38][NioProcessor-3] - 客户端连接错误/127.0.0.1:11091， server exception 远程主机强迫关闭了一个现有的连接。
+[15:19:38][NioProcessor-3] - 客户端/127.0.0.1:11091 断开连接
+[15:19:43][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:11138
+[15:19:43][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:11139
+[15:20:13][NioProcessor-4] - 客户端/127.0.0.1:11138 空闲both idle
+[15:20:13][NioProcessor-4] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:20:13][NioProcessor-1] - 客户端/127.0.0.1:11139 空闲both idle
+[15:20:13][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:20:22][NioProcessor-4] - 客户端连接错误/127.0.0.1:11138， server exception 远程主机强迫关闭了一个现有的连接。
+[15:20:22][NioProcessor-4] - 客户端/127.0.0.1:11138 断开连接
+[15:20:22][NioProcessor-1] - 客户端连接错误/127.0.0.1:11139， server exception 远程主机强迫关闭了一个现有的连接。
+[15:20:22][NioProcessor-1] - 客户端/127.0.0.1:11139 断开连接
+[15:21:23][NioProcessor-2] - 打开一个客户端连接/127.0.0.1:11169
+[15:21:23][NioProcessor-2] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[15:21:28][NioProcessor-2] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[15:21:32][NioProcessor-2] - 客户端连接错误/127.0.0.1:11169， server exception 远程主机强迫关闭了一个现有的连接。
+[15:21:32][NioProcessor-2] - 客户端/127.0.0.1:11169 断开连接
+[15:21:37][NioProcessor-3] - 打开一个客户端连接/127.0.0.1:11173
+[15:21:37][NioProcessor-3] - 客户端连接错误/127.0.0.1:11173， server exception 远程主机强迫关闭了一个现有的连接。
+[15:21:37][NioProcessor-3] - 客户端/127.0.0.1:11173 断开连接
+[15:21:42][NioProcessor-4] - 打开一个客户端连接/127.0.0.1:11174
+[15:21:42][NioProcessor-4] - 客户端连接错误/127.0.0.1:11174， server exception 远程主机强迫关闭了一个现有的连接。
+[15:21:42][NioProcessor-4] - 客户端/127.0.0.1:11174 断开连接
+[15:21:54][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:11176
+[15:21:54][NioProcessor-1] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[15:21:57][NioProcessor-1] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
+[15:22:27][NioProcessor-1] - 客户端/127.0.0.1:11176 空闲both idle
+[15:22:27][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:22:27][NioProcessor-1] - 收到消息-->ClientHeartBeatMessage 
+[15:22:27][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:22:57][NioProcessor-1] - 客户端/127.0.0.1:11176 空闲both idle
+[15:22:57][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:22:57][NioProcessor-1] - 收到消息-->ClientHeartBeatMessage 
+[15:22:57][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:23:27][NioProcessor-1] - 客户端/127.0.0.1:11176 空闲both idle
+[15:23:27][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:23:27][NioProcessor-1] - 收到消息-->ClientHeartBeatMessage 
+[15:23:27][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:23:57][NioProcessor-1] - 客户端/127.0.0.1:11176 空闲both idle
+[15:23:57][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:23:57][NioProcessor-1] - 收到消息-->ClientHeartBeatMessage 
+[15:23:57][message-task-handler-thread-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT]
+[15:24:27][NioProcessor-1] - 客户端/127.0.0.1:11176 空闲both idle
+[15:24:27][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:24:57][NioProcessor-1] - 客户端/127.0.0.1:11176 空闲both idle
+[15:24:57][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:25:27][NioProcessor-1] - 客户端/127.0.0.1:11176 空闲both idle
+[15:25:27][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:25:57][NioProcessor-1] - 客户端/127.0.0.1:11176 空闲both idle
+[15:25:57][NioProcessor-1] - HeartBeatListener捕捉到事件EventHeartBeat [EventType=HEARTBEAT_TIMEOUT]
+[15:25:57][NioProcessor-1] - 客户端/127.0.0.1:11176 断开连接

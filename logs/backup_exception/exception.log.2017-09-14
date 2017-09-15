@@ -1,0 +1,269 @@
+09-14 10:06:17 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:18050， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 10:24:47 DEBUG MessageDecoder.java:45 - _decode
+09-14 10:25:10 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:38964， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 10:41:57 DEBUG MessageDecoder.java:45 - _decode
+09-14 10:42:09 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:39282， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 10:44:31 DEBUG MessageDecoder.java:45 - _decode
+09-14 10:44:54 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:39310， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 10:47:07 DEBUG MessageDecoder.java:45 - _decode
+09-14 10:47:20 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:39333， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 10:48:17 DEBUG MessageDecoder.java:45 - _decode
+09-14 10:48:38 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:39356， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 10:50:48 DEBUG MessageDecoder.java:45 - _decode
+09-14 10:52:08 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:39385， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 10:52:14 DEBUG MessageDecoder.java:45 - _decode
+09-14 10:52:41 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:39398， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 10:52:46 DEBUG MessageDecoder.java:45 - _decode
+09-14 10:54:32 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:39413， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 10:56:45 DEBUG MessageDecoder.java:45 - _decode
+09-14 11:47:31 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:39454， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 11:49:47 DEBUG MessageDecoder.java:45 - _decode
+09-14 15:58:37 DEBUG MessageDecoder.java:45 - _decode
+09-14 15:59:00 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:47263， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 16:06:11 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:06:16 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:06:16 ERROR LoggerUtils.java:27 - 
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.listener.ListenerManager.fireEvent(ListenerManager.java:69)
+	at game_server_parent.master.listener.EventDispatcher.lambda$0(EventDispatcher.java:79)
+	at java.util.concurrent.CopyOnWriteArrayList.forEach(Unknown Source)
+	at java.util.concurrent.CopyOnWriteArraySet.forEach(Unknown Source)
+	at game_server_parent.master.listener.EventDispatcher.triggerEvent(EventDispatcher.java:77)
+	at game_server_parent.master.listener.EventDispatcher.fireEvent(EventDispatcher.java:65)
+	at game_server_parent.master.game.kapai.KapaiController.reqKapaiNew(KapaiController.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.net.context.MessageTask.action(MessageTask.java:44)
+	at game_server_parent.master.net.context.TaskHandlerContext$TaskWorker.run(TaskHandlerContext.java:80)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.NullPointerException
+	at game_server_parent.master.game.kapai.KapaiManager.getNextId(KapaiManager.java:63)
+	at game_server_parent.master.game.kapai.KapaiManager.createNewKapai(KapaiManager.java:38)
+	at game_server_parent.master.game.kapai.KapaiListener.onKapaiNew(KapaiListener.java:41)
+	... 18 more
+09-14 16:06:38 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:47491， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 16:11:23 ERROR LoggerUtils.java:27 - 
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketAdaptor.bind(Unknown Source)
+	at org.apache.mina.transport.socket.nio.NioSocketAcceptor.open(NioSocketAcceptor.java:198)
+	at org.apache.mina.transport.socket.nio.NioSocketAcceptor.open(NioSocketAcceptor.java:51)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor.registerHandles(AbstractPollingIoAcceptor.java:547)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor.access$400(AbstractPollingIoAcceptor.java:68)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor$Acceptor.run(AbstractPollingIoAcceptor.java:422)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+09-14 16:11:23 ERROR LoggerUtils.java:27 - 
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.Net.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(Unknown Source)
+	at sun.nio.ch.ServerSocketAdaptor.bind(Unknown Source)
+	at org.apache.mina.transport.socket.nio.NioSocketAcceptor.open(NioSocketAcceptor.java:198)
+	at org.apache.mina.transport.socket.nio.NioSocketAcceptor.open(NioSocketAcceptor.java:51)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor.registerHandles(AbstractPollingIoAcceptor.java:547)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor.access$400(AbstractPollingIoAcceptor.java:68)
+	at org.apache.mina.core.polling.AbstractPollingIoAcceptor$Acceptor.run(AbstractPollingIoAcceptor.java:422)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+09-14 16:12:26 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:12:54 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:12:54 ERROR LoggerUtils.java:27 - 
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.listener.ListenerManager.fireEvent(ListenerManager.java:69)
+	at game_server_parent.master.listener.EventDispatcher.lambda$0(EventDispatcher.java:79)
+	at java.util.concurrent.CopyOnWriteArrayList.forEach(Unknown Source)
+	at java.util.concurrent.CopyOnWriteArraySet.forEach(Unknown Source)
+	at game_server_parent.master.listener.EventDispatcher.triggerEvent(EventDispatcher.java:77)
+	at game_server_parent.master.listener.EventDispatcher.fireEvent(EventDispatcher.java:65)
+	at game_server_parent.master.game.kapai.KapaiController.reqKapaiNew(KapaiController.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.net.context.MessageTask.action(MessageTask.java:44)
+	at game_server_parent.master.net.context.TaskHandlerContext$TaskWorker.run(TaskHandlerContext.java:80)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.NullPointerException
+	at game_server_parent.master.game.kapai.KapaiManager.getNextId(KapaiManager.java:63)
+	at game_server_parent.master.game.kapai.KapaiManager.createNewKapai(KapaiManager.java:38)
+	at game_server_parent.master.game.kapai.KapaiListener.onKapaiNew(KapaiListener.java:39)
+	... 18 more
+09-14 16:17:11 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:47931， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 16:18:25 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:18:33 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:18:59 ERROR LoggerUtils.java:27 - 
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.listener.ListenerManager.fireEvent(ListenerManager.java:69)
+	at game_server_parent.master.listener.EventDispatcher.lambda$0(EventDispatcher.java:79)
+	at java.util.concurrent.CopyOnWriteArrayList.forEach(Unknown Source)
+	at java.util.concurrent.CopyOnWriteArraySet.forEach(Unknown Source)
+	at game_server_parent.master.listener.EventDispatcher.triggerEvent(EventDispatcher.java:77)
+	at game_server_parent.master.listener.EventDispatcher.fireEvent(EventDispatcher.java:65)
+	at game_server_parent.master.game.kapai.KapaiController.reqKapaiNew(KapaiController.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.net.context.MessageTask.action(MessageTask.java:44)
+	at game_server_parent.master.net.context.TaskHandlerContext$TaskWorker.run(TaskHandlerContext.java:80)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.NullPointerException
+	at game_server_parent.master.game.kapai.KapaiManager.getNextId(KapaiManager.java:63)
+	at game_server_parent.master.game.kapai.KapaiManager.createNewKapai(KapaiManager.java:38)
+	at game_server_parent.master.game.kapai.KapaiListener.onKapaiNew(KapaiListener.java:39)
+	... 18 more
+09-14 16:33:10 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:33:18 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:34:50 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:48481， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 16:34:56 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:35:02 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:48532， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 16:36:45 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:36:51 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:37:15 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:51:48 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:52:01 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:52:02 ERROR LoggerUtils.java:27 - 
+java.lang.IllegalArgumentException: argument type mismatch
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.listener.ListenerManager.fireEvent(ListenerManager.java:69)
+	at game_server_parent.master.listener.EventDispatcher.lambda$0(EventDispatcher.java:79)
+	at java.util.concurrent.CopyOnWriteArrayList.forEach(Unknown Source)
+	at java.util.concurrent.CopyOnWriteArraySet.forEach(Unknown Source)
+	at game_server_parent.master.listener.EventDispatcher.triggerEvent(EventDispatcher.java:77)
+	at game_server_parent.master.listener.EventDispatcher.fireEvent(EventDispatcher.java:65)
+	at game_server_parent.master.game.kapai.KapaiController.reqKapaiUpdate(KapaiController.java:41)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at game_server_parent.master.net.context.MessageTask.action(MessageTask.java:44)
+	at game_server_parent.master.net.context.TaskHandlerContext$TaskWorker.run(TaskHandlerContext.java:80)
+	at java.lang.Thread.run(Unknown Source)
+09-14 16:57:11 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:57:22 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:58:40 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:59:03 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:59:16 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:49313， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 16:59:24 DEBUG MessageDecoder.java:45 - _decode
+09-14 16:59:30 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:02:54 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:03:12 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:04:02 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:13:05 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:13:10 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:13:15 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:49790， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 17:13:31 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:13:43 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:18:27 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:18:37 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:31:19 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:32:03 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:49:46 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:49:58 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:51:23 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:51260， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 17:51:53 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:52:30 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:54:36 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:56:31 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:51338， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 17:56:37 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:56:54 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:51504， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 17:58:01 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:58:08 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:58:16 DEBUG MessageDecoder.java:45 - _decode
+09-14 17:58:50 DEBUG MessageDecoder.java:45 - _decode
+09-14 18:40:18 DEBUG MessageDecoder.java:45 - _decode
+09-14 18:40:25 DEBUG MessageDecoder.java:45 - _decode
+09-14 18:40:52 DEBUG MessageDecoder.java:45 - _decode
+09-14 18:43:39 DEBUG MessageDecoder.java:45 - _decode
+09-14 18:50:43 DEBUG MessageDecoder.java:45 - _decode
+09-14 18:51:12 DEBUG MessageDecoder.java:45 - _decode
+09-14 18:56:02 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:53296， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 18:56:09 DEBUG MessageDecoder.java:45 - _decode
+09-14 18:57:45 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:53462， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 18:58:44 DEBUG MessageDecoder.java:45 - _decode
+09-14 18:59:21 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:53547， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 19:07:41 DEBUG MessageDecoder.java:45 - _decode
+09-14 19:08:19 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:53800， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:01:59 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:02:06 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:02:06 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55391， server exception null
+09-14 20:02:41 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:02:41 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55391， server exception null
+09-14 20:04:26 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55391， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:04:47 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:04:51 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:04:51 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55479， server exception null
+09-14 20:06:33 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55479， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:06:43 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:06:47 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:06:47 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55546， server exception null
+09-14 20:07:19 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:07:28 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:07:28 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55598， server exception null
+09-14 20:08:20 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55598， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:08:30 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:08:34 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:09:33 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:10:03 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:11:37 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:11:47 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55640， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:12:07 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:12:18 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:12:34 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:13:04 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55753， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:15:29 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:15:33 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:15:40 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:17:35 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55851， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:19:39 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:19:43 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:19:50 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:20:15 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:55974， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:20:39 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:20:44 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:20:50 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:21:47 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:21:53 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:22:09 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:22:31 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:56015， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:29:27 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:29:44 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:29:47 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:30:06 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:56272， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:31:13 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:31:33 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:56326， server exception 远程主机强迫关闭了一个现有的连接。
+09-14 20:41:02 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:41:11 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:41:13 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:41:15 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:41:16 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:41:24 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:41:34 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:41:37 DEBUG MessageDecoder.java:45 - _decode
+09-14 20:42:01 ERROR LoggerUtils.java:37 - 客户端连接错误/127.0.0.1:56808， server exception 远程主机强迫关闭了一个现有的连接。
