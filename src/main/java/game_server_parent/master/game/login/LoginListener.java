@@ -44,6 +44,8 @@ public class LoginListener {
             combineMessage.addMessage(new ResSelectPlayerKapaiMessage(kapais));
             
             MessagePusher.pushMessage(session, combineMessage);
+            
+            LoginManager.getInstance().handleSelectPlayer(session, accountId);
         }
     }
     

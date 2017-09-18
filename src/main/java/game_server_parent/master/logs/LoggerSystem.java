@@ -20,6 +20,8 @@ public enum LoggerSystem {
     EXCEPTION,
 //  /** 网关日志 */
     HTTP_COMMAND,
+    /** job定时任务 */
+    CRON_JOB;
 //  NET,
     
     ;

@@ -1,6 +1,11 @@
 package game_server_parent.master.game.database.user.player;
 
+import org.apache.mina.core.session.IoSession;
+
 import game_server_parent.master.db.BaseEntity;
+import game_server_parent.master.net.SessionManager;
+import game_server_parent.master.net.SessionProperties;
+import game_server_parent.master.net.context.IDistributable;
 import game_server_parent.master.orm.annotation.Column;
 import game_server_parent.master.orm.annotation.Entity;
 import game_server_parent.master.orm.annotation.Id;
@@ -19,7 +24,7 @@ import game_server_parent.master.utils.IdGenerator;
  * 
  */
 @Entity
-public class Player extends BaseEntity<Long> {
+public class Player extends BaseEntity implements IDistributable {
 
     private static final long serialVersionUID = 8913056963732639062L;
 
@@ -41,6 +46,12 @@ public class Player extends BaseEntity<Long> {
     
     @Column
     private long exp;
+    
+    /**
+     * 上一次每日重置的时间戳
+     */
+    @Column
+    private long lastDailyReset;
     
     public Player() {
         this.id = IdGenerator.getNextId();
@@ -87,9 +98,23 @@ public class Player extends BaseEntity<Long> {
         this.exp = exp;
     }
 
+    public long getLastDailyReset() {
+        return lastDailyReset;
+    }
+
+    public void setLastDailyReset(long lastDailyReset) {
+        this.lastDailyReset = lastDailyReset;
+    }
+    
+    @Override
+    public int distributeKey() {
+        IoSession session = SessionManager.INSTANCE.getSessionBy(id);
+        return (int)session.getAttribute(SessionProperties.DISTRIBUTE_KEY);
+    }
+
     @Override
     public String toString() {
         return "Player [id=" + id + ", name=" + name + ", job=" + job
-                + ", level=" + level + ", exp=" + exp + "]";
+                + ", level=" + level + ", exp=" + exp + ", lastDailyReset=" + lastDailyReset + "]";
     }
 }

@@ -41,7 +41,19 @@ public enum TaskHandlerContext {
      * 接受消息
      * @param task
      */
-    public void acceptTask(MessageTask task) {
+/*    public void acceptTask(MessageTask task) {
+        if (task == null) {
+            throw new NullPointerException("task is null");
+        }
+        int distributeKey = task.distributeKey() % workerPool.size();
+        workerPool.get(distributeKey).addTask(task);
+    }*/
+    
+    /**
+     * 接受消息
+     * @param task
+     */
+    public void acceptTask(AbstractDistributeTask task) {
         if (task == null) {
             throw new NullPointerException("task is null");
         }

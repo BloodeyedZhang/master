@@ -48,13 +48,29 @@ CREATE TABLE `Player` (
    `name` varchar(128)  COMMENT '昵称',
    `job` tinyint DEFAULT 0 COMMENT '职业',
    `exp` bigint(20) DEFAULT  0 COMMENT '经验',
+   `lastDailyReset` int(13) DEFAULT 0 COMMENT '每日重置时间戳',
    PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1000001;
 
 -- ----------------------------
 -- Records of Player
 -- ----------------------------
-insert Player values(10000,99,'kingston',1,12345);
+insert Player values(10000,99,'kingston',1,12345,0);
+
+-- ----------------------------
+-- Table structure for systemrecord
+-- ----------------------------
+DROP TABLE IF EXISTS `systemrecord`;
+CREATE TABLE `systemrecord` (
+  `key` varchar(255) NOT NULL,
+  `value` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of systemrecord
+-- ----------------------------
+INSERT INTO `systemrecord` VALUES ('dailyResetTimestamp', '1505491785589');
 
 DROP TABLE IF EXISTS `Kapai`;
 CREATE TABLE `Kapai`(

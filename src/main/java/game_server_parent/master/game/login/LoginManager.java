@@ -48,19 +48,19 @@ public class LoginManager {
      */
     public boolean handleAccountLogin(IoSession session, long accountId, String password) {
         if("winturn".equals(password)) {
-            Player player = PlayerManager.getInstance().get(accountId);
-            if(player==null) {
-                MessagePusher.pushMessage(session, new ResLoginMessage(LoginDataPool.LOGIN_FAIL, "用户不存在"));
-            } else {
-                player.setId(accountId);
-                SessionManager.INSTANCE.registerNewPlayer(accountId, session);
-                PlayerManager.getInstance().add2Online(player);
+           // Player player = PlayerManager.getInstance().get(accountId);
+            //if(player==null) {
+             //   MessagePusher.pushMessage(session, new ResLoginMessage(LoginDataPool.LOGIN_FAIL, "用户不存在"));
+           // } else {
+               // player.setId(accountId);
+               // SessionManager.INSTANCE.registerNewPlayer(accountId, session);
+               // PlayerManager.getInstance().add2Online(player);
                 
-                ResLoginMessage response = new ResLoginMessage(LoginDataPool.LOGIN_SUCC, player.getId()+"登录成功");
+                ResLoginMessage response = new ResLoginMessage(LoginDataPool.LOGIN_SUCC, accountId+"登录成功");
                 
                 MessagePusher.pushMessage(session, response);
                 return true;
-            }
+           // }
         } else {
             MessagePusher.pushMessage(session, new ResLoginMessage(LoginDataPool.LOGIN_FAIL, "登录失败"));
         }
@@ -74,13 +74,22 @@ public class LoginManager {
      */
     public void handleSelectPlayer(IoSession session, long playerId) {
         Player player = PlayerManager.getInstance().get(playerId);
-        if(player != null) {
-            // 绑定session和玩家id
+        if (player != null) {
+            //绑定session与玩家id
             session.setAttribute(SessionProperties.PLAYER_ID, playerId);
-            // 推送进入场景
+            //加入在线列表
+            PlayerManager.getInstance().add2Online(player);
+            SessionManager.INSTANCE.registerNewPlayer(playerId, session);
+            //推送进入场景
             ResPlayerEnterSceneMessage response = new ResPlayerEnterSceneMessage();
             response.setMapId(1001);
             MessagePusher.pushMessage(session, response);
+            //检查日重置
+            PlayerManager.getInstance().checkDailyReset(player);
+        } else {
+            MessagePusher.pushMessage(session, new ResLoginMessage(LoginDataPool.LOGIN_FAIL, "用户不存在"));
         }
     }
+    
+
 }

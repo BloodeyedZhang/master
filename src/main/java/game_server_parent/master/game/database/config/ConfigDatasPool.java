@@ -2,7 +2,11 @@ package game_server_parent.master.game.database.config;
 
 import java.lang.reflect.Field;
 
+import game_server_parent.master.game.database.config.container.ConfigBingzhongContainer;
+import game_server_parent.master.game.database.config.container.ConfigPinzhiContainer;
 import game_server_parent.master.game.database.config.container.ConfigPlayerLevelContainer;
+import game_server_parent.master.game.database.config.container.ConfigSoilderLevelContainer;
+import game_server_parent.master.game.database.config.container.ConfigXingjiContainer;
 import game_server_parent.master.logs.LoggerUtils;
 
 /**
@@ -29,6 +33,13 @@ public class ConfigDatasPool {
     
     public ConfigPlayerLevelContainer configPlayerLevelContainer = new ConfigPlayerLevelContainer();
     
+    public ConfigSoilderLevelContainer configSoilderLevelContainer = new ConfigSoilderLevelContainer();
+    
+    public ConfigPinzhiContainer configPinzhiContainer = new ConfigPinzhiContainer();
+    
+    public ConfigBingzhongContainer configBingzhongContainer = new ConfigBingzhongContainer();
+    
+    public ConfigXingjiContainer configXingjiContainer = new ConfigXingjiContainer();
     /**
      * 起服读取所有的配置数据
      */

@@ -12,12 +12,8 @@ package game_server_parent.master.net.context;
  * @version 
  * 
  */
-public interface IDistributeTask {
-    /**
-     * 分发的工作线程索引
-     * @return
-     */
-    int distributeKey();
+public interface IDistributeTask extends IDistributable {
+
     
     /**
      * 获取名字

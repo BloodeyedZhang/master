@@ -6,10 +6,13 @@ import javax.management.MBeanServer;
 import javax.management.ObjectName;
 
 import org.apache.commons.lang3.time.StopWatch;
+import org.quartz.SchedulerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import game_server_parent.master.db.DbService;
+import game_server_parent.master.game.core.SchedulerHelper;
+import game_server_parent.master.game.core.SystemParameters;
 import game_server_parent.master.game.database.config.ConfigDatasPool;
 import game_server_parent.master.game.http.HttpServer;
 import game_server_parent.master.listener.ListenerManager;
@@ -21,6 +24,7 @@ import game_server_parent.master.net.SocketServer;
 import game_server_parent.master.net.context.TaskHandlerContext;
 import game_server_parent.master.orm.OrmProcessor;
 import game_server_parent.master.orm.utils.DbUtils;
+import game_server_parent.master.utils.TimeUtils;
 
 /**
  * <p>Filename:GameServer.java</p>
@@ -47,7 +51,7 @@ public class GameServer {
         return gameServer;
     }
     
-    public void start() {
+    public void start() throws Exception {
 
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
@@ -71,7 +75,7 @@ public class GameServer {
 
     }
     
-    private void frameworkStart() {
+    private void frameworkStart() throws Exception {
         //初始化协议池
         MessageFactory.INSTANCE.initMeesagePool();
         //读取服务器配置
@@ -82,11 +86,15 @@ public class GameServer {
         TaskHandlerContext.INSTANCE.initialize();
         //初始化数据库连接池
         DbUtils.init();
+        //初始化job定时任务
+        SchedulerHelper.initAndStart();
         //读取所有策划配置
         ConfigDatasPool.getInstance().loadAllConfigs();
         //异步持久化服务
         DbService.getInstance().init();
         ListenerManager.INSTANCE.initalize();
+      //读取系统参数
+        loadSystemRecords();
 
         //启动socket服务
         try{
@@ -101,6 +109,16 @@ public class GameServer {
             httpServer.start();
         }catch(Exception e) {
             LoggerUtils.error("HttpServer failed ", e);
+        }
+    }
+    
+    private void loadSystemRecords() throws Exception {
+        SystemParameters.load();
+        // 启动时检查每日重置
+        long now = System.currentTimeMillis();
+        if (now - SystemParameters.dailyResetTimestamp > 24 * TimeUtils.ONE_HOUR) {
+            logger.info("启动时每日重置");
+            SystemParameters.update("dailyResetTimestamp", now);
         }
     }
 
