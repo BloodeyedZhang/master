@@ -32,6 +32,9 @@ public class ServerConfig {
     private int httpPort;
     /** 后台白名单模式 */
     private String[] whiteIpPattern;
+    
+    /**  客户端断线重连最大尝试次数 */
+    public final static int MAX_RECONNECT_TIMES = 10;
 
     private ServerConfig() {}
 

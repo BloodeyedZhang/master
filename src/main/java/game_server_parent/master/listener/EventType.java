@@ -19,6 +19,11 @@ public enum EventType {
     /** 心跳超时事件 */
     HEARTBEAT_TIMEOUT,
     
+    /** 创建角色事件 */
+    PLAYER_CREATE,
+    /** 角色更新金币事件 */
+    PLAYER_UPDATE_MONEY,
+    
     /** 登录事件 */
     LOGIN,
     /** 重登事件 */
@@ -38,5 +43,21 @@ public enum EventType {
     /** 出售卡牌事件 **/
     KAPAI_SELL,
     /** 删除卡牌事件 **/
-    KAPAI_REMOVE;
+    KAPAI_REMOVE,
+    
+    /** 获得队伍更新事件 **/
+    SOILDER_TEAM_UPDATE,
+    
+    /** 即将进入大厅事件 **/
+    PRE_ENTER_DATING,
+    /** 即将进入战斗事件 **/
+    PRE_ENTER_ZHANDOU,
+    /** 即将进入金库事件 **/
+    PRE_ENTER_JINKU,
+    /** 进入大厅事件 **/
+    ENTER_DATING,
+    /** 进入战斗事件 **/
+    ENTER_ZHANDOU,
+    /** 进入金库事件 **/
+    ENTER_JINKU;
 }

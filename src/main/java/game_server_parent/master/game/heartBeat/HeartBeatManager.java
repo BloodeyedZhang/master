@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.mina.core.session.IoSession;
 
+import game_server_parent.master.ServerConfig;
 import game_server_parent.master.game.heartBeat.message.ReqClientHeartBeatMessage;
 import game_server_parent.master.net.MessagePusher;
 
@@ -29,7 +30,7 @@ public class HeartBeatManager {
     
     //客户端超时次数  
     private Map<IoSession,Integer> clientOvertimeMap = new ConcurrentHashMap<>();  
-    private final int MAX_OVERTIME  = 3;  //超时次数超过该值则注销连接  
+    //private final int MAX_OVERTIME  = 3;  //超时次数超过该值则注销连接  
     
     public void removeUserOvertime(IoSession session) {
         clientOvertimeMap.remove(session);//只要接受到数据包，则清空超时次数 
@@ -45,7 +46,7 @@ public class HeartBeatManager {
     
     public boolean isUserOvertime(IoSession session) {
         int overtimeTimes = clientOvertimeMap.getOrDefault(session,0); 
-        System.out.println("session="+session.getId()+"overtimeTimes="+overtimeTimes);
-        return (overtimeTimes >= MAX_OVERTIME);
+        System.err.println("session="+session.getId()+"overtimeTimes="+overtimeTimes);
+        return (overtimeTimes >= ServerConfig.MAX_RECONNECT_TIMES);
     }
 }

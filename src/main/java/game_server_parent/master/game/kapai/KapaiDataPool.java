@@ -13,13 +13,17 @@ package game_server_parent.master.game.kapai;
  * 
  */
 public class KapaiDataPool {
-
-    public static final int RES_SELECT_PLAYER_KAPAI_LIST = 501;
-    public static final int RES_KAPAI_REMOVE = 502;
-    
+    //cmd请求协议枚举
+    /** 请求－获得新卡牌 */
     public static final int REQ_KAPAI_NEW = 2;
-    
+    /** 请求－升级卡牌 */
     public static final int REQ_KAPAI_UPDATE = 3;
-    
+    /** 请求－出售卡牌 */
     public static final int REQ_KAPAI_SELL = 4;
+    
+    //cmd响应协议枚举
+    /** 响应－角色卡牌组 */
+    public static final int RES_SELECT_PLAYER_KAPAI_LIST = 501;
+    /** 响应－移除卡牌 */
+    public static final int RES_KAPAI_REMOVE = 502;
 }

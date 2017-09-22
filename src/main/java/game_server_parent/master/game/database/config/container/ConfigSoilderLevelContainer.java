@@ -13,7 +13,7 @@ import game_server_parent.master.orm.utils.DbUtils;
 
 public class ConfigSoilderLevelContainer implements Reloadable{
 
-	 private Map<Integer, ConfigSoilderLevel> ids = new HashMap<Integer, ConfigSoilderLevel>();
+	 private Map<String, ConfigSoilderLevel> ids = new HashMap<String, ConfigSoilderLevel>();
 
 	    @Override
 	    public void reload() {
@@ -21,11 +21,11 @@ public class ConfigSoilderLevelContainer implements Reloadable{
 	        List<ConfigSoilderLevel> datas = DbUtils.queryMany(DbUtils.DB_DATA, sql, ConfigSoilderLevel.class);
 	        //使用jdk8，将list转为map
 	        ids = datas.stream().collect(
-	                Collectors.toMap(ConfigSoilderLevel::getId, Function.identity()));
+	                Collectors.toMap(ConfigSoilderLevel::getKey, Function.identity()));
 
 	    }
 
-	    public ConfigSoilderLevel getConfigBy(int id) {
+	    public ConfigSoilderLevel getConfigBy(String id) {
 	        return ids.get(id);
 	    }
 

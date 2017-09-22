@@ -54,6 +54,10 @@ public class AbstractCacheable extends Cacheable {
             this.status = DbStatus.UPDATE;
         }
     }
+    
+    public final void setFocsUpdate() {
+        this.status = DbStatus.UPDATE;
+    }
 
     public final void setDelete(){
         if (this.status == DbStatus.INSERT) {

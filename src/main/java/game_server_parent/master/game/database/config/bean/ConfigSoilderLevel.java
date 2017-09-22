@@ -137,4 +137,7 @@ public class ConfigSoilderLevel {
 	public void setFanwei(int fanwei) {
 		this.fanwei = fanwei;
 	}
+	public String getKey() {
+	    return this.bingzhong+""+this.dengji;
+	}
 }

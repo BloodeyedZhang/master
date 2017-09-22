@@ -8,12 +8,19 @@ import game_server_parent.master.db.BaseEntity;
 import game_server_parent.master.db.DbService;
 import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.database.user.storage.Kapai;
+import game_server_parent.master.game.database.user.storage.SoilderTeam;
 import game_server_parent.master.game.gm.message.ResGmResultMessage;
 import game_server_parent.master.game.kapai.KapaiManager;
 import game_server_parent.master.game.kapai.message.ResSelectPlayerKapaiMessage;
+import game_server_parent.master.game.login.events.EventLogin;
 import game_server_parent.master.game.login.message.ResLoginMessage;
 import game_server_parent.master.game.player.PlayerManager;
+import game_server_parent.master.game.player.events.EventNewPlayer;
 import game_server_parent.master.game.scene.message.ResPlayerEnterSceneMessage;
+import game_server_parent.master.game.team.TeamManager;
+import game_server_parent.master.listener.EventDispatcher;
+import game_server_parent.master.listener.EventType;
+import game_server_parent.master.listener.PlayerEvent;
 import game_server_parent.master.net.MessagePusher;
 import game_server_parent.master.net.SessionManager;
 import game_server_parent.master.net.SessionProperties;
@@ -74,7 +81,21 @@ public class LoginManager {
      */
     public void handleSelectPlayer(IoSession session, long playerId) {
         Player player = PlayerManager.getInstance().get(playerId);
-        if (player != null) {
+        if(player.getPlayer_id()==0) {
+            //player = PlayerManager.getInstance().createNewPlayer("test"+playerId, (byte)1);
+            
+            //EventDispatcher.getInstance().fireEvent(new EventNewPlayer(EventType.PLAYER_CREATE, player.getPlayer_id()));
+
+           // DbService.getInstance().add2Queue(player);
+
+        }
+        if (player.getPlayer_id()>0) {
+            
+            IoSession sessionBy = SessionManager.INSTANCE.getSessionBy(playerId);
+            if(sessionBy!=null) {
+                sessionBy.close(true);
+            }
+            
             //绑定session与玩家id
             session.setAttribute(SessionProperties.PLAYER_ID, playerId);
             //加入在线列表
@@ -82,7 +103,7 @@ public class LoginManager {
             SessionManager.INSTANCE.registerNewPlayer(playerId, session);
             //推送进入场景
             ResPlayerEnterSceneMessage response = new ResPlayerEnterSceneMessage();
-            response.setMapId(1001);
+            response.setMapId(0);
             MessagePusher.pushMessage(session, response);
             //检查日重置
             PlayerManager.getInstance().checkDailyReset(player);

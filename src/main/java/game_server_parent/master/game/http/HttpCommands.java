@@ -18,5 +18,6 @@ public final class HttpCommands {
     public static final int CLOSE_SERVER = 1;
     /**  查看开服时间 */
     public static final int QUERY_SERVER_OPEN_TIME = 2;
-    
+    /**  创建新角色 */
+    public static final int CREATE_NEW_PLAYER = 3;
 }

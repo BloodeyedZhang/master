@@ -19,8 +19,8 @@ import game_server_parent.master.net.annotation.MessageMeta;
  * @version 
  * 
  */
-@MessageMeta(module=Modules.SCENE,cmd=SceneDataPool.RES_ENTER_SCENE)
-public class ResPlayerEnterSceneMessage extends Message {
+@MessageMeta(module=Modules.SCENE,cmd=SceneDataPool.RES_PRE_ENTER_SCENE)
+public class ResPlayerPreEnterSceneMessage extends Message {
     
     @Protobuf(order = 1)
     private int mapId;
@@ -28,10 +28,11 @@ public class ResPlayerEnterSceneMessage extends Message {
     @Protobuf(order = 2)
     private int code;
     
-    public ResPlayerEnterSceneMessage() {}
+    public ResPlayerPreEnterSceneMessage() {}
     
-    public ResPlayerEnterSceneMessage(int mapId) {
+    public ResPlayerPreEnterSceneMessage(int mapId, int code) {
         this.mapId = mapId;
+        this.code = code;
     }
 
     public int getMapId() {

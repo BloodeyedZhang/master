@@ -27,4 +27,8 @@ public interface Modules {
     int SCENE = 103;
     /** 卡牌 */
     int KAPAI = 104;
+    /** 士兵队伍 */
+    int SOILDER_TEAM = 105;
+    /** 排行 */
+    int RANK = 106;
 }

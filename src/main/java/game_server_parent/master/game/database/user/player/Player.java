@@ -2,6 +2,8 @@ package game_server_parent.master.game.database.user.player;
 
 import org.apache.mina.core.session.IoSession;
 
+import com.baidu.bjf.remoting.protobuf.annotation.Protobuf;
+
 import game_server_parent.master.db.BaseEntity;
 import game_server_parent.master.net.SessionManager;
 import game_server_parent.master.net.SessionProperties;
@@ -30,21 +32,31 @@ public class Player extends BaseEntity implements IDistributable {
 
     @Id
     @Column
+    @Protobuf(order=1)
+    private long player_id;
+    
+    //@Id
+    @Column
+    @Protobuf(order=2)
     private long id;
     
     @Column
+    @Protobuf(order=3)
     private String name;
     
     /**
      * 职业
      */
     @Column 
+    @Protobuf(order=4)
     private int job;
     
     @Column
+    @Protobuf(order=5)
     private int level;
     
     @Column
+    @Protobuf(order=6)
     private long exp;
     
     /**
@@ -52,6 +64,18 @@ public class Player extends BaseEntity implements IDistributable {
      */
     @Column
     private long lastDailyReset;
+    
+    @Column
+    @Protobuf(order=7)
+    private int money1;
+    
+    @Column
+    @Protobuf(order=8)
+    private int money2;
+    
+    @Column
+    @Protobuf(order=9)
+    private int bonus_points;
     
     public Player() {
         this.id = IdGenerator.getNextId();
@@ -106,6 +130,38 @@ public class Player extends BaseEntity implements IDistributable {
         this.lastDailyReset = lastDailyReset;
     }
     
+    public int getMoney1() {
+        return money1;
+    }
+
+    public void setMoney1(int money1) {
+        this.money1 = money1;
+    }
+
+    public int getMoney2() {
+        return money2;
+    }
+
+    public void setMoney2(int money2) {
+        this.money2 = money2;
+    }
+
+    public long getPlayer_id() {
+        return player_id;
+    }
+
+    public void setPlayer_id(long player_id) {
+        this.player_id = player_id;
+    }
+
+    public int getBonus_points() {
+        return bonus_points;
+    }
+
+    public void setBonus_points(int bonus_points) {
+        this.bonus_points = bonus_points;
+    }
+
     @Override
     public int distributeKey() {
         IoSession session = SessionManager.INSTANCE.getSessionBy(id);
@@ -114,7 +170,8 @@ public class Player extends BaseEntity implements IDistributable {
 
     @Override
     public String toString() {
-        return "Player [id=" + id + ", name=" + name + ", job=" + job
-                + ", level=" + level + ", exp=" + exp + ", lastDailyReset=" + lastDailyReset + "]";
+        return "Player [id=" + id + ", player_id=" + player_id + ", name=" + name + ", job=" + job
+                + ", level=" + level + ", exp=" + exp + ", lastDailyReset=" + lastDailyReset 
+                + ", money1=" + money1 + ", money2=" + money2 + ", bonus_points" + bonus_points + "]";
     }
 }

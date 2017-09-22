@@ -14,6 +14,7 @@ import game_server_parent.master.game.kapai.events.EventKapai;
 import game_server_parent.master.game.kapai.events.EventKapaiUpdate;
 import game_server_parent.master.game.kapai.message.ResKapaiRemoveMessage;
 import game_server_parent.master.game.kapai.message.ResSelectPlayerKapaiMessage;
+import game_server_parent.master.game.player.events.EventNewPlayer;
 import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.EventType;
 import game_server_parent.master.listener.annotation.EventHandler;
@@ -36,6 +37,22 @@ import game_server_parent.master.net.SessionManager;
 @Listener
 public class KapaiListener {
     private Logger logger = LoggerFactory.getLogger(KapaiListener.class);
+    
+    @EventHandler(value=EventType.PLAYER_CREATE)
+    public void onPlayerNew(EventNewPlayer event) {
+        long playerId = event.getPlayerId();
+        Kapai kapai1 = KapaiManager.getInstance().createNewKapai(playerId, 1, 1011);
+        Kapai kapai2 = KapaiManager.getInstance().createNewKapai(playerId, 2, 1012);
+        Kapai kapai3 = KapaiManager.getInstance().createNewKapai(playerId, 3, 1013);
+        Kapai kapai4 = KapaiManager.getInstance().createNewKapai(playerId, 4, 1014);
+        Kapai kapai5 = KapaiManager.getInstance().createNewKapai(playerId, 5, 1015);
+        
+        DbService.getInstance().add2Queue(kapai1);
+        DbService.getInstance().add2Queue(kapai2);
+        DbService.getInstance().add2Queue(kapai3);
+        DbService.getInstance().add2Queue(kapai4);
+        DbService.getInstance().add2Queue(kapai5);
+    }
 
     @EventHandler(value=EventType.KAPAI_NEW)
     public void onKapaiNew(EventKapaiNew kapaiNewEvent) {
@@ -58,17 +75,17 @@ public class KapaiListener {
         List<Kapai> kapais = kapaiUpdateEvent.getKapais();
         if(kapais.size()==2) {
             Kapai kapai = kapais.get(0);
+            Kapai kapai_ronghe = kapais.get(1);
             Kapai kapai2 = KapaiManager.getInstance().get((long)kapai.getKapai_id());
-            kapai2.setS_dengji(kapai.getS_dengji());
-            kapai2.setJiachengbi(kapai.getJiachengbi());
-            kapai2.setJingyan(kapai.getJingyan());
-            kapai2.setPinzhi(kapai.getPinzhi());
-            kapai2.setXingji(kapai.getXingji());
+            //kapai2.setS_dengji(kapai.getS_dengji());
+            //kapai2.setJiachengbi(kapai.getJiachengbi());
+            //kapai2.setJingyan(kapai.getJingyan());
+            //kapai2.setPinzhi(kapai.getPinzhi());
+            //kapai2.setXingji(kapai.getXingji());
             
-            kapai2.setInsert();
-            kapai2.setDelete();
-            kapai2.setUpdate();
-            DbService.getInstance().add2Queue(kapai2);
+            /** 卡牌升级 */
+            KapaiManager.getInstance().updateKapai(kapai2,kapai_ronghe);
+            
             
             ArrayList<Kapai> list = new ArrayList<Kapai>();
             list.add(kapai2);
@@ -86,9 +103,13 @@ public class KapaiListener {
         logger.info(getClass().getSimpleName()+"捕捉到事件"+eventKapai);
         
         Kapai kapai = KapaiManager.getInstance().get((long)eventKapai.getKapai_id());
+        
+        /** 卡牌出售 */
+        KapaiManager.getInstance().sell(kapai);
+        
+        
         ArrayList<Kapai> list = new ArrayList<Kapai>();
         list.add(kapai);
-
         EventDispatcher.getInstance().fireEvent(new EventKapaiUpdate(EventType.KAPAI_REMOVE, eventKapai.getPlayerId(), list));
     }
     

@@ -64,6 +64,18 @@ public class Kapai extends BaseEntity<Long> {
     @Column
     @Protobuf(order=10)
     private int xingji;
+    
+    @Column
+    @Protobuf(order=11)
+    private int shengmingzhi;
+    
+    @Column
+    @Protobuf(order=12)
+    private int gongjizhi;
+    
+    @Column
+    @Protobuf(order=13)
+    private int zhiliaozhi;
 
     public Kapai() {
         this.id = IdGenerator.getNextId();
@@ -150,10 +162,35 @@ public class Kapai extends BaseEntity<Long> {
         this.kapai_id = kapai_id;
     }
 
+    public int getShengmingzhi() {
+        return shengmingzhi;
+    }
+
+    public void setShengmingzhi(int shengmingzhi) {
+        this.shengmingzhi = shengmingzhi;
+    }
+
+    public int getGongjizhi() {
+        return gongjizhi;
+    }
+
+    public void setGongjizhi(int gongjizhi) {
+        this.gongjizhi = gongjizhi;
+    }
+
+    public int getZhiliaozhi() {
+        return zhiliaozhi;
+    }
+
+    public void setZhiliaozhi(int zhiliaozhi) {
+        this.zhiliaozhi = zhiliaozhi;
+    }
+
     @Override
     public String toString() {
         return "Kapai [id=" + id +", kapai_id=" + kapai_id+ ", player_id=" + player_id + ", dalei=" + dalei
                 + ", bingzhong=" + bingzhong + ", pinzhi=" + pinzhi + ", jiachengbi=" + jiachengbi
-                + ", s_dengji=" + s_dengji+ ", jingyan=" + jingyan+ ", xingji=" + xingji+ "]";
+                + ", s_dengji=" + s_dengji+ ", jingyan=" + jingyan+ ", xingji=" + xingji 
+                + ", shengmingzhi=" + shengmingzhi + ", gongjizhi=" + gongjizhi + ", zhiliaozhi=" + zhiliaozhi +"]";
     }
 }

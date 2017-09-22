@@ -23,6 +23,7 @@ increment_val   INT         NOT NULL    DEFAULT 1, -- 步长(跨度)
 PRIMARY KEY (seq_name)   
 );
 
+DROP FUNCTION if exists  currval;
 create function currval(v_seq_name VARCHAR(50))   
 returns integer 
 begin     
@@ -32,8 +33,12 @@ begin
    return value; 
 end;
 
-INSERT INTO sequence VALUES ('seq_kapai_num', '10004', '1');
+INSERT INTO sequence VALUES ('seq_player_num', '10000001', '1');
+INSERT INTO sequence VALUES ('seq_kapai_num', '1000001', '1');
+INSERT INTO sequence VALUES ('seq_soilderTeam_num', '100001', '1');
+INSERT INTO sequence VALUES ('seq_AttrChangeRecord_num', '1', '1');
 
+DROP FUNCTION if exists  nextval;
 create function nextval (v_seq_name VARCHAR(50))
     returns integer
 begin
@@ -41,21 +46,14 @@ begin
     return currval(v_seq_name);
 end;
 
-DROP TABLE IF EXISTS `Player`;
-CREATE TABLE `Player` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `level` int(11) DEFAULT 1,
-   `name` varchar(128)  COMMENT '昵称',
-   `job` tinyint DEFAULT 0 COMMENT '职业',
-   `exp` bigint(20) DEFAULT  0 COMMENT '经验',
-   `lastDailyReset` int(13) DEFAULT 0 COMMENT '每日重置时间戳',
-   PRIMARY KEY(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1000001;
-
--- ----------------------------
--- Records of Player
--- ----------------------------
-insert Player values(10000,99,'kingston',1,12345,0);
+DROP TABLE IF EXISTS `AttrChangeRecord`;
+CREATE TABLE `AttrChangeRecord` (
+  `id` bigint(20) DEFAULT 0 ,
+  `record_id` bigint(20) DEFAULT 0 ,
+  `sourceEvtType` varchar(100) DEFAULT '',
+  `targetEvtType` varchar(100) DEFAULT '',
+  `attrChange` int(10) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for systemrecord
@@ -72,6 +70,56 @@ CREATE TABLE `systemrecord` (
 -- ----------------------------
 INSERT INTO `systemrecord` VALUES ('dailyResetTimestamp', '1505491785589');
 
+DROP TABLE IF EXISTS `Player`;
+CREATE TABLE `Player` (
+  `id` bigint(20) DEFAULT 0 ,
+  `player_id` bigint(20) DEFAULT 0 ,
+  `level` int(11) DEFAULT 1,
+   `name` varchar(128)  COMMENT '昵称',
+   `job` tinyint DEFAULT 0 COMMENT '职业',
+   `exp` bigint(20) DEFAULT  0 COMMENT '经验',
+   `lastDailyReset` bigint(13) DEFAULT 0 COMMENT '每日重置时间戳',
+   `money1` int(10) DEFAULT 0 COMMENT '货币1',
+   `money2` int(10) DEFAULT 0 COMMENT '货币2',
+   `bonus_points` int(10) DEFAULT 0 COMMENT '排行积分'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
+
+-- ----------------------------
+-- Records of Player
+-- insert Player values(0,10000,99,'kingston',1,12345,0,0,0);
+-- ----------------------------
+
+
+DROP TABLE IF EXISTS `SoilderTeam`;
+CREATE TABLE `SoilderTeam`(
+  `id` bigint(20) DEFAULT NULL,
+  `team_id` int(20) NOT  NULL ,
+  `player_id` bigint(20) DEFAULT NULL,
+  `soilderIds` varchar(255) DEFAULT '',
+  `shengmingzhi` int(11) DEFAULT 0,
+  `gongjizhi` int(11) DEFAULT 0,
+  PRIMARY KEY(`team_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of SoilderTeam
+-- insert SoilderTeam values(0,10001,10000,'0,0,0,0,0',0,0);
+-- insert SoilderTeam values(0,10002,10000,'0,0,0,0,0',0,0);
+-- insert SoilderTeam values(0,10003,10000,'0,0,0,0,0',0,0);
+-- ----------------------------
+
+DROP TABLE IF EXISTS `RankSoilderTeam`;
+CREATE TABLE `RankSoilderTeam`(
+  `id` bigint(20) DEFAULT NULL,
+  `team_id` int(20) NOT  NULL ,
+  `player_id` bigint(20) DEFAULT NULL,
+  `soilderIds` varchar(255) DEFAULT '',
+  `shengmingzhi` int(11) DEFAULT 0,
+  `gongjizhi` int(11) DEFAULT 0,
+  PRIMARY KEY(`team_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 DROP TABLE IF EXISTS `Kapai`;
 CREATE TABLE `Kapai`(
   `id` bigint(20) DEFAULT NULL,
@@ -84,14 +132,19 @@ CREATE TABLE `Kapai`(
   `jiachengbi` int(3) DEFAULT 0,
   `s_dengji` int(3) DEFAULT 1,
   `jingyan` int(11) DEFAULT 0,
+  `shengmingzhi` int(11) DEFAULT 0,
+  `gongjizhi` int(11) DEFAULT 0,
+  `zhiliaozhi` int(11) DEFAULT 0,
   PRIMARY KEY(`kapai_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of Kapai
+
+-- insert Kapai values(0,10000,10000,1,1011,1,1,0,1,0,0,0,0);
+-- insert Kapai values(0,10001,10000,2,1012,1,1,0,1,0,0,0,0);
+-- insert Kapai values(0,10002,10000,3,1013,1,1,0,1,0,0,0,0);
+-- insert Kapai values(0,10003,10000,4,1014,1,1,0,1,0,0,0,0);
+-- insert Kapai values(0,10004,10000,5,1015,1,1,0,1,0,0,0,0);
 -- ----------------------------
-insert Kapai values(0,10000,10000,1,1011,1,1,0,1,0);
-insert Kapai values(0,10001,10000,2,1012,1,1,0,1,0);
-insert Kapai values(0,10002,10000,3,1013,1,1,0,1,0);
-insert Kapai values(0,10003,10000,4,1014,1,1,0,1,0);
-insert Kapai values(0,10004,10000,5,1015,1,1,0,1,0);
+

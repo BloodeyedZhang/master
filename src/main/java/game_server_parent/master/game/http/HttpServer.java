@@ -50,6 +50,7 @@ public class HttpServer {
         acceptor.getFilterChain().addLast("codec", new HttpServerCodec());  
         acceptor.setHandler(new HttpServerHandle()); 
 
+        logger.info("http启动端口为{},正在监听客户端的连接", port);  
         acceptor.bind(new InetSocketAddress(port));  
     } 
     
