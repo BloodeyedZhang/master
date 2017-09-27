@@ -49,14 +49,14 @@ CREATE TABLE `ConfigSoilderLevel` (
 	`dengji` 	int	DEFAULT NULL,
 	`bingzhong`		varchar(64)	DEFAULT "",
 	`shengming_dengji`	int	DEFAULT NULL,
-	`shengming_pinzhi`	double	DEFAULT NULL,
+	`shengming_pinzhi`	float	DEFAULT NULL,
 	`gongjili_dengji`	int	DEFAULT NULL,
-	`gongjili_pinzhi`	double	DEFAULT NULL,
-	`speed`		double	DEFAULT NULL,
+	`gongjili_pinzhi`	float	DEFAULT NULL,
+	`speed`		float	DEFAULT NULL,
 	`zhiliao_dengji`	int	DEFAULT NULL,
-	`zhiliao_pinzhi`	int	DEFAULT NULL,
-	`jingzun`	int	DEFAULT NULL,
-	`fanwei`	int	DEFAULT NULL
+	`zhiliao_pinzhi`	float	DEFAULT NULL,
+	`jingzun`	float	DEFAULT NULL,
+	`fanwei`	float	DEFAULT NULL
 	
 	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -69,7 +69,7 @@ CREATE TABLE `ConfigBingzhong` (
 	`gongji_base` int	DEFAULT NULL,
 	`zhiliao_base` int	DEFAULT NULL,
 	`dalei` int		DEFAULT NULL,
-	`yulantu` int	DEFAULT NULL,
+	`yulantu` varchar(255)	DEFAULT NULL,
 	`shangxian` int		DEFAULT NULL,
 	`a_fanweishanghai` float	DEFAULT NULL,
 	`a_gongjifudong` float	DEFAULT NULL,
@@ -130,7 +130,12 @@ CREATE TABLE `ConfigXingji` (
 	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+DROP TABLE IF EXISTS `configjiacheng`;
+CREATE TABLE `configjiacheng` (
+    `jiacheng_zhonglei`   int(3) DEFAULT NULL,
+    `des`    float   DEFAULT NULL
+    
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 

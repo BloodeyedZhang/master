@@ -78,18 +78,43 @@ public class RankSoilderTeamManager extends CacheService<Long, RankSoilderTeam> 
 
     }
     
+    /** 获取随机一条数据*/
     public RankSoilderTeam queryOnnRandonm(long id) {
-        String sql = "SELECT * FROM RankSoilderTeam where player_id != {0}";
+       // String sql = "SELECT * FROM RankSoilderTeam where player_id != {0}";
+        String sql= "SELECT * FROM RankSoilderTeam  AS t1  JOIN (SELECT ROUND(RAND() * ((SELECT MAX(player_id) FROM RankSoilderTeam)-(SELECT MIN(player_id) FROM RankSoilderTeam))"
+                + "+(SELECT MIN(player_id) FROM RankSoilderTeam)) AS player_id) AS t2 WHERE t1.player_id >= t2.player_id and t1.player_id != {0} ORDER BY t1.player_id LIMIT 1";
         sql = MessageFormat.format(sql, String.valueOf(id));
-        RankSoilderTeam soilderTeam = DbUtils.queryOne(DbUtils.DB_USER, sql, RankSoilderTeam.class);
-        if(soilderTeam == null) soilderTeam = new RankSoilderTeam();
+        RankSoilderTeam soilderTeam = null;
+        try {
+            soilderTeam = DbUtils.queryOne(DbUtils.DB_USER, sql, RankSoilderTeam.class);
+        } catch (Exception e) {
+            logger.error("获取随机一条数据 处理异常 e:{}",e);
+        }
+        if(soilderTeam == null) {
+            logger.error("获取随机一条数据 没有获得需要的数据 player_id={}",id);
+            soilderTeam = new RankSoilderTeam();
+        } 
         return soilderTeam;
     }
     
+    // 随机一条
+    //SELECT * FROM users  AS t1  JOIN (SELECT ROUND(RAND() * ((SELECT MAX(userId) FROM `users`)-(SELECT MIN(userId) FROM users))+(SELECT MIN(userId) FROM users)) AS userId) AS t2 WHERE t1.userId >= t2.userId ORDER BY t1.userId LIMIT 1
+    // 随机多条
+    //SELECT * FROM users WHERE userId >= ((SELECT MAX(userId) FROM users)-(SELECT MIN(userId) FROM users)) * RAND() + (SELECT MIN(userId) FROM users)  LIMIT 1
+    
     /** 匹配一只队伍 **/
     public RankSoilderTeam queryOneEnemy(long player_id) {
+        RankSoilderTeam queryOnnRandonm = queryOnnRandonm(player_id);
+        if(queryOnnRandonm.getTeam_id() == 0) {
+            // 没有匹配到队伍, 匹配预设的队伍
+            // queryOnnRandonm = queryOnePreEnemy(player_id);
+        }
+        return queryOnnRandonm;
+    }
+    
+    private RankSoilderTeam queryOnePreEnemy(long player_id) {
         
-        return null;
+        return  null;
     }
     
     /** 待定 匹配多只队伍 **/

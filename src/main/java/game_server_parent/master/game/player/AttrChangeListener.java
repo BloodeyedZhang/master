@@ -9,6 +9,8 @@ import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.kapai.events.EventKapaiUpdate;
 import game_server_parent.master.game.player.events.EventAttrChange;
 import game_server_parent.master.game.player.events.EventUpdatePlayer;
+import game_server_parent.master.game.rank.BattleIdManager;
+import game_server_parent.master.game.scene.events.EventEnterScene;
 import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.EventType;
 import game_server_parent.master.listener.PlayerEvent;
@@ -59,4 +61,33 @@ public class AttrChangeListener {
         
         EventDispatcher.getInstance().fireEvent(new EventUpdatePlayer(EventType.PLAYER_UPDATE_MONEY, playerId));
     }
+    
+    @EventHandler(value= {EventType.BONUS_POINT_ADD})
+    public void onBonusPointAdd(EventAttrChange event) {
+        logger.info(getClass().getSimpleName()+"捕捉到事件"+event);
+        
+        long playerId = event.getPlayerId();
+        Player player = PlayerManager.getInstance().get(playerId);
+        int money1 = player.getBonus_points();
+        player.setBonus_points(money1+event.getMoney1_change());
+        player.setFocsUpdate();
+        DbService.getInstance().add2Queue(player);
+        
+        EventDispatcher.getInstance().fireEvent(new EventUpdatePlayer(EventType.PLAYER_UPDATE_MONEY, playerId));
+    }
+    
+    @EventHandler(value= {EventType.BONUS_POINTS_DEDUCT})
+    public void onBonumsPointDeduct(EventAttrChange event) {
+        logger.info(getClass().getSimpleName()+"捕捉到事件"+event);
+        
+        long playerId = event.getPlayerId();
+        Player player = PlayerManager.getInstance().get(playerId);
+        int money1 = player.getBonus_points();
+        player.setBonus_points(money1-event.getMoney1_change());
+        player.setFocsUpdate();
+        DbService.getInstance().add2Queue(player);
+        
+        EventDispatcher.getInstance().fireEvent(new EventUpdatePlayer(EventType.PLAYER_UPDATE_MONEY, playerId));
+    }
+
 }

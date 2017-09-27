@@ -30,17 +30,19 @@ public class CreatePlayerCommandHandler extends HttpCommandHandler {
 
     @Override
     public HttpCommandResponse action(HttpCommandParams httpParams) {
+        // http://192.168.1.140:8080/?cmd=3&params={pwd=winturn,name=winturn}
         LoggerSystem.HTTP_COMMAND.getLogger().info("收到后台命令，准备创建新角色");
 
-        String name = httpParams.getParams().get("name");
-        if(name.equals("winturn")) {
+        String pwd = httpParams.getString("pwd");
+        String name = httpParams.getString("winturn");
+        if(pwd.equals("winturn")) {
             int nextId = PlayerManager.getInstance().getNextId();
             EventDispatcher.getInstance().fireEvent(new EventNewPlayer(EventType.PLAYER_CREATE, nextId));
             return HttpCommandResponse.valueOfSucc();
         }
         else {
             HttpCommandResponse resp = HttpCommandResponse.valueOfFailed();
-            resp.setMessage(name+"没有权限");
+            resp.setMessage(name+"没有权限:创建新角色");
             return resp;
         }
         /*

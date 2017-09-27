@@ -50,8 +50,9 @@ public class HttpServer {
         acceptor.getFilterChain().addLast("codec", new HttpServerCodec());  
         acceptor.setHandler(new HttpServerHandle()); 
 
-        logger.info("http启动端口为{},正在监听客户端的连接", port);  
         acceptor.bind(new InetSocketAddress(port));  
+        
+        logger.info("http 启动IP{}, 启动端口为{},正在监听客户端的连接", acceptor.getLocalAddress().toString(), port);  
     } 
     
     public void shutdown() {
@@ -103,6 +104,7 @@ class HttpServerHandle extends IoHandlerAdapter {
             Map<String, String> headers = new HashMap<String, String>();  
             headers.put("Content-Type", "text/html; charset=utf-8");  
             headers.put("Content-Length", Integer.toString(contentLength));  
+            headers.put("Access-Control-Allow-Origin","*"); 
             HttpResponse response = new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpStatus.SUCCESS_OK, headers);  
 
             // 响应BODY  
@@ -141,7 +143,7 @@ class HttpServerHandle extends IoHandlerAdapter {
         if (StringUtils.isNotEmpty(paramJson)) {
             try{
                 @SuppressWarnings("unchecked")
-                Map<String, String> params = new Gson().fromJson(paramJson, HashMap.class);
+                Map<String, Object> params = new Gson().fromJson(paramJson, HashMap.class);
                 return HttpCommandParams.valueOf(Integer.parseInt(cmd), params);
             }catch(Exception e) {
             }

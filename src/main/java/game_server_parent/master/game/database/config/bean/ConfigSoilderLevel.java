@@ -29,7 +29,7 @@ public class ConfigSoilderLevel {
 	 * 品质生命
 	 */
 	@Column
-	private double shengming_pinzhi;
+	private float shengming_pinzhi;
 	/**
 	 * 等级攻击
 	 */
@@ -39,12 +39,12 @@ public class ConfigSoilderLevel {
 	 * 品质攻击
 	 */
 	@Column
-	private double gongjili_pinzhi;
+	private float gongjili_pinzhi;
 	/**
 	 * 动画速率
 	 */
 	@Column
-	private double speed;
+	private float speed;
 	/**
 	 * 等级治疗
 	 */
@@ -54,17 +54,17 @@ public class ConfigSoilderLevel {
 	 * 品质治疗
 	 */
 	@Column
-	private int zhiliao_pinzhi;
+	private float zhiliao_pinzhi;
 	/**
 	 * 射击精准
 	 */
 	@Column
-	private int jingzun;
+	private float jingzun;
 	/**
 	 * 伤害范围 
 	 */
 	@Column
-	private int fanwei;
+	private float fanwei;
 	public int getId() {
 		return id;
 	}
@@ -89,10 +89,10 @@ public class ConfigSoilderLevel {
 	public void setShengming_dengji(int shengming_dengji) {
 		this.shengming_dengji = shengming_dengji;
 	}
-	public double getShengming_pinzhi() {
+	public float getShengming_pinzhi() {
 		return shengming_pinzhi;
 	}
-	public void setShengming_pinzhi(double shengming_pinzhi) {
+	public void setShengming_pinzhi(float shengming_pinzhi) {
 		this.shengming_pinzhi = shengming_pinzhi;
 	}
 	public int getGongjili_dengji() {
@@ -101,16 +101,16 @@ public class ConfigSoilderLevel {
 	public void setGongjili_dengji(int gongjili_dengji) {
 		this.gongjili_dengji = gongjili_dengji;
 	}
-	public double getGongjili_pinzhi() {
+	public float getGongjili_pinzhi() {
 		return gongjili_pinzhi;
 	}
-	public void setGongjili_pinzhi(double gongjili_pinzhi) {
+	public void setGongjili_pinzhi(float gongjili_pinzhi) {
 		this.gongjili_pinzhi = gongjili_pinzhi;
 	}
-	public double getSpeed() {
+	public float getSpeed() {
 		return speed;
 	}
-	public void setSpeed(double speed) {
+	public void setSpeed(float speed) {
 		this.speed = speed;
 	}
 	public int getZhiliao_dengji() {
@@ -119,22 +119,22 @@ public class ConfigSoilderLevel {
 	public void setZhiliao_dengji(int zhiliao_dengji) {
 		this.zhiliao_dengji = zhiliao_dengji;
 	}
-	public int getZhiliao_pinzhi() {
+	public float getZhiliao_pinzhi() {
 		return zhiliao_pinzhi;
 	}
-	public void setZhiliao_pinzhi(int zhiliao_pinzhi) {
+	public void setZhiliao_pinzhi(float zhiliao_pinzhi) {
 		this.zhiliao_pinzhi = zhiliao_pinzhi;
 	}
-	public int getJingzun() {
+	public float getJingzun() {
 		return jingzun;
 	}
-	public void setJingzun(int jingzun) {
+	public void setJingzun(float jingzun) {
 		this.jingzun = jingzun;
 	}
-	public int getFanwei() {
+	public float getFanwei() {
 		return fanwei;
 	}
-	public void setFanwei(int fanwei) {
+	public void setFanwei(float fanwei) {
 		this.fanwei = fanwei;
 	}
 	public String getKey() {

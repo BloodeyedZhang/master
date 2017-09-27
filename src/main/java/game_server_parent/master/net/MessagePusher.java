@@ -16,11 +16,12 @@ import org.apache.mina.core.session.IoSession;
  */
 public class MessagePusher {
     public static void pushMessage(IoSession session, Message message) {
-        session.write(message);
+        if(session != null)
+            session.write(message);
     }
     
     public static void pushMessage(long playerId, Message message) {
         IoSession session = SessionManager.INSTANCE.getSessionBy(playerId);
-        pushMessage(session, message);
+        if(session != null) pushMessage(session, message);
     }
 }

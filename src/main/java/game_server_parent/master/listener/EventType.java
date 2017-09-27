@@ -35,6 +35,20 @@ public enum EventType {
     MONEY1_ADD,
     /** 货币1 减少事件*/
     MONEY1_DEDUCT,
+    /** 货币2 增加事件*/
+    MONEY2_ADD,
+    /** 货币2 减少事件*/
+    MONEY2_DEDUCT,
+    /** 积分 增加事件*/
+    BONUS_POINT_ADD,
+    /** 积分 减少事件*/
+    BONUS_POINTS_DEDUCT,
+    /** 战斗标识开始事件 **/
+    BATTLE_ID_START,
+    /** 战斗标识胜利事件 **/
+    BATTLE_ID_WIN,
+    /** 战斗标识失败事件 **/
+    BATTLE_ID_LOSE,
     
     /** 获得新卡牌事件 **/
     KAPAI_NEW,
@@ -59,5 +73,12 @@ public enum EventType {
     /** 进入战斗事件 **/
     ENTER_ZHANDOU,
     /** 进入金库事件 **/
-    ENTER_JINKU;
+    ENTER_JINKU,
+    
+    /** 战斗开始事件 **/
+    BATTLE_START,
+    /** 战斗胜利事件 **/
+    BATTLE_WIN,
+    /** 战斗失败事件 **/
+    BATTLE_LOSE;
 }

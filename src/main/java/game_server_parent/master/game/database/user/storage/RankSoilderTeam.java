@@ -21,7 +21,7 @@ import game_server_parent.master.utils.IdGenerator;
  * 
  */
 @Entity
-public class RankSoilderTeam extends Team {
+public class RankSoilderTeam extends Team implements Cloneable {
     
     @Id
     @Column
@@ -47,6 +47,9 @@ public class RankSoilderTeam extends Team {
     @Column
     @Protobuf(order=5)
     private int gongjizhi;
+    
+    @Protobuf(order=6)
+    private String player_name;
     
     public RankSoilderTeam() {
         this.id = IdGenerator.getNextId();
@@ -100,9 +103,28 @@ public class RankSoilderTeam extends Team {
     public void setGongjizhi(int gongjizhi) {
         this.gongjizhi = gongjizhi;
     }
+    public String getPlayer_name() {
+        return player_name;
+    }
+
+    public void setPlayer_name(String player_name) {
+        this.player_name = player_name;
+    }
+
+    @Override  
+    public Object clone() {  
+        RankSoilderTeam stu = null;  
+        try{  
+            stu = (RankSoilderTeam)super.clone();  
+        }catch(CloneNotSupportedException e) {  
+            e.printStackTrace();  
+        }  
+        return stu;  
+    }  
+    
     @Override
     public String toString() {
         return "RankSoilderTeam [id=" + id +", team_id=" + team_id+ ", player_id=" + player_id + ", soilderIds=" + soilderIds 
-                + ", shengmingzhi=" + shengmingzhi + ", gongjilizhi=" + gongjizhi + "]";
+                + ", shengmingzhi=" + shengmingzhi + ", gongjilizhi=" + gongjizhi + ", player_name=" + player_name + "]";
     }
 }

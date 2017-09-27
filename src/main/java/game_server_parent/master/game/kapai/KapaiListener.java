@@ -41,11 +41,11 @@ public class KapaiListener {
     @EventHandler(value=EventType.PLAYER_CREATE)
     public void onPlayerNew(EventNewPlayer event) {
         long playerId = event.getPlayerId();
-        Kapai kapai1 = KapaiManager.getInstance().createNewKapai(playerId, 1, 1011);
-        Kapai kapai2 = KapaiManager.getInstance().createNewKapai(playerId, 2, 1012);
-        Kapai kapai3 = KapaiManager.getInstance().createNewKapai(playerId, 3, 1013);
-        Kapai kapai4 = KapaiManager.getInstance().createNewKapai(playerId, 4, 1014);
-        Kapai kapai5 = KapaiManager.getInstance().createNewKapai(playerId, 5, 1015);
+        Kapai kapai1 = KapaiManager.getInstance().createNewKapai(playerId, 1011,1,0,0);
+        Kapai kapai2 = KapaiManager.getInstance().createNewKapai(playerId, 1012,1,0,0);
+        Kapai kapai3 = KapaiManager.getInstance().createNewKapai(playerId, 1013,1,0,0);
+        Kapai kapai4 = KapaiManager.getInstance().createNewKapai(playerId, 1014,1,0,0);
+        Kapai kapai5 = KapaiManager.getInstance().createNewKapai(playerId, 1015,1,0,0);
         
         DbService.getInstance().add2Queue(kapai1);
         DbService.getInstance().add2Queue(kapai2);
@@ -58,7 +58,8 @@ public class KapaiListener {
     public void onKapaiNew(EventKapaiNew kapaiNewEvent) {
         logger.info(getClass().getSimpleName()+"捕捉到事件"+kapaiNewEvent);
         
-        Kapai kapai = KapaiManager.getInstance().createNewKapai(kapaiNewEvent.getPlayerId(), kapaiNewEvent.getDalei(), kapaiNewEvent.getBingzhong());
+        Kapai kapai = KapaiManager.getInstance().createNewKapai(kapaiNewEvent.getPlayerId(), kapaiNewEvent.getBingzhong(), kapaiNewEvent.getDengji(), 
+                kapaiNewEvent.getJiachengzhonglei(), kapaiNewEvent.getJiachengbi());
         DbService.getInstance().add2Queue(kapai);
         
         ArrayList<Kapai> list = new ArrayList<Kapai>();

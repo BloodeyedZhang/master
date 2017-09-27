@@ -33,10 +33,11 @@ begin
    return value; 
 end;
 
-INSERT INTO sequence VALUES ('seq_player_num', '10000001', '1');
-INSERT INTO sequence VALUES ('seq_kapai_num', '1000001', '1');
-INSERT INTO sequence VALUES ('seq_soilderTeam_num', '100001', '1');
-INSERT INTO sequence VALUES ('seq_AttrChangeRecord_num', '1', '1');
+INSERT INTO sequence VALUES ('seq_player_num', '10000000', '1');
+INSERT INTO sequence VALUES ('seq_kapai_num', '1000000', '1');
+INSERT INTO sequence VALUES ('seq_soilderTeam_num', '100000', '1');
+INSERT INTO sequence VALUES ('seq_AttrChangeRecord_num', '0', '1');
+INSERT INTO sequence VALUES ('seq_battle_num', '0', '1');
 
 DROP FUNCTION if exists  nextval;
 create function nextval (v_seq_name VARCHAR(50))
@@ -50,9 +51,11 @@ DROP TABLE IF EXISTS `AttrChangeRecord`;
 CREATE TABLE `AttrChangeRecord` (
   `id` bigint(20) DEFAULT 0 ,
   `record_id` bigint(20) DEFAULT 0 ,
+  `player_id` bigint(20) DEFAULT 0 ,
   `sourceEvtType` varchar(100) DEFAULT '',
   `targetEvtType` varchar(100) DEFAULT '',
-  `attrChange` int(10) DEFAULT 0
+  `attrChange` int(10) DEFAULT 0,
+  `extra_param` varchar(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -81,13 +84,9 @@ CREATE TABLE `Player` (
    `lastDailyReset` bigint(13) DEFAULT 0 COMMENT '每日重置时间戳',
    `money1` int(10) DEFAULT 0 COMMENT '货币1',
    `money2` int(10) DEFAULT 0 COMMENT '货币2',
-   `bonus_points` int(10) DEFAULT 0 COMMENT '排行积分'
+   `bonus_points` int(10) DEFAULT 0 COMMENT '排行积分',
+   `rank_battle_id` int(10) DEFAULT 0 COMMENT '排行战斗ID'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
-
--- ----------------------------
--- Records of Player
--- insert Player values(0,10000,99,'kingston',1,12345,0,0,0);
--- ----------------------------
 
 
 DROP TABLE IF EXISTS `SoilderTeam`;
@@ -101,12 +100,6 @@ CREATE TABLE `SoilderTeam`(
   PRIMARY KEY(`team_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of SoilderTeam
--- insert SoilderTeam values(0,10001,10000,'0,0,0,0,0',0,0);
--- insert SoilderTeam values(0,10002,10000,'0,0,0,0,0',0,0);
--- insert SoilderTeam values(0,10003,10000,'0,0,0,0,0',0,0);
--- ----------------------------
 
 DROP TABLE IF EXISTS `RankSoilderTeam`;
 CREATE TABLE `RankSoilderTeam`(
@@ -129,22 +122,18 @@ CREATE TABLE `Kapai`(
   `bingzhong` int(3) DEFAULT 1011,
   `pinzhi` int(3) DEFAULT 1,
   `xingji` int(3) DEFAULT 1,
-  `jiachengbi` int(3) DEFAULT 0,
+  `jiachengbi` float DEFAULT NULL,
   `s_dengji` int(3) DEFAULT 1,
   `jingyan` int(11) DEFAULT 0,
   `shengmingzhi` int(11) DEFAULT 0,
   `gongjizhi` int(11) DEFAULT 0,
   `zhiliaozhi` int(11) DEFAULT 0,
+  `jingyan_shangxian` int(11) DEFAULT 0,
+  `speed` float DEFAULT NULL,
+  `jingzun` float DEFAULT NULL,
+  `fanwei` float DEFAULT NULL,
+  `jiachengzhonglei` int(3) DEFAULT 0,
   PRIMARY KEY(`kapai_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of Kapai
-
--- insert Kapai values(0,10000,10000,1,1011,1,1,0,1,0,0,0,0);
--- insert Kapai values(0,10001,10000,2,1012,1,1,0,1,0,0,0,0);
--- insert Kapai values(0,10002,10000,3,1013,1,1,0,1,0,0,0,0);
--- insert Kapai values(0,10003,10000,4,1014,1,1,0,1,0,0,0,0);
--- insert Kapai values(0,10004,10000,5,1015,1,1,0,1,0,0,0,0);
--- ----------------------------
 

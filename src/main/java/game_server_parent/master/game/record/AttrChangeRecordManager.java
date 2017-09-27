@@ -1,9 +1,5 @@
-package game_server_parent.master.game.player;
+package game_server_parent.master.game.record;
 
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
-import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.database.user.storage.KapaiId;
 import game_server_parent.master.orm.utils.DbUtils;
 

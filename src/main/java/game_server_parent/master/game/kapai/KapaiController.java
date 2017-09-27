@@ -32,8 +32,9 @@ import game_server_parent.master.net.annotation.RequestMapping;
 public class KapaiController {
     @RequestMapping
     public void reqKapaiNew(IoSession session, ReqKapaiNewMessage request) {
-        long player_id = SessionManager.INSTANCE.getPlayerIdBy(session);
-        EventDispatcher.getInstance().fireEvent(new EventKapaiNew(EventType.KAPAI_NEW, player_id, request.getDalei(), request.getBingzhong()));
+        System.out.println("KapaiController->reqKapaiNew Not Implemented");
+        //long player_id = SessionManager.INSTANCE.getPlayerIdBy(session);
+        //EventDispatcher.getInstance().fireEvent(new EventKapaiNew(EventType.KAPAI_NEW, player_id, request.getDalei(), request.getBingzhong()));
     }
     
     @RequestMapping

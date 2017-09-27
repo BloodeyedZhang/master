@@ -75,6 +75,17 @@ public class SceneListener {
         MessagePusher.pushMessage(session, combineMessage);
     }
     
+    @EventHandler(value=EventType.PRE_ENTER_DATING)
+    public void onPreEnterDating(EventEnterScene event) {
+        logger.info(getClass().getSimpleName()+"捕捉到事件"+event);
+        
+        long player_id = event.getPlayerId();
+        int mapId = event.getMapId();
+        ResPlayerPreEnterSceneMessage resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_SUCC);
+        MessagePusher.pushMessage(player_id, resp);
+    }
+    
+    
     @EventHandler(value=EventType.PRE_ENTER_ZHANDOU)
     public void onPreEnterZhandou(EventEnterScene event) {
         logger.info(getClass().getSimpleName()+"捕捉到事件"+event);
@@ -112,11 +123,23 @@ public class SceneListener {
         RankSoilderTeam rankSoilderTeam = RankSoilderTeamManager.getInstance().get(player_id);
         List<Kapai> teamKapais = TeamManager.getInstance().getTeamKapai(rankSoilderTeam);
         ResRankSoilderTeamMessage resRankSoilderTeamMessage = new ResRankSoilderTeamMessage();
+        Player player = PlayerManager.getInstance().get(player_id);
+        rankSoilderTeam.setPlayer_name(player.getName());
         rsts.add(rankSoilderTeam);
         resRankSoilderTeamMessage.setKapais(teamKapais);
         // 添加敌方排行队伍列表消息
         RankSoilderTeam rst_enemy = RankSoilderTeamManager.getInstance().queryOneEnemy(player_id);
-       // RankSoilderTeam rst_enemy = rankSoilderTeam;
+
+        if(rst_enemy.getTeam_id()==0) {
+            // 如果没有取到 就取自身 暂时
+            rst_enemy = (RankSoilderTeam) rankSoilderTeam.clone();
+            rst_enemy.setPlayer_name("心魔");
+            rst_enemy.setPlayer_id(0);
+        } else {
+            Player enemy = PlayerManager.getInstance().get(rst_enemy.getPlayer_id());
+            rst_enemy.setPlayer_name(enemy.getName());
+        }
+
         rsts.add(rst_enemy);
         List<Kapai> teamKapais_enemy = TeamManager.getInstance().getTeamKapai(rst_enemy);
         resRankSoilderTeamMessage.setKapais_enemy(teamKapais_enemy);

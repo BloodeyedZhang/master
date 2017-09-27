@@ -30,11 +30,16 @@ public class AttrChangeRecord extends BaseEntity<Long> {
     private long id;
     
     @Column
+    private long player_id;
+    
+    @Column
     private String sourceEvtType;
     @Column
     private String targetEvtType;
     @Column
     private int attrChange;
+    @Column
+    private String extra_param;
     
     public AttrChangeRecord() {
         this.id = IdGenerator.getNextId();
@@ -79,6 +84,22 @@ public class AttrChangeRecord extends BaseEntity<Long> {
 
     public void setRecord_id(long record_id) {
         this.record_id = record_id;
+    }
+
+    public long getPlayer_id() {
+        return player_id;
+    }
+
+    public void setPlayer_id(long player_id) {
+        this.player_id = player_id;
+    }
+
+    public String getExtra_param() {
+        return extra_param;
+    }
+
+    public void setExtra_param(String extra_param) {
+        this.extra_param = extra_param;
     }
 
 }

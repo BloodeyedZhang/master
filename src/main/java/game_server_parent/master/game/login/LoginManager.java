@@ -63,7 +63,7 @@ public class LoginManager {
                // SessionManager.INSTANCE.registerNewPlayer(accountId, session);
                // PlayerManager.getInstance().add2Online(player);
                 
-                ResLoginMessage response = new ResLoginMessage(LoginDataPool.LOGIN_SUCC, accountId+"登录成功");
+                ResLoginMessage response = new ResLoginMessage(LoginDataPool.LOGIN_SUCC, String.valueOf(accountId));
                 
                 MessagePusher.pushMessage(session, response);
                 return true;

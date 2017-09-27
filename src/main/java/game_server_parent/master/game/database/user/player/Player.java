@@ -73,9 +73,19 @@ public class Player extends BaseEntity implements IDistributable {
     @Protobuf(order=8)
     private int money2;
     
+    /**
+     * 排行积分
+     */
     @Column
     @Protobuf(order=9)
     private int bonus_points;
+    
+    /**
+     * 进行排行战斗标识,没有在战斗，则为0
+     */
+    @Column
+    @Protobuf(order=10)
+    private int rank_battle_id;
     
     public Player() {
         this.id = IdGenerator.getNextId();
@@ -162,6 +172,18 @@ public class Player extends BaseEntity implements IDistributable {
         this.bonus_points = bonus_points;
     }
 
+    public int getRank_battle_id() {
+        return rank_battle_id;
+    }
+
+    public void setRank_battle_id(int rank_battle_id) {
+        this.rank_battle_id = rank_battle_id;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
     @Override
     public int distributeKey() {
         IoSession session = SessionManager.INSTANCE.getSessionBy(id);
@@ -172,6 +194,7 @@ public class Player extends BaseEntity implements IDistributable {
     public String toString() {
         return "Player [id=" + id + ", player_id=" + player_id + ", name=" + name + ", job=" + job
                 + ", level=" + level + ", exp=" + exp + ", lastDailyReset=" + lastDailyReset 
-                + ", money1=" + money1 + ", money2=" + money2 + ", bonus_points" + bonus_points + "]";
+                + ", money1=" + money1 + ", money2=" + money2 + ", bonus_points" + bonus_points 
+                + ", rank_battle_id" + rank_battle_id + "]";
     }
 }

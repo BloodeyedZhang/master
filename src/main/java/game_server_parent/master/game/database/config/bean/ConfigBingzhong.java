@@ -39,7 +39,7 @@ public class ConfigBingzhong {
 	 * 预览图
 	 */
 	@Column
-	private int yulantu;
+	private String yulantu;
 	/**
 	 * 配置上限
 	 */
@@ -291,10 +291,10 @@ public class ConfigBingzhong {
 	public void setDalei(int dalei) {
 		this.dalei = dalei;
 	}
-	public int getYulantu() {
+	public String getYulantu() {
 		return yulantu;
 	}
-	public void setYulantu(int yulantu) {
+	public void setYulantu(String yulantu) {
 		this.yulantu = yulantu;
 	}
 	public int getShangxian() {

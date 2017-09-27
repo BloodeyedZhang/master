@@ -52,7 +52,7 @@ public class Kapai extends BaseEntity<Long> {
     
     @Column
     @Protobuf(order=7)
-    private int jiachengbi;
+    private float jiachengbi;
     
     @Column
     @Protobuf(order=8)
@@ -77,6 +77,26 @@ public class Kapai extends BaseEntity<Long> {
     @Protobuf(order=13)
     private int zhiliaozhi;
 
+    @Column
+    @Protobuf(order=14)
+    private int jingyan_shangxian;
+    
+    @Column
+    @Protobuf(order=15)
+    private float speed;
+    
+    @Column
+    @Protobuf(order=16)
+    private float jingzun;
+    
+    @Column
+    @Protobuf(order=17)
+    private float fanwei;
+    
+    @Column
+    @Protobuf(order=18)
+    private int jiachengzhonglei;
+    
     public Kapai() {
         this.id = IdGenerator.getNextId();
     }
@@ -118,11 +138,11 @@ public class Kapai extends BaseEntity<Long> {
         this.pinzhi = pinzhi;
     }
 
-    public int getJiachengbi() {
+    public float getJiachengbi() {
         return jiachengbi;
     }
 
-    public void setJiachengbi(int jiachengbi) {
+    public void setJiachengbi(float jiachengbi) {
         this.jiachengbi = jiachengbi;
     }
 
@@ -186,11 +206,57 @@ public class Kapai extends BaseEntity<Long> {
         this.zhiliaozhi = zhiliaozhi;
     }
 
+    public int getJingyan_shangxian() {
+        return jingyan_shangxian;
+    }
+
+    public void setJingyan_shangxian(int jingyan_shangxian) {
+        this.jingyan_shangxian = jingyan_shangxian;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+    
+    public float getJingzun() {
+        return jingzun;
+    }
+
+    public void setJingzun(float jingzun) {
+        this.jingzun = jingzun;
+    }
+
+    public float getFanwei() {
+        return fanwei;
+    }
+
+    public void setFanwei(float fanwei) {
+        this.fanwei = fanwei;
+    }
+
+    public String getKey(String name) {
+        return name+""+this.s_dengji;
+    }
+    
+    public int getJiachengzhonglei() {
+        return jiachengzhonglei;
+    }
+
+    public void setJiachengzhonglei(int jiachengzhonglei) {
+        this.jiachengzhonglei = jiachengzhonglei;
+    }
+
     @Override
     public String toString() {
         return "Kapai [id=" + id +", kapai_id=" + kapai_id+ ", player_id=" + player_id + ", dalei=" + dalei
                 + ", bingzhong=" + bingzhong + ", pinzhi=" + pinzhi + ", jiachengbi=" + jiachengbi
                 + ", s_dengji=" + s_dengji+ ", jingyan=" + jingyan+ ", xingji=" + xingji 
-                + ", shengmingzhi=" + shengmingzhi + ", gongjizhi=" + gongjizhi + ", zhiliaozhi=" + zhiliaozhi +"]";
+                + ", shengmingzhi=" + shengmingzhi + ", gongjizhi=" + gongjizhi + ", zhiliaozhi=" + zhiliaozhi 
+                + ", jingyan_shangxian=" + jingyan_shangxian + ", speed=" + speed + ", jingzun="+jingzun 
+                + ", fanwei=" + fanwei + ", jiachengzhonglei=" + jiachengzhonglei + "]";
     }
 }

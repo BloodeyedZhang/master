@@ -22,6 +22,8 @@ public class EventAttrChange extends PlayerEvent {
     private int money1_change;
     // 金币1 变化值
     private int money2_change;
+    // 积分 变化值
+    private int bonus_points_change;
     // 来源事件类型
     private EventType source_evtType;
     
@@ -53,9 +55,18 @@ public class EventAttrChange extends PlayerEvent {
         this.source_evtType = source_evtType;
     }
 
+    public int getBonus_points_change() {
+        return bonus_points_change;
+    }
+
+    public void setBonus_points_change(int bonus_points_change) {
+        this.bonus_points_change = bonus_points_change;
+    }
+
     @Override
     public String toString() {
-        return "EventAttrChange [money1_change=" + money1_change +", money2_change=" + money2_change + ", source_evtType=" + source_evtType +  ", playerId="
+        return "EventAttrChange [money1_change=" + money1_change +", money2_change=" + money2_change + ", bonus_points_change=" 
+                + bonus_points_change + ", source_evtType=" + source_evtType +  ", playerId="
                 + getPlayerId() + ", EventType=" + getEventType() + "]";
     }
 }

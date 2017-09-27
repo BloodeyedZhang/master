@@ -2,25 +2,18 @@ package game_server_parent.master.game.kapai;
 
 import java.text.MessageFormat;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.mchange.v2.log.LogUtils;
 
 import game_server_parent.master.cache.CacheService;
 import game_server_parent.master.db.DbService;
 import game_server_parent.master.game.database.config.ConfigDatasPool;
 import game_server_parent.master.game.database.config.bean.ConfigBingzhong;
-import game_server_parent.master.game.database.config.bean.ConfigPinzhi;
 import game_server_parent.master.game.database.config.bean.ConfigSoilderLevel;
 import game_server_parent.master.game.database.config.bean.ConfigXingji;
-import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.database.user.storage.Kapai;
 import game_server_parent.master.game.database.user.storage.KapaiId;
-import game_server_parent.master.game.kapai.events.EventKapaiUpdate;
 import game_server_parent.master.game.player.events.EventAttrChange;
 import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.EventType;
@@ -48,10 +41,12 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         return instance;
     }
 
-    public Kapai createNewKapai(long player_id, int dalei, int bingzhong) {
+    public Kapai createNewKapai(long player_id, int bingzhong, int dengji, int jiachengzhonglei, float jiachengbi) {
         Kapai kapai = new Kapai();
         
         ConfigBingzhong configBy = ConfigDatasPool.getInstance().configBingzhongContainer.getConfigBy(bingzhong);
+        
+        dengji = dengji<1?1:dengji; // 等级最低为1级
         
         kapai.setPlayer_id(player_id);
         kapai.setDalei(configBy.getDalei());
@@ -60,8 +55,29 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         kapai.setGongjizhi(configBy.getGongji_base());
         kapai.setZhiliaozhi(configBy.getZhiliao_base());
         kapai.setPinzhi(1);
-        kapai.setS_dengji(1);
+        kapai.setS_dengji(dengji); // 设置等级
+        kapai.setJiachengzhonglei(jiachengzhonglei);
+        kapai.setJiachengbi(jiachengbi); // 设置加成比
         kapai.setXingji(1);
+        
+        
+        int sumJinyanByLv = getSumJinyanByLv(dengji-1);//当前等级最低经验值
+        kapai.setJingyan(sumJinyanByLv); // 设置实际经验
+        
+        int[] vals2 = this.getShengming_Gongji_Zhiliao(kapai.getBingzhong(), kapai.getJiachengzhonglei(), kapai.getJiachengbi(), kapai.getS_dengji());
+        kapai.setShengmingzhi(vals2[0]); // 设置实际生命值
+        kapai.setGongjizhi(vals2[1]); // 设置实际攻击值
+        kapai.setZhiliaozhi(vals2[2]); // 设置实际治疗值
+        
+        ConfigSoilderLevel configBy2 = ConfigDatasPool.getInstance().configSoilderLevelContainer.getConfigBy(kapai.getKey(configBy.getBingzhong()));
+        
+        kapai.setSpeed(configBy2.getSpeed());
+        kapai.setJingzun(configBy2.getJingzun());
+        kapai.setFanwei(configBy2.getFanwei());
+        
+        ConfigXingji configBy3 = ConfigDatasPool.getInstance().configXingjiContainer.getConfigBy(kapai.getXingji());
+        kapai.setJingyan_shangxian(configBy3.getJingyan_shangxian());
+        
         int nextId = this.getNextId();
         kapai.setKapai_id(nextId);
         //设为插入状态
@@ -196,7 +212,7 @@ public class KapaiManager extends CacheService<Long, Kapai> {
      * @param lv
      * @return
      */
-    public  int[] getShengming_Gongji_Zhiliao(int binzhong, int pinzhi, int lv) {
+    public  int[] getShengming_Gongji_Zhiliao(int binzhong, int jiachengzhonglei, float jiachengbi, int lv) {
         /*
         Dictionary<string, CRAZY_INFO> d_crazy_infos = Global.GetInstance().d_crazy_infos;
         ConfigEnumManager configenum_soilder = ConfigEnumManager.getConfigEnumManager(1010 + dalei);
@@ -207,16 +223,35 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         */
         
         ConfigBingzhong configByBingzhong = ConfigDatasPool.getInstance().configBingzhongContainer.getConfigBy(binzhong);
-        ConfigPinzhi configByPinzhi = ConfigDatasPool.getInstance().configPinzhiContainer.getConfigBy(pinzhi);
+        //ConfigPinzhi configByPinzhi = ConfigDatasPool.getInstance().configPinzhiContainer.getConfigBy(pinzhi);
         ConfigSoilderLevel configByLv = ConfigDatasPool.getInstance().configSoilderLevelContainer.getConfigBy(configByBingzhong.getBingzhong()+""+lv);
         
-        // 生命值 生命值=（基础生命+等级生命）*（1+品质生命*加成比/100）
-        int shengming = (int)Math.round((configByBingzhong.getShengming_base() + configByLv.getShengming_dengji()) * (1 + configByLv.getShengming_pinzhi() * configByPinzhi.getJiacheng_zuigao() / 100));
-        // 攻击值 攻击力=（基础攻击+等级攻击）*（1+品质攻击*加成比/100）
-        int gongji = (int)Math.round((configByBingzhong.getGongji_base() + configByLv.getGongjili_dengji()) * (1 + configByLv.getGongjili_pinzhi() * configByPinzhi.getJiacheng_zuigao() / 100));
+        int zhiliao_base = configByBingzhong.getZhiliao_base();
+        int gongji_base = configByBingzhong.getGongji_base();
+        
+        int xishu_gongji = 0;
+        int xishu_zhiliao = 0;
+        int xishu_shengming = 0;
+        if(jiachengzhonglei== KapaiDataPool.ADDITION_ATTACK) {
+            if(zhiliao_base > 0) {
+                xishu_zhiliao = 1;
+            }
+            if(gongji_base > 0) {
+                xishu_gongji = 1;
+            }
+        } else if(jiachengzhonglei==KapaiDataPool.ADDITION_HP) {
+            xishu_shengming = 1;
+        } else {
+            
+        }
+        
         //治疗值=（基础治疗+等级治疗）*（1+品质治疗*加成比/100）
-        int zhiliao = (int)Math.round((configByBingzhong.getZhiliao_base() + configByLv.getZhiliao_dengji()) * (1 + configByLv.getZhiliao_pinzhi() * configByPinzhi.getJiacheng_zuigao() / 100));
-
+        int zhiliao = (int)Math.round((configByBingzhong.getZhiliao_base() + configByLv.getZhiliao_dengji()) * (1 + configByLv.getZhiliao_pinzhi() * xishu_zhiliao * jiachengbi / 100));
+        // 攻击值 攻击力=（基础攻击+等级攻击）*（1+品质攻击*加成比/100）
+        int gongji = (int)Math.round((configByBingzhong.getGongji_base() + configByLv.getGongjili_dengji()) * (1 + configByLv.getGongjili_pinzhi() * xishu_gongji*jiachengbi/ 100));
+        // 生命值 生命值=（基础生命+等级生命）*（1+品质生命*加成比/100）
+        int shengming = (int)Math.round((configByBingzhong.getShengming_base() + configByLv.getShengming_dengji()) * (1 + configByLv.getShengming_pinzhi() * xishu_shengming*jiachengbi / 100));
+        
         return new int[] {shengming, gongji, zhiliao};
     }
     
@@ -244,7 +279,7 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         kapai.setS_dengji(vals[0]);
         kapai.setJingyan(vals[2]);
         
-        int[] vals2 = this.getShengming_Gongji_Zhiliao(kapai.getBingzhong(),kapai.getPinzhi(), kapai.getS_dengji());
+        int[] vals2 = this.getShengming_Gongji_Zhiliao(kapai.getBingzhong(), kapai.getJiachengzhonglei(), kapai.getJiachengbi(), kapai.getS_dengji());
         kapai.setShengmingzhi(vals2[0]);
         kapai.setGongjizhi(vals2[1]);
         kapai.setZhiliaozhi(vals2[2]);

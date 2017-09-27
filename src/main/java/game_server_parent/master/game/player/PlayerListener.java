@@ -11,6 +11,7 @@ import game_server_parent.master.game.player.events.EventAttrChange;
 import game_server_parent.master.game.player.events.EventNewPlayer;
 import game_server_parent.master.game.player.events.EventUpdatePlayer;
 import game_server_parent.master.game.player.message.ResPlayerMessage;
+import game_server_parent.master.game.scene.events.EventEnterScene;
 import game_server_parent.master.listener.EventType;
 import game_server_parent.master.listener.annotation.EventHandler;
 import game_server_parent.master.listener.annotation.Listener;
@@ -52,4 +53,5 @@ public class PlayerListener {
         Player player = PlayerManager.getInstance().createNewPlayer(playerId, "test"+playerId, (byte)1);
         DbService.getInstance().add2Queue(player);
     }
+
 }

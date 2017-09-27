@@ -20,4 +20,6 @@ public final class HttpCommands {
     public static final int QUERY_SERVER_OPEN_TIME = 2;
     /**  创建新角色 */
     public static final int CREATE_NEW_PLAYER = 3;
+    /**  创建新卡牌 */
+    public static final int CREATE_NEW_CARD = 4;
 }

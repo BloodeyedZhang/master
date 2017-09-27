@@ -13,6 +13,13 @@ package game_server_parent.master.game.kapai;
  * 
  */
 public class KapaiDataPool {
+    
+    // 加成种类枚举
+    /** 攻击/治疗 加成 */
+    public static final int ADDITION_ATTACK = 1;
+    /** 生命 加成 */
+    public static final int ADDITION_HP = 2;
+    
     //cmd请求协议枚举
     /** 请求－获得新卡牌 */
     public static final int REQ_KAPAI_NEW = 2;
