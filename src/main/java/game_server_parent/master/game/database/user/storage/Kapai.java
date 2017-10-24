@@ -56,7 +56,7 @@ public class Kapai extends BaseEntity<Long> {
     
     @Column
     @Protobuf(order=8)
-    private int s_dengji;
+    private int s_dengji = 1;
     
     @Column
     @Protobuf(order=9)

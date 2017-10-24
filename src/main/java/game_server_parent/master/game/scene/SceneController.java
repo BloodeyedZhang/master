@@ -2,12 +2,16 @@ package game_server_parent.master.game.scene;
 
 import org.apache.mina.core.session.IoSession;
 
+import com.sun.xml.internal.ws.api.model.wsdl.editable.EditableWSDLService;
+
 import game_server_parent.master.game.scene.events.EventEnterScene;
 import game_server_parent.master.game.scene.message.ReqPlayerEnterSceneMessage;
 import game_server_parent.master.game.scene.message.ReqPlayerPreEnterSceneMessage;
 import game_server_parent.master.game.scene.message.ResPlayerEnterSceneMessage;
+import game_server_parent.master.game.scene.message.ResPlayerPreEnterSceneMessage;
 import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.EventType;
+import game_server_parent.master.net.MessagePusher;
 import game_server_parent.master.net.SessionProperties;
 import game_server_parent.master.net.annotation.Controller;
 import game_server_parent.master.net.annotation.RequestMapping;
@@ -40,8 +44,11 @@ public class SceneController {
             EventDispatcher.getInstance().fireEvent(new EventEnterScene(EventType.PRE_ENTER_DATING, player_id, mapId));
         } else if(mapId == MapEnum.Zhandou.value()) {
             EventDispatcher.getInstance().fireEvent(new EventEnterScene(EventType.PRE_ENTER_ZHANDOU, player_id, mapId));
-        } else if(mapId == MapEnum.Jinku.value()) {
+        } else if(mapId == MapEnum.Treasury.value()) {
             EventDispatcher.getInstance().fireEvent(new EventEnterScene(EventType.PRE_ENTER_JINKU, player_id, mapId));
+        } else {
+            ResPlayerPreEnterSceneMessage resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_SUCC);
+            MessagePusher.pushMessage(player_id, resp);
         }
     }
     
@@ -55,7 +62,7 @@ public class SceneController {
             EventDispatcher.getInstance().fireEvent(new EventEnterScene(EventType.ENTER_DATING, player_id, mapId));
         } else if(mapId == MapEnum.Zhandou.value()) {
             EventDispatcher.getInstance().fireEvent(new EventEnterScene(EventType.ENTER_ZHANDOU, player_id, mapId));
-        } else if(mapId == MapEnum.Jinku.value()) {
+        } else if(mapId == MapEnum.Treasury.value()) {
             EventDispatcher.getInstance().fireEvent(new EventEnterScene(EventType.ENTER_JINKU, player_id, mapId));
         }
     }

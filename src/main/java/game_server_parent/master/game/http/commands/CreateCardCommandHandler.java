@@ -5,6 +5,7 @@ import game_server_parent.master.game.http.HttpCommandHandler;
 import game_server_parent.master.game.http.HttpCommandParams;
 import game_server_parent.master.game.http.HttpCommandResponse;
 import game_server_parent.master.game.http.HttpCommands;
+import game_server_parent.master.game.kapai.KapaiDataPool;
 import game_server_parent.master.game.kapai.events.EventKapaiNew;
 import game_server_parent.master.game.player.PlayerManager;
 import game_server_parent.master.game.player.events.EventNewPlayer;
@@ -49,9 +50,9 @@ public class CreateCardCommandHandler extends HttpCommandHandler {
                 Float card_jiachengbi = httpParams.getFloat("card_jiachengbi");
                 int card_jiachengzhonglei = httpParams.getInt("card_jiachengzhonglei");
                 EventDispatcher.getInstance()
-                        .fireEvent(new EventKapaiNew(EventType.KAPAI_NEW, card_playerId, 0,
+                        .fireEvent(new EventKapaiNew(EventType.KAPAI_NEW, card_playerId, KapaiDataPool.PINZHI_MEIHUA,
                                 card_bingzhong, card_dengji, card_jiachengzhonglei,
-                                card_jiachengbi));
+                                card_jiachengbi, 1));
                 return HttpCommandResponse.valueOfSucc();
             } else {
                 HttpCommandResponse resp = HttpCommandResponse.valueOfFailed();

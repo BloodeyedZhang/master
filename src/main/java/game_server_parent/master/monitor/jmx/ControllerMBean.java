@@ -27,6 +27,13 @@ public interface ControllerMBean {
     String getMemoryInfo();  
     
     /**
+     * 查看内存中的玩家信息
+     * @param player_id 
+     * @return
+     */
+    String getPlayerInfo(long player_id);
+    
+    /**
      * 执行JavaScript代码
      * @param jsCode
      * @return

@@ -32,6 +32,10 @@ public class ServerConfig {
     private int httpPort;
     /** 后台白名单模式 */
     private String[] whiteIpPattern;
+    /** redis集群服务器ip */
+    private String[] ips;
+    /** redis集群服务器访问密码 */
+    private String pwd;
     
     /**  客户端断线重连最大尝试次数 */
     public final static int MAX_RECONNECT_TIMES = 10;
@@ -74,6 +78,17 @@ public class ServerConfig {
                         this.whiteIpPattern = ips;
                     }
                 }
+            } else if("redis-server".equals(node.getNodeName())) {
+                NodeList subNodes = node.getChildNodes();
+                for(int j=0;j<subNodes.getLength();j++) {
+                    if ("pwd".equals(subNodes.item(j).getNodeName())) {
+                        this.pwd = subNodes.item(j).getTextContent();
+                    } else if ("ips".equals(subNodes.item(j).getNodeName())) {
+                        logger.info("连接redis集群 ip为{}", subNodes.item(j).getTextContent());
+                        String[] ips = subNodes.item(j).getTextContent().split(";");
+                        this.ips = ips;
+                    }
+                }
             }
         }
         
@@ -92,6 +107,14 @@ public class ServerConfig {
         return httpPort;
     }
     
+    public String[] getIps() {
+        return ips;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
     public boolean isInWhiteIps(String ip) {
         for (String pattern:this.whiteIpPattern) {
             if (ip.matches(pattern)) {

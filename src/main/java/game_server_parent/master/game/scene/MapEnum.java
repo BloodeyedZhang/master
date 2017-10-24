@@ -22,7 +22,11 @@ public enum MapEnum {
     // 战斗地图
     Zhandou(1002),
     // 金库地图
-    Jinku(1003);
+    Treasury(1003),
+    // 排行榜
+    CrossRank(1004),
+    // 商城
+    Mall(1005);
     
     private int id;
     private MapEnum(int id)

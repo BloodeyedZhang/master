@@ -43,6 +43,10 @@ public enum EventType {
     BONUS_POINT_ADD,
     /** 积分 减少事件*/
     BONUS_POINTS_DEDUCT,
+    /** 钥匙增加事件*/
+    KEYSNUM_ADD,
+    /** 钥匙减少事件*/
+    KEYSNUM_DEDUCT,
     /** 战斗标识开始事件 **/
     BATTLE_ID_START,
     /** 战斗标识胜利事件 **/
@@ -62,6 +66,18 @@ public enum EventType {
     /** 获得队伍更新事件 **/
     SOILDER_TEAM_UPDATE,
     
+    /** 宝库摧毁宝箱事件 **/
+    TREASURY_DESTROY_BOX,
+    /** 宝库战斗结束事件 **/
+    TREASURY_BATTLE_END,
+    /** 宝库升级事件 **/
+    TREASURY_UPDATE,
+    /** 宝库升级奖励显示事件 **/
+    TREASURY_UPDATE_SHOW,
+    
+    /** 商城购买事件 **/
+    MALL_BUY,
+    
     /** 即将进入大厅事件 **/
     PRE_ENTER_DATING,
     /** 即将进入战斗事件 **/
@@ -74,6 +90,9 @@ public enum EventType {
     ENTER_ZHANDOU,
     /** 进入金库事件 **/
     ENTER_JINKU,
+    
+    /** 排行榜积分变化事件 **/
+    CROSSRANK_BP_UPDATE,
     
     /** 战斗开始事件 **/
     BATTLE_START,

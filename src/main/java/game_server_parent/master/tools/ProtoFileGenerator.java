@@ -25,7 +25,7 @@ import game_server_parent.master.utils.ClassScanner;
  */
 public class ProtoFileGenerator {
     public static void main(String[] args) {
-        String rootPath = "game_server_parent.master.game.rank.message";
+        String rootPath = "game_server_parent.master.game.mall.message";
         Set<Class<?>> messages = ClassScanner.listAllSubclasses(rootPath, Message.class);
         writeProtoFile(messages);
     }

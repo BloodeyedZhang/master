@@ -29,6 +29,12 @@ public interface Modules {
     int KAPAI = 104;
     /** 士兵队伍 */
     int SOILDER_TEAM = 105;
-    /** 排行 */
+    /** 排行战斗 */
     int RANK = 106;
+    /** 宝库 */
+    int TREASURY = 107;
+    /** 商城 */
+    int MALL = 108;
+    /** 排行榜 */
+    int CROSS_RANK = 109;
 }

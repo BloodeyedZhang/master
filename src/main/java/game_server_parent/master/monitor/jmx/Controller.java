@@ -49,5 +49,10 @@ public class Controller implements ControllerMBean {
         }
         return msg;
     }
+    
+    @Override
+    public String getPlayerInfo(long player_id) {
+        return PlayerManager.getInstance().get(player_id).toString();
+    }
 
 }

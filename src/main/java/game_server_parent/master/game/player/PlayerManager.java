@@ -37,6 +37,7 @@ public class PlayerManager extends CacheService<Long, Player> {
         Player player = new Player();
         player.setName(name);
         player.setJob(job);
+        player.setKeyNum(player.getMaxKeyNum());
         //int nextId = this.getNextId();
         player.setPlayer_id(player_id);
         //设为插入状态

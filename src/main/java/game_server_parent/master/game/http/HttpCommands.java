@@ -22,4 +22,6 @@ public final class HttpCommands {
     public static final int CREATE_NEW_PLAYER = 3;
     /**  创建新卡牌 */
     public static final int CREATE_NEW_CARD = 4;
+    /**  加金币 */
+    public static final int ADD_MONEY = 5;
 }

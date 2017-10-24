@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import game_server_parent.master.db.DbService;
 import game_server_parent.master.game.core.SchedulerHelper;
 import game_server_parent.master.game.core.SystemParameters;
+import game_server_parent.master.game.crossrank.CrossRankService;
 import game_server_parent.master.game.database.config.ConfigDatasPool;
 import game_server_parent.master.game.http.HttpServer;
 import game_server_parent.master.listener.ListenerManager;
@@ -24,6 +25,7 @@ import game_server_parent.master.net.SocketServer;
 import game_server_parent.master.net.context.TaskHandlerContext;
 import game_server_parent.master.orm.OrmProcessor;
 import game_server_parent.master.orm.utils.DbUtils;
+import game_server_parent.master.redis.RedisCluster;
 import game_server_parent.master.utils.TimeUtils;
 
 /**
@@ -76,10 +78,14 @@ public class GameServer {
     }
     
     private void frameworkStart() throws Exception {
+        //加载服务版本号
+        ServerVersion.load();
         //初始化协议池
         MessageFactory.INSTANCE.initMeesagePool();
         //读取服务器配置
         ServerConfig.getInstance().initFromConfigFile();
+        //初始化redis集群服务连接,在读取服务器配置之后
+        RedisCluster.INSTANCE.init();
         //初始化orm框架
         OrmProcessor.INSTANCE.initOrmBridges();
         //初始化消息工作线程池
@@ -93,7 +99,7 @@ public class GameServer {
         //异步持久化服务
         DbService.getInstance().init();
         ListenerManager.INSTANCE.initalize();
-      //读取系统参数
+        //读取系统参数
         loadSystemRecords();
 
         //启动socket服务
@@ -124,7 +130,8 @@ public class GameServer {
 
 
     private void gameLogicStart() {
-
+        //初始化排行业务服务
+        CrossRankService.getInstance();
     }
     
     public void shutdown() {

@@ -33,9 +33,10 @@ begin
    return value; 
 end;
 
-INSERT INTO sequence VALUES ('seq_player_num', '10000000', '1');
+INSERT INTO sequence VALUES ('seq_player_num', '1000000000', '1');
 INSERT INTO sequence VALUES ('seq_kapai_num', '1000000', '1');
 INSERT INTO sequence VALUES ('seq_soilderTeam_num', '100000', '1');
+INSERT INTO sequence VALUES ('seq_treasury_num', '10000', '1');
 INSERT INTO sequence VALUES ('seq_AttrChangeRecord_num', '0', '1');
 INSERT INTO sequence VALUES ('seq_battle_num', '0', '1');
 
@@ -56,6 +57,22 @@ CREATE TABLE `AttrChangeRecord` (
   `targetEvtType` varchar(100) DEFAULT '',
   `attrChange` int(10) DEFAULT 0,
   `extra_param` varchar(255)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `TreasuryRecord`;
+CREATE TABLE `TreasuryRecord` (
+  `id` bigint(20) DEFAULT 0 ,
+  `treasury_id` bigint(20) DEFAULT 0 ,
+  `player_id` bigint(20) DEFAULT 0 ,
+  `index` int(10) DEFAULT 0,
+  `coins` int(10) DEFAULT 0,
+  `diamonds` int(10) DEFAULT 0,
+  `bingzhongs` varchar(255) DEFAULT '',
+  `jiachengbis` varchar(255) DEFAULT '',
+  `xingjis` varchar(255) DEFAULT '',
+  `jiachengtypes` varchar(255) DEFAULT '',
+  `pinzhis` varchar(255),
+  `createtime` varchar(255) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -85,7 +102,12 @@ CREATE TABLE `Player` (
    `money1` int(10) DEFAULT 0 COMMENT '货币1',
    `money2` int(10) DEFAULT 0 COMMENT '货币2',
    `bonus_points` int(10) DEFAULT 0 COMMENT '排行积分',
-   `rank_battle_id` int(10) DEFAULT 0 COMMENT '排行战斗ID'
+   `rank_battle_id` int(10) DEFAULT 0 COMMENT '排行战斗ID',
+   `treasuryLevel` int(10) DEFAULT 0 COMMENT '宝库等级',
+   `maxTreasuryLevel` int(10) DEFAULT 0 COMMENT '宝库等级上限',
+   `treasuryLevelProgress` int(10) DEFAULT 0 COMMENT '等级进度',
+   `keyNum` int(3) DEFAULT 0 COMMENT '持有钥匙数量',
+   `maxKeyNum` int(3) DEFAULT 0 COMMENT '持有钥匙上限'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
 
@@ -136,4 +158,43 @@ CREATE TABLE `Kapai`(
   PRIMARY KEY(`kapai_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `Treasury`;
+CREATE TABLE `Treasury` (
+  `id` bigint(20) DEFAULT NULL,
+  `treasury_id` bigint(20) NOT NULL,
+  `player_id` bigint(20) DEFAULT NULL,
+  `treasuryLevel` int(11) NOT NULL,
+  `baseHP` int(11) DEFAULT NULL,
+  `level1` int(11) DEFAULT NULL,
+  `level2` int(11) DEFAULT NULL,
+  `level3` int(11) DEFAULT NULL,
+  `level4` int(11) DEFAULT NULL,
+  `level5` int(11) DEFAULT NULL,
+  `level1HP` int(11) DEFAULT NULL,
+  `level2HP` int(11) DEFAULT NULL,
+  `level3HP` int(11) DEFAULT NULL,
+  `level4HP` int(11) DEFAULT NULL,
+  `level5HP` int(11) DEFAULT NULL,
+  `diamond1` int(11) DEFAULT NULL,
+  `coin1` int(11) DEFAULT NULL,
+  `card1` int(11) DEFAULT NULL,
+  `diamond2` int(11) DEFAULT NULL,
+  `coin2` int(11) DEFAULT NULL,
+  `card2` int(11) DEFAULT NULL,
+  `diamond3` int(11) DEFAULT NULL,
+  `coin3` int(11) DEFAULT NULL,
+  `card3` int(11) DEFAULT NULL,
+  `diamond4` int(11) DEFAULT NULL,
+  `coin4` int(11) DEFAULT NULL,
+  `card4` int(11) DEFAULT NULL,
+  `diamond5` int(11) DEFAULT NULL,
+  `coin5` int(11) DEFAULT NULL,
+  `card5` int(11) DEFAULT NULL,
+  `card1_pinzhi` varchar(255) DEFAULT NULL,
+  `card2_pinzhi` varchar(255) DEFAULT NULL,
+  `card3_pinzhi` varchar(255) DEFAULT NULL,
+  `card4_pinzhi` varchar(255) DEFAULT NULL,
+  `card5_pinzhi` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`player_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -87,6 +87,41 @@ public class Player extends BaseEntity implements IDistributable {
     @Protobuf(order=10)
     private int rank_battle_id;
     
+    /**
+     * 宝库等级
+     */
+    @Column
+    @Protobuf(order=11)
+    private int treasuryLevel = 1;
+    
+    /**
+     * 宝库等级上限
+     */
+    @Column
+    @Protobuf(order=12)
+    private int maxTreasuryLevel = 25;
+    
+    /**
+     * 等级进度
+     */
+    @Column
+    @Protobuf(order=13)
+    private int treasuryLevelProgress = 0;
+    
+    /**
+     * 持有钥匙数量
+     */
+    @Column
+    @Protobuf(order=14)
+    private int keyNum;
+    
+    /**
+     * 持有钥匙上限
+     */
+    @Column
+    @Protobuf(order=15)
+    private int maxKeyNum = 20;
+    
     public Player() {
         this.id = IdGenerator.getNextId();
     }
@@ -184,6 +219,46 @@ public class Player extends BaseEntity implements IDistributable {
         return serialVersionUID;
     }
 
+    public int getTreasuryLevel() {
+        return treasuryLevel;
+    }
+
+    public void setTreasuryLevel(int treasuryLevel) {
+        this.treasuryLevel = treasuryLevel;
+    }
+
+    public int getMaxTreasuryLevel() {
+        return maxTreasuryLevel;
+    }
+
+    public void setMaxTreasuryLevel(int maxTreasuryLevel) {
+        this.maxTreasuryLevel = maxTreasuryLevel;
+    }
+
+    public int getTreasuryLevelProgress() {
+        return treasuryLevelProgress;
+    }
+
+    public void setTreasuryLevelProgress(int treasuryLevelProgress) {
+        this.treasuryLevelProgress = treasuryLevelProgress;
+    }
+
+    public int getKeyNum() {
+        return keyNum;
+    }
+
+    public void setKeyNum(int keyNum) {
+        this.keyNum = keyNum;
+    }
+
+    public int getMaxKeyNum() {
+        return maxKeyNum;
+    }
+
+    public void setMaxKeyNum(int maxKeyNum) {
+        this.maxKeyNum = maxKeyNum;
+    }
+
     @Override
     public int distributeKey() {
         IoSession session = SessionManager.INSTANCE.getSessionBy(id);
@@ -194,7 +269,9 @@ public class Player extends BaseEntity implements IDistributable {
     public String toString() {
         return "Player [id=" + id + ", player_id=" + player_id + ", name=" + name + ", job=" + job
                 + ", level=" + level + ", exp=" + exp + ", lastDailyReset=" + lastDailyReset 
-                + ", money1=" + money1 + ", money2=" + money2 + ", bonus_points" + bonus_points 
-                + ", rank_battle_id" + rank_battle_id + "]";
+                + ", money1=" + money1 + ", money2=" + money2 + ", bonus_points=" + bonus_points 
+                + ", rank_battle_id=" + rank_battle_id + ", treasuryLevel=" + treasuryLevel 
+                + ", maxTreasuryLevel=" + maxTreasuryLevel + ", treasuryLevelProgress=" + treasuryLevelProgress 
+                + ", keyNum=" + keyNum + ", maxKeyNum=" + maxKeyNum + "]";
     }
 }

@@ -11,15 +11,10 @@ public class ConfigPinzhi {
 	@Column
 	private int pinzhi_zhonglei;
 	/**
-	 * 最低加成比
+	 * 加成比
 	 */
 	@Column
-	private float jiacheng_zuidi;
-	/**
-	 * 最高加成比
-	 */
-	@Column
-	private float jiacheng_zuigao;
+	private float jiacheng_base;
 	
 	public int getPinzhi_zhonglei() {
 		return pinzhi_zhonglei;
@@ -27,16 +22,10 @@ public class ConfigPinzhi {
 	public void setPinzhi_zhonglei(int pinzhi_zhonglei) {
 		this.pinzhi_zhonglei = pinzhi_zhonglei;
 	}
-	public float getJiacheng_zuidi() {
-		return jiacheng_zuidi;
-	}
-	public void setJiacheng_zuidi(float jiacheng_zuidi) {
-		this.jiacheng_zuidi = jiacheng_zuidi;
-	}
-	public float getJiacheng_zuigao() {
-		return jiacheng_zuigao;
-	}
-	public void setJiacheng_zuigao(float jiacheng_zuigao) {
-		this.jiacheng_zuigao = jiacheng_zuigao;
-	}
+    public float getJiacheng_base() {
+        return jiacheng_base;
+    }
+    public void setJiacheng_base(float jiacheng_base) {
+        this.jiacheng_base = jiacheng_base;
+    }
 }

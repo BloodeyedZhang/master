@@ -28,11 +28,20 @@ public class ResPlayerPreEnterSceneMessage extends Message {
     @Protobuf(order = 2)
     private int code;
     
+    @Protobuf(order = 3)
+    private String msg;
+    
     public ResPlayerPreEnterSceneMessage() {}
     
     public ResPlayerPreEnterSceneMessage(int mapId, int code) {
         this.mapId = mapId;
         this.code = code;
+    }
+    
+    public ResPlayerPreEnterSceneMessage(int mapId, int code, String msg) {
+        this.mapId = mapId;
+        this.code = code;
+        this.msg = msg;
     }
 
     public int getMapId() {
@@ -51,8 +60,17 @@ public class ResPlayerPreEnterSceneMessage extends Message {
         this.code = code;
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
     @Override
     public String toString() {
-        return "ResPlayerEnterSceneMessage [mapId=" + mapId + ", code=" + code + "]";
+        return "ResPlayerEnterSceneMessage [mapId=" + mapId + ", code=" + code 
+                + ", msg=" + msg + "]";
     }
 }

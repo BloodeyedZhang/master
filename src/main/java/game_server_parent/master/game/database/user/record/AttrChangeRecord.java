@@ -1,4 +1,4 @@
-package game_server_parent.master.game.database.user.player;
+package game_server_parent.master.game.database.user.record;
 
 import game_server_parent.master.db.BaseEntity;
 import game_server_parent.master.orm.annotation.Column;

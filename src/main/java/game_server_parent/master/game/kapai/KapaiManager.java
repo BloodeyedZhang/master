@@ -41,7 +41,7 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         return instance;
     }
 
-    public Kapai createNewKapai(long player_id, int bingzhong, int dengji, int jiachengzhonglei, float jiachengbi) {
+    public Kapai createNewKapai(long player_id, int pingzhi, int bingzhong, int dengji, int jiachengzhonglei, float jiachengbi, int xingji) {
         Kapai kapai = new Kapai();
         
         ConfigBingzhong configBy = ConfigDatasPool.getInstance().configBingzhongContainer.getConfigBy(bingzhong);
@@ -54,11 +54,11 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         kapai.setShengmingzhi(configBy.getShengming_base());
         kapai.setGongjizhi(configBy.getGongji_base());
         kapai.setZhiliaozhi(configBy.getZhiliao_base());
-        kapai.setPinzhi(1);
+        kapai.setPinzhi(pingzhi);
         kapai.setS_dengji(dengji); // 设置等级
         kapai.setJiachengzhonglei(jiachengzhonglei);
         kapai.setJiachengbi(jiachengbi); // 设置加成比
-        kapai.setXingji(1);
+        kapai.setXingji(xingji);
         
         
         int sumJinyanByLv = getSumJinyanByLv(dengji-1);//当前等级最低经验值

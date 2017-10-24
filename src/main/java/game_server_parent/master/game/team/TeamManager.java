@@ -120,12 +120,13 @@ public class TeamManager extends CacheService<Long, SoilderTeam> {
                     ConfigBingzhong configBy = ConfigDatasPool.getInstance().configBingzhongContainer.getConfigBy(bingzhong);
                     
                     int shangxian = configBy.getShangxian();
+                    if(shangxian==0) shangxian=99;
                     if(shangxian>0) {
                         if(!map.containsKey(bingzhong)) {
                             map.put(bingzhong, 1);
                         } else {
                             int val = map.get(bingzhong);
-                            if(val>=shangxian) {
+                            if(val>shangxian) {
                                 return false;
                             } else {
                                 val++;

@@ -14,6 +14,16 @@ package game_server_parent.master.game.kapai;
  */
 public class KapaiDataPool {
     
+    // 卡牌品质枚举
+    /** 品质: 梅花*/
+    public static final int PINZHI_MEIHUA = 1;
+    /** 品质: 方片*/
+    public static final int PINZHI_FANGPIAN = 2;
+    /** 品质: 红桃*/
+    public static final int PINZHI_HONGTAO = 3;
+    /** 品质: 黑桃*/
+    public static final int PINZHI_HEITAO = 4;
+    
     // 加成种类枚举
     /** 攻击/治疗 加成 */
     public static final int ADDITION_ATTACK = 1;

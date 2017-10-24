@@ -17,27 +17,30 @@ import game_server_parent.master.listener.PlayerEvent;
  */
 public class EventKapaiNew extends PlayerEvent {
 
-    private int dalei;
+    private int pinzhi;
     private int bingzhong;
     private int dengji;
     private int jiachengzhonglei;
     private float jiachengbi;
+    private int xingji;
     
     /**
      * @param evtType
      * @param playerId
+     * @param xingji 
      */
-    public EventKapaiNew(EventType evtType, long playerId, int dalei, int bingzhong, int dengji, int jiachengzhonglei, float jiachengbi) {
+    public EventKapaiNew(EventType evtType, long playerId, int pinzhi, int bingzhong, int dengji, int jiachengzhonglei, float jiachengbi, int xingji) {
         super(evtType, playerId);
-        this.dalei = dalei;
+        this.pinzhi = pinzhi;
         this.bingzhong = bingzhong;
         this.dengji = dengji;
         this.jiachengzhonglei = jiachengzhonglei;
         this.jiachengbi = jiachengbi;
+        this.xingji = xingji;
     }
-    
-    public int getDalei() {
-        return dalei;
+
+    public int getPinzhi() {
+        return pinzhi;
     }
 
     public int getBingzhong() {
@@ -59,9 +62,8 @@ public class EventKapaiNew extends PlayerEvent {
     public void setJiachengbi(float jiachengbi) {
         this.jiachengbi = jiachengbi;
     }
-
-    public void setDalei(int dalei) {
-        this.dalei = dalei;
+    public void setPinzhi(int pinzhi) {
+        this.pinzhi = pinzhi;
     }
 
     public void setBingzhong(int bingzhong) {
@@ -76,10 +78,19 @@ public class EventKapaiNew extends PlayerEvent {
         this.jiachengzhonglei = jiachengzhonglei;
     }
 
+    public int getXingji() {
+        return xingji;
+    }
+
+    public void setXingji(int xingji) {
+        this.xingji = xingji;
+    }
+
     @Override
     public String toString() {
-        return "EventKapaiNew [playerId=" + getPlayerId() + ",eventType="+ getEventType()+", dalei=" + dalei + ", bingzhong=" + bingzhong 
-                + ", dengji=" + dengji + ", jiachengzhonglei=" + jiachengzhonglei + ", jiachengbi=" + jiachengbi + "]";
+        return "EventKapaiNew [playerId=" + getPlayerId() + ",eventType="+ getEventType()+", pinzhi=" + pinzhi + ", bingzhong=" + bingzhong 
+                + ", dengji=" + dengji + ", jiachengzhonglei=" + jiachengzhonglei + ", jiachengbi=" + jiachengbi 
+                + ", xingji=" + xingji + "]";
     }
 
 }

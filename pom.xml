@@ -122,6 +122,14 @@
             <version>1.1</version>
         </dependency>
         
+        <!-- redis cache -->
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        
         <!-- groovy脚本 -->
         <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
         <dependency>

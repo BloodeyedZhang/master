@@ -3,10 +3,20 @@ package game_server_parent.master.game.database.config;
 import java.lang.reflect.Field;
 
 import game_server_parent.master.game.database.config.container.ConfigBingzhongContainer;
+import game_server_parent.master.game.database.config.container.ConfigBingzhongVTContainer;
+import game_server_parent.master.game.database.config.container.ConfigJiachengTypePRContainer;
+import game_server_parent.master.game.database.config.container.ConfigJiachengVTContainer;
+import game_server_parent.master.game.database.config.container.ConfigMallContainer;
 import game_server_parent.master.game.database.config.container.ConfigPinzhiContainer;
+import game_server_parent.master.game.database.config.container.ConfigPinzhiPRContainer;
 import game_server_parent.master.game.database.config.container.ConfigPlayerLevelContainer;
 import game_server_parent.master.game.database.config.container.ConfigSoilderLevelContainer;
+import game_server_parent.master.game.database.config.container.ConfigTreasuryBingzhongContainer;
+import game_server_parent.master.game.database.config.container.ConfigTreasuryContainer;
+import game_server_parent.master.game.database.config.container.ConfigTreasuryRewardContainer;
+import game_server_parent.master.game.database.config.container.ConfigTreasuryVTContainer;
 import game_server_parent.master.game.database.config.container.ConfigXingjiContainer;
+import game_server_parent.master.game.database.config.container.ConfigXingjiPRContainer;
 import game_server_parent.master.logs.LoggerUtils;
 
 /**
@@ -40,6 +50,25 @@ public class ConfigDatasPool {
     public ConfigBingzhongContainer configBingzhongContainer = new ConfigBingzhongContainer();
     
     public ConfigXingjiContainer configXingjiContainer = new ConfigXingjiContainer();
+    
+    public ConfigTreasuryContainer configTreasuryContainer = new ConfigTreasuryContainer();
+    
+    public ConfigTreasuryRewardContainer configTreasuryRewardContainer = new ConfigTreasuryRewardContainer();
+    
+    public ConfigPinzhiPRContainer configPinzhiPRContainer = new ConfigPinzhiPRContainer();
+    
+    public ConfigTreasuryBingzhongContainer configTreasuryBingzhongContainer = new ConfigTreasuryBingzhongContainer();
+    public ConfigTreasuryVTContainer configTreasuryVTContainer = new ConfigTreasuryVTContainer();
+    public ConfigBingzhongVTContainer configBingzhongVTContainer = new ConfigBingzhongVTContainer();
+    
+    public ConfigJiachengTypePRContainer configJiachengTypePRContainer = new ConfigJiachengTypePRContainer();
+    
+    public ConfigJiachengVTContainer configJiachengVTContainer = new ConfigJiachengVTContainer();
+    
+    public ConfigXingjiPRContainer configXingjiPRContainer = new ConfigXingjiPRContainer();
+    
+    public ConfigMallContainer configMallContainer = new ConfigMallContainer();
+    
     /**
      * 起服读取所有的配置数据
      */

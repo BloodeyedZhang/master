@@ -5,8 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import game_server_parent.master.db.DbService;
-import game_server_parent.master.game.database.user.player.AttrChangeRecord;
 import game_server_parent.master.game.database.user.player.Player;
+import game_server_parent.master.game.database.user.record.AttrChangeRecord;
 import game_server_parent.master.game.player.events.EventAttrChange;
 import game_server_parent.master.game.player.events.EventNewPlayer;
 import game_server_parent.master.game.player.events.EventUpdatePlayer;

@@ -13,6 +13,12 @@ package game_server_parent.master.game.player;
  * 
  */
 public class PlayerDataPool {
+    
+    /** 战斗失败标识 */
+    public static final int BATTLE_LOSE = 0;
+    /** 战斗胜利标识 */
+    public static final int BATTLE_WIN = 1;
+    
     //cmd响应协议枚举
     /** 响应－角色数据 */
     public static final int RES_PLAYER = 501;
