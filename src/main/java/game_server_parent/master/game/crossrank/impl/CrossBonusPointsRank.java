@@ -30,6 +30,10 @@ public class CrossBonusPointsRank extends AbstractCrossRank {
     public CrossBonusPointsRank(long playerId, int bonusPints, int treasury_level, String name) {
         super(playerId, bonusPints, treasury_level, name);
     }
+    
+    public CrossBonusPointsRank(long playerId, int bonusPints, int treasury_level, String name, int result) {
+        super(playerId, bonusPints, treasury_level, name, result);
+    }
 
     @Override
     public int getRankType() {

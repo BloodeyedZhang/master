@@ -37,9 +37,10 @@ public class CrossRankListener {
         
         long playerId = event.getPlayerId();
         Player player = PlayerManager.getInstance().get(playerId);
-        int bonusPints = player.getBonus_points();
+        int change_score = event.getChange_score();
         int treasury_level = player.getTreasuryLevel();
+        int bp = player.getBonus_points();
         String name = player.getName();
-        CrossRankService.getInstance().addRank(new CrossBonusPointsRank(playerId, bonusPints, treasury_level, name));
+        CrossRankService.getInstance().addRank(new CrossBonusPointsRank(playerId, change_score, treasury_level, name, bp));
     }
 }

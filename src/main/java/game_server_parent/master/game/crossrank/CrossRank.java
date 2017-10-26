@@ -54,5 +54,7 @@ public interface CrossRank {
 
     /** redis rank score */
     double buildRankScore();
+    
+    long getResult();
 
 }

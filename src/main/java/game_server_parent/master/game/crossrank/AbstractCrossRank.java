@@ -35,6 +35,8 @@ public abstract class AbstractCrossRank implements CrossRank {
     private int aid;
     @Protobuf
     private String name;
+    @Protobuf
+    private long result;
 
     /** 32位时间戳 */
     protected  long TIME_MAX_VALUE = 0xFFFFFFFFL; 
@@ -46,6 +48,16 @@ public abstract class AbstractCrossRank implements CrossRank {
         this.serverId = ServerConfig.getInstance().getServerId();
         this.createTime = System.currentTimeMillis();
         this.name = name;
+    }
+    
+    public AbstractCrossRank(long playerId, int score, int aid, String name, int result) {
+        this.playerId = playerId;
+        this.score = score;
+        this.aid  = aid;
+        this.serverId = ServerConfig.getInstance().getServerId();
+        this.createTime = System.currentTimeMillis();
+        this.name = name;
+        this.result = result;
     }
 
     public AbstractCrossRank(long playerId, int score) {
@@ -113,18 +125,33 @@ public abstract class AbstractCrossRank implements CrossRank {
         // score      |     createtime
         //  20bits            32bits  
         long timePart = (TIME_MAX_VALUE - getCreateTime()/1000) & TIME_MAX_VALUE;
+        //long timePart = TIME_MAX_VALUE- getCreateTime()/1000;
         long result  = (long)score << 32 | timePart;
+        /*
+        System.err.println(Long.toBinaryString((long)score << 32));
+        System.err.println(Long.toBinaryString(timePart));
+        System.err.println(Long.toBinaryString(result));
         System.err.println(( (long)score << 32)+"|"+timePart+"|"+result);
+        */
         return  result;
     }
     
+    public void setResult(long result) {
+        this.result = result;
+    }
+
+    @Override
+    public long getResult() {
+        return result;
+    }
+
     @Override
     public String toString() {
         return "AbstractCrossRank [serverId=" + serverId
                         + ", createTime=" + createTime
                         + ", playerId=" + playerId
                         + ", score=" + score + ", aid="
-                        + aid + ", name=" + name + "]";
+                        + aid + ", name=" + name + ", result=" + result + "]";
     }
 
 }

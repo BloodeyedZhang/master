@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import game_server_parent.master.db.DbService;
+import game_server_parent.master.game.crossrank.CrossRankService;
 import game_server_parent.master.game.crossrank.events.EventBpUpdate;
+import game_server_parent.master.game.crossrank.impl.CrossBonusPointsRank;
 import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.database.user.record.AttrChangeRecord;
 import game_server_parent.master.game.kapai.events.EventKapaiUpdate;
@@ -106,8 +108,10 @@ public class AttrChangeListener {
         player.setFocsUpdate();
         DbService.getInstance().add2Queue(player);
         
+        int bonusPints = event.getMoney1_change();
+        
         EventDispatcher.getInstance().fireEvent(new EventUpdatePlayer(EventType.PLAYER_UPDATE_MONEY, playerId));
-        EventDispatcher.getInstance().fireEvent(new EventBpUpdate(EventType.CROSSRANK_BP_UPDATE, playerId));
+        EventDispatcher.getInstance().fireEvent(new EventBpUpdate(EventType.CROSSRANK_BP_UPDATE, playerId, bonusPints));
     }
     
     @EventHandler(value= {EventType.BONUS_POINTS_DEDUCT})
@@ -121,8 +125,10 @@ public class AttrChangeListener {
         player.setFocsUpdate();
         DbService.getInstance().add2Queue(player);
         
+        int bonusPints = event.getMoney1_change();
+        
         EventDispatcher.getInstance().fireEvent(new EventUpdatePlayer(EventType.PLAYER_UPDATE_MONEY, playerId));
-        EventDispatcher.getInstance().fireEvent(new EventBpUpdate(EventType.CROSSRANK_BP_UPDATE, playerId));
+        EventDispatcher.getInstance().fireEvent(new EventBpUpdate(EventType.CROSSRANK_BP_UPDATE, playerId, 0-bonusPints));
     }
     
     @EventHandler(value=EventType.TREASURY_BATTLE_END)

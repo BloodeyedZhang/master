@@ -17,12 +17,19 @@ import game_server_parent.master.listener.PlayerEvent;
  */
 public class EventBpUpdate extends PlayerEvent {
 
+    private int change_score;
+    
     /**
      * @param evtType
      * @param playerId
      */
-    public EventBpUpdate(EventType evtType, long playerId) {
+    public EventBpUpdate(EventType evtType, long playerId, int change_score) {
         super(evtType, playerId);
+        this.change_score = change_score;
+    }
+
+    public int getChange_score() {
+        return change_score;
     }
 
 }

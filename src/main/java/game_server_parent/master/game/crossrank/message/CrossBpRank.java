@@ -47,7 +47,7 @@ public class CrossBpRank {
         this.serverId = crossRank.getServerId();
         this.createTime = crossRank.getCreateTime();
         this.playerId = crossRank.getPlayerId();
-        this.score = crossRank.getScore();
+        this.score = (int)crossRank.getResult();
         this.aid = crossRank.getAid();
         this.name = crossRank.getName();
     }

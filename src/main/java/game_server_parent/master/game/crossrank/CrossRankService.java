@@ -70,7 +70,8 @@ public class CrossRankService {
         String key = rank.buildRankKey();
         String member = buildRankMember(rank.getPlayerId());
         double score = rank.buildRankScore();
-        cluster.zincrby(key, score, member); 
+        //System.out.println("zscore:"+cluster.zscore(key, member));
+        System.out.println("zincrby:"+cluster.zincrby(key, score, member)); 
 
         // add challenge result data.
         String data = RedisCodecHelper.serialize(rank);
@@ -84,6 +85,7 @@ public class CrossRankService {
     public List<CrossRank> queryRank(int rankType, int start, int end) {
         List<CrossRank> ranks = new ArrayList<>();
         Set<Tuple> tupleSet = cluster.zrevrangeWithScores("CrossRank_"  + rankType, start , end );
+        //Set<Tuple> tupleSet = cluster.zrangeWithScores("CrossRank_"  + rankType, start , end );
         
         Class<? extends AbstractCrossRank> rankClazz = rank2Class.get(rankType);
         for (Tuple record:tupleSet) {
