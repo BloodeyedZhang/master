@@ -50,7 +50,7 @@ public class AttrChangeListener {
         int money1 = player.getMoney1();
         player.setMoney1(money1+event.getMoney1_change());
         player.setFocsUpdate();
-        DbService.getInstance().add2Queue(player);
+        //DbService.getInstance().add2Queue(player);
         
         EventDispatcher.getInstance().fireEvent(new EventUpdatePlayer(EventType.PLAYER_UPDATE_MONEY, playerId));
     }
@@ -64,7 +64,7 @@ public class AttrChangeListener {
         int money1 = player.getMoney1();
         player.setMoney1(money1-event.getMoney1_change());
         player.setFocsUpdate();
-        DbService.getInstance().add2Queue(player);
+        //DbService.getInstance().add2Queue(player);
         
         EventDispatcher.getInstance().fireEvent(new EventUpdatePlayer(EventType.PLAYER_UPDATE_MONEY, playerId));
     }
@@ -78,7 +78,7 @@ public class AttrChangeListener {
         int money1 = player.getMoney2();
         player.setMoney2(money1+event.getMoney1_change());
         player.setFocsUpdate();
-        DbService.getInstance().add2Queue(player);
+        //DbService.getInstance().add2Queue(player);
         
         EventDispatcher.getInstance().fireEvent(new EventUpdatePlayer(EventType.PLAYER_UPDATE_MONEY, playerId));
     }
@@ -92,7 +92,7 @@ public class AttrChangeListener {
         int money1 = player.getMoney2();
         player.setMoney2(money1-event.getMoney1_change());
         player.setFocsUpdate();
-        DbService.getInstance().add2Queue(player);
+        //DbService.getInstance().add2Queue(player);
         
         EventDispatcher.getInstance().fireEvent(new EventUpdatePlayer(EventType.PLAYER_UPDATE_MONEY, playerId));
     }
@@ -106,7 +106,7 @@ public class AttrChangeListener {
         int money1 = player.getBonus_points();
         player.setBonus_points(money1+event.getMoney1_change());
         player.setFocsUpdate();
-        DbService.getInstance().add2Queue(player);
+        //DbService.getInstance().add2Queue(player);
         
         int bonusPints = event.getMoney1_change();
         
@@ -123,7 +123,7 @@ public class AttrChangeListener {
         int money1 = player.getBonus_points();
         player.setBonus_points(money1-event.getMoney1_change());
         player.setFocsUpdate();
-        DbService.getInstance().add2Queue(player);
+        //DbService.getInstance().add2Queue(player);
         
         int bonusPints = event.getMoney1_change();
         
@@ -154,7 +154,7 @@ public class AttrChangeListener {
                 player.setTreasuryLevel(treasuryLevel);
                 player.setTreasuryLevelProgress(treasuryLevelProgress);
                 player.setFocsUpdate();
-                DbService.getInstance().add2Queue(player);
+                //DbService.getInstance().add2Queue(player);
                 
             } else {
                 treasuryLevelProgress = 0;

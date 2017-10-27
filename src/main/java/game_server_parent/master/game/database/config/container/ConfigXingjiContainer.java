@@ -15,7 +15,7 @@ public class ConfigXingjiContainer implements Reloadable{
 
 	    @Override
 	    public void reload() {
-	        String sql = "SELECT * FROM ConfigXingji";
+	        String sql = "SELECT * FROM configxingji";
 	        List<ConfigXingji> datas = DbUtils.queryMany(DbUtils.DB_DATA, sql, ConfigXingji.class);
 	        //使用jdk8，将list转为map
 	        ids = datas.stream().collect(

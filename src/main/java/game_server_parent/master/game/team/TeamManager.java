@@ -46,7 +46,7 @@ public class TeamManager extends CacheService<Long, SoilderTeam> {
 
     @Override
     public SoilderTeam load(Long id) throws Exception {
-        String sql = "SELECT * FROM SoilderTeam where team_id = {0}";
+        String sql = "SELECT * FROM soilderteam where team_id = {0}";
         sql = MessageFormat.format(sql, String.valueOf(id));
         SoilderTeam soilderTeam = DbUtils.queryOne(DbUtils.DB_USER, sql, SoilderTeam.class);
         return soilderTeam;
@@ -64,7 +64,7 @@ public class TeamManager extends CacheService<Long, SoilderTeam> {
     }
     
     public List<SoilderTeam> getPlayerTeamList(long player_id){
-        String sql = "SELECT * FROM SoilderTeam where player_id = {0}";
+        String sql = "SELECT * FROM soilderteam where player_id = {0}";
         sql = MessageFormat.format(sql, String.valueOf(player_id));
         List<SoilderTeam> kapai_list = DbUtils.queryMany(DbUtils.DB_USER, sql, SoilderTeam.class);
         return kapai_list;

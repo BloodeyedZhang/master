@@ -29,7 +29,7 @@ public class ConfigMallContainer implements Reloadable {
     @Override
     public void reload() {
         // TODO 自动生成的方法存根
-         String sql = "SELECT * FROM ConfigMall";
+         String sql = "SELECT * FROM configmall";
             List<ConfigMall> datas = DbUtils.queryMany(DbUtils.DB_DATA, sql, ConfigMall.class);
             //使用jdk8，将list转为map
             pinzhi_zhonglei = datas.stream().collect(

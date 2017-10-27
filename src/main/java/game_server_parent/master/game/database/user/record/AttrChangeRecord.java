@@ -18,7 +18,7 @@ import game_server_parent.master.utils.IdGenerator;
  * @version 
  * 
  */
-@Entity
+@Entity(table="attrChangeRecord")
 public class AttrChangeRecord extends BaseEntity<Long> {
 
     

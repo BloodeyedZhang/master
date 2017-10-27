@@ -38,14 +38,14 @@ public class TreasuryRecordManager extends CacheService<Long, TreasuryRecord>  {
     
     @Override
     public TreasuryRecord load(Long teasury_id) throws Exception {
-        String sql = "SELECT * FROM TreasuryRecord where treasury_id = {0}";
+        String sql = "SELECT * FROM treasuryrecord where treasury_id = {0}";
         sql = MessageFormat.format(sql, String.valueOf(teasury_id));
         TreasuryRecord player = DbUtils.queryOne(DbUtils.DB_USER, sql, TreasuryRecord.class);
         return player;
     }
     
     public List<TreasuryRecord> queryMany(long treasury_id) {
-        String sql = "SELECT * FROM TreasuryRecord where treasury_id = {0}";
+        String sql = "SELECT * FROM treasuryrecord where treasury_id = {0}";
         sql = MessageFormat.format(sql, String.valueOf(treasury_id));
         List<TreasuryRecord> list = DbUtils.queryMany(DbUtils.DB_USER, sql, TreasuryRecord.class);
         return list;

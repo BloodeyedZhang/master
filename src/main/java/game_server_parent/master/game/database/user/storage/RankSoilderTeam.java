@@ -20,7 +20,7 @@ import game_server_parent.master.utils.IdGenerator;
  * @version 
  * 
  */
-@Entity
+@Entity(table="ranksoilderteam")
 public class RankSoilderTeam extends Team implements Cloneable {
     
     @Id

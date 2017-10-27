@@ -58,6 +58,10 @@ public class RankManager {
         int[] vals = executeRankBattle(eventType);
         money1_change = vals[0];
         bpc_change = vals[1];
+        Player player = PlayerManager.getInstance().get(player_id);
+        int money1 = player.getMoney1();
+        int bonus_points = player.getBonus_points();
+        
         if(eventType.equals(EventType.BATTLE_WIN)) {
             eventAttrChange_money1 = new EventAttrChange(EventType.MONEY1_ADD, player_id);
             eventAttrChange_money1.setMoney1_change(money1_change);
@@ -66,6 +70,9 @@ public class RankManager {
             eventAttrChange_bpc = new EventAttrChange(EventType.BONUS_POINT_ADD, player_id);
             eventAttrChange_bpc.setMoney1_change(bpc_change);
             eventAttrChange_bpc.setSource_evtType(eventType);
+            
+            money1+=money1_change;
+            bonus_points+=bpc_change;
         } else {
             eventAttrChange_money1 = new EventAttrChange(EventType.MONEY1_DEDUCT, player_id);
             eventAttrChange_money1.setMoney1_change(money1_change);
@@ -75,8 +82,18 @@ public class RankManager {
             eventAttrChange_bpc.setMoney1_change(bpc_change);
            
             eventAttrChange_bpc.setSource_evtType(eventType);
+            
+            money1-=money1_change;
+            bonus_points-=bpc_change;
         }
         
+        //player.setMoney1(money1);
+        //player.setBonus_points(bonus_points);
+        
+        // 下发 战斗结果数据包
+        this.sendRankBattleMessage(player_id,money1_change,bpc_change,eventType);
+        
+
         
         EventDispatcher.getInstance().fireEvent(eventAttrChange_money1); // 发送金币增加/减少事件
         EventDispatcher.getInstance().fireEvent(eventAttrChange_bpc); // 发送积分增加/减少事件
@@ -85,8 +102,7 @@ public class RankManager {
         // 修改数值
         this.updateBattleId(player_id);
         
-        // 下发 战斗结果数据包
-        this.sendRankBattleMessage(player_id,money1_change,bpc_change,eventType);
+
     }
     
     /**
@@ -108,12 +124,14 @@ public class RankManager {
             et = EventType.BATTLE_ID_LOSE;
         }
         
+        executeRankBattle(player_id, rank_battle_id, battle_result);
+        
         EventAttrChange eventAttrChange = new EventAttrChange(et, player_id);
         eventAttrChange.setSource_evtType(source_eventType);
         eventAttrChange.setMoney1_change(rank_battle_id);
         EventDispatcher.getInstance().fireEvent(eventAttrChange);
         
-        executeRankBattle(player_id, rank_battle_id, battle_result);
+        
     }
     
     /** 修改角色Battle_id数值 */
@@ -121,7 +139,7 @@ public class RankManager {
         Player player = PlayerManager.getInstance().get(player_id);
         player.setRank_battle_id(0);
         player.setFocsUpdate();
-        DbService.getInstance().add2Queue(player);
+        //DbService.getInstance().add2Queue(player);
     }
     
     /** 下发战斗结果包到客户端*/

@@ -57,7 +57,7 @@ public class RecordListener {
         
         attrChangeRecord.setInsert();
         
-        DbService.getInstance().add2Queue(attrChangeRecord);
+       // DbService.getInstance().add2Queue(attrChangeRecord);
     }
     
     @EventHandler(value=EventType.TREASURY_DESTROY_BOX)

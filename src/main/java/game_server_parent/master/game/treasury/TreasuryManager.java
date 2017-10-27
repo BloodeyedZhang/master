@@ -64,7 +64,7 @@ public class TreasuryManager extends CacheService<Long, Treasury> {
 
     @Override
     public Treasury load(Long player_id) throws Exception {
-        String sql = "SELECT * FROM Treasury where player_id = {0}";
+        String sql = "SELECT * FROM treasury where player_id = {0}";
         sql = MessageFormat.format(sql, String.valueOf(player_id));
         Treasury player = DbUtils.queryOne(DbUtils.DB_USER, sql, Treasury.class);
         return player;
@@ -88,7 +88,7 @@ public class TreasuryManager extends CacheService<Long, Treasury> {
     }
 
     public Treasury getByPlayer(Long player_id, int level) {
-        String sql = "SELECT * FROM Treasury where player_id = {0}, and treasuryLevel = {1}";
+        String sql = "SELECT * FROM treasury where player_id = {0}, and treasuryLevel = {1}";
         sql = MessageFormat.format(sql, String.valueOf(player_id), String.valueOf(level));
         Treasury player = DbUtils.queryOne(DbUtils.DB_USER, sql, Treasury.class);
         return player;

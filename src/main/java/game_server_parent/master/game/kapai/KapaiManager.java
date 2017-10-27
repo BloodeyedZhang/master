@@ -88,14 +88,14 @@ public class KapaiManager extends CacheService<Long, Kapai> {
     
     @Override
     public Kapai load(Long id) throws Exception {
-        String sql = "SELECT * FROM Kapai where kapai_id = {0}";
+        String sql = "SELECT * FROM kapai where kapai_id = {0}";
         sql = MessageFormat.format(sql, String.valueOf(id));
         Kapai kapai = DbUtils.queryOne(DbUtils.DB_USER, sql, Kapai.class);
         return kapai;
     }
     
     public List<Kapai> getPlayerKapaiList(long player_id){
-        String sql = "SELECT * FROM Kapai where player_id = {0}";
+        String sql = "SELECT * FROM kapai where player_id = {0}";
         sql = MessageFormat.format(sql, String.valueOf(player_id));
         List<Kapai> kapai_list = DbUtils.queryMany(DbUtils.DB_USER, sql, Kapai.class);
         return kapai_list;

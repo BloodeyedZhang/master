@@ -31,24 +31,29 @@ import game_server_parent.master.net.annotation.RequestMapping;
 @Controller
 public class SceneController {
 
+    /*
     @RequestMapping
     public void resPlayerEnterScene(IoSession session, ResPlayerEnterSceneMessage response) {
         System.out.println("收到进入场景消息");
     }
+    */
     
     @RequestMapping
     public void ReqPlayerPreEnterScene(IoSession session, ReqPlayerPreEnterSceneMessage req) {
+        System.out.println("收到准备进入场景消息 mapId="+req.getMapId());
         long player_id = (long)session.getAttribute(SessionProperties.PLAYER_ID);
         int mapId = req.getMapId();
         if(mapId == MapEnum.Dating.value()) {
-            EventDispatcher.getInstance().fireEvent(new EventEnterScene(EventType.PRE_ENTER_DATING, player_id, mapId));
+            //EventDispatcher.getInstance().fireEvent(new EventEnterScene(EventType.PRE_ENTER_DATING, player_id, mapId));
+            ResPlayerPreEnterSceneMessage resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_SUCC);
+            MessagePusher.pushMessage(session, resp);
         } else if(mapId == MapEnum.Zhandou.value()) {
             EventDispatcher.getInstance().fireEvent(new EventEnterScene(EventType.PRE_ENTER_ZHANDOU, player_id, mapId));
         } else if(mapId == MapEnum.Treasury.value()) {
             EventDispatcher.getInstance().fireEvent(new EventEnterScene(EventType.PRE_ENTER_JINKU, player_id, mapId));
         } else {
             ResPlayerPreEnterSceneMessage resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_SUCC);
-            MessagePusher.pushMessage(player_id, resp);
+            MessagePusher.pushMessage(session, resp);
         }
     }
     

@@ -27,7 +27,7 @@ public class ConfigPinzhiPRContainer implements Reloadable {
 
     @Override
     public void reload() {
-        String sql = "SELECT * FROM ConfigPinzhiPR";
+        String sql = "SELECT * FROM configpinzhipr";
         List<ConfigPinzhiPR> datas = DbUtils.queryMany(DbUtils.DB_DATA, sql, ConfigPinzhiPR.class);
         //使用jdk8，将list转为map
         ids = datas.stream().collect(

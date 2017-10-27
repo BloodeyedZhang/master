@@ -17,7 +17,7 @@ public class ConfigSoilderLevelContainer implements Reloadable{
 
 	    @Override
 	    public void reload() {
-	        String sql = "SELECT * FROM ConfigSoilderLevel";
+	        String sql = "SELECT * FROM configsoilderlevel";
 	        List<ConfigSoilderLevel> datas = DbUtils.queryMany(DbUtils.DB_DATA, sql, ConfigSoilderLevel.class);
 	        //使用jdk8，将list转为map
 	        ids = datas.stream().collect(

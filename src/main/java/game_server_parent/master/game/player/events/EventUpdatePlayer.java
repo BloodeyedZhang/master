@@ -21,4 +21,10 @@ public class EventUpdatePlayer extends PlayerEvent {
         super(evtType, playerId);
     }
 
+    @Override
+    public boolean isSynchronized() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 }

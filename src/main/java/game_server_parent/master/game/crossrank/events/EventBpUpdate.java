@@ -32,4 +32,10 @@ public class EventBpUpdate extends PlayerEvent {
         return change_score;
     }
 
+    @Override
+    public boolean isSynchronized() {
+        // TODO Auto-generated method stub
+        return super.isSynchronized();
+    }
+
 }

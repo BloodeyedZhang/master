@@ -80,6 +80,7 @@ public class SocketServer {
         config.setKeepAlive(true);
         config.setIdleTime(IdleStatus.BOTH_IDLE, 30);
         config.setReuseAddress(true);
+        config.setTcpNoDelay(true);
 
         return config;
     }

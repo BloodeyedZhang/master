@@ -30,7 +30,7 @@ public class ConfigPlayerLevelContainer implements Reloadable {
 
     @Override
     public void reload() {
-        String sql = "SELECT * FROM ConfigPlayerLevel";
+        String sql = "SELECT * FROM configplayerlevel";
         List<ConfigPlayerLevel> datas = DbUtils.queryMany(DbUtils.DB_DATA, sql, ConfigPlayerLevel.class);
         //使用jdk8，将list转为map
         levels = datas.stream().collect(

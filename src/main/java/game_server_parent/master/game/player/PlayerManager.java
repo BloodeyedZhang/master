@@ -51,7 +51,7 @@ public class PlayerManager extends CacheService<Long, Player> {
      */
     @Override
     public Player load(Long playerId) throws Exception {
-        String sql = "SELECT * FROM Player where player_id = {0}";
+        String sql = "SELECT * FROM player where player_id = {0}";
         sql = MessageFormat.format(sql, String.valueOf(playerId));
         Player player = DbUtils.queryOne(DbUtils.DB_USER, sql, Player.class);
         if(player==null) player = new Player();

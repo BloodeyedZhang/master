@@ -27,7 +27,7 @@ public class ConfigTreasuryVTContainer implements Reloadable {
     @Override
     public void reload() {
         // TODO 自动生成的方法存根
-         String sql = "SELECT * FROM ConfigTreasuryVT";
+         String sql = "SELECT * FROM configtreasuryvt";
             List<ConfigTreasuryVT> datas = DbUtils.queryMany(DbUtils.DB_DATA, sql, ConfigTreasuryVT.class);
             //使用jdk8，将list转为map
             pinzhi_zhonglei = datas.stream().collect(

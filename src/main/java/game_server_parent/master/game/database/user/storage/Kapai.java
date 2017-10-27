@@ -21,7 +21,7 @@ import game_server_parent.master.utils.IdGenerator;
  * @version 
  * 
  */
-@Entity
+@Entity(table="kapai")
 public class Kapai extends BaseEntity<Long> {
     @Id
     @Column

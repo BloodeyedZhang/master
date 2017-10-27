@@ -27,7 +27,7 @@ public class ConfigTreasuryRewardContainer implements Reloadable {
 
     @Override
     public void reload() {
-        String sql = "SELECT * FROM ConfigTreasuryReward";
+        String sql = "SELECT * FROM configtreasuryreward";
         List<ConfigTreasuryReward> datas = DbUtils.queryMany(DbUtils.DB_DATA, sql, ConfigTreasuryReward.class);
         //使用jdk8，将list转为map
         ids = datas.stream().collect(

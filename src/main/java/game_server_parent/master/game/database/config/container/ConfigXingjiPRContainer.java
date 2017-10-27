@@ -28,7 +28,7 @@ public class ConfigXingjiPRContainer implements Reloadable {
     @Override
     public void reload() {
         // TODO 自动生成的方法存根
-         String sql = "SELECT * FROM ConfigXingjiPR";
+         String sql = "SELECT * FROM configxingjipr";
             List<ConfigXingjiPR> datas = DbUtils.queryMany(DbUtils.DB_DATA, sql, ConfigXingjiPR.class);
             //使用jdk8，将list转为map
             pinzhi_zhonglei = datas.stream().collect(

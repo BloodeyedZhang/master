@@ -1,6 +1,7 @@
 package game_server_parent.master;
 
 import java.lang.management.ManagementFactory;
+import java.util.concurrent.ConcurrentMap;
 
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
@@ -15,7 +16,10 @@ import game_server_parent.master.game.core.SchedulerHelper;
 import game_server_parent.master.game.core.SystemParameters;
 import game_server_parent.master.game.crossrank.CrossRankService;
 import game_server_parent.master.game.database.config.ConfigDatasPool;
+import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.http.HttpServer;
+import game_server_parent.master.game.player.PlayerManager;
+import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.ListenerManager;
 import game_server_parent.master.logs.LoggerUtils;
 import game_server_parent.master.monitor.jmx.Controller;
@@ -93,7 +97,7 @@ public class GameServer {
         //初始化数据库连接池
         DbUtils.init();
         //初始化job定时任务
-        SchedulerHelper.initAndStart();
+        //SchedulerHelper.initAndStart();
         //读取所有策划配置
         ConfigDatasPool.getInstance().loadAllConfigs();
         //异步持久化服务
@@ -101,6 +105,7 @@ public class GameServer {
         ListenerManager.INSTANCE.initalize();
         //读取系统参数
         loadSystemRecords();
+        
 
         //启动socket服务
         try{
@@ -132,6 +137,15 @@ public class GameServer {
     private void gameLogicStart() {
         //初始化排行业务服务
         CrossRankService.getInstance();
+        
+        EventDispatcher.getInstance();
+    }
+    
+    private void gameLogicShutDown() {
+        ConcurrentMap<Long,Player> onlinePlayers = PlayerManager.getInstance().getOnlinePlayers();
+        for(Player player : onlinePlayers.values()) {
+            PlayerManager.getInstance().removeFromOnline(player);
+        }
     }
     
     public void shutdown() {
@@ -139,6 +153,7 @@ public class GameServer {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         //各种业务逻辑的关闭写在这里。。。
+        gameLogicShutDown();
         socketServer.shutdown();
         httpServer.shutdown();
         

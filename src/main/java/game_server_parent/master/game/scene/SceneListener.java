@@ -83,10 +83,10 @@ public class SceneListener {
     public void onPreEnterDating(EventEnterScene event) {
         logger.info(getClass().getSimpleName()+"捕捉到事件"+event);
         
-        long player_id = event.getPlayerId();
-        int mapId = event.getMapId();
-        ResPlayerPreEnterSceneMessage resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_SUCC);
-        MessagePusher.pushMessage(player_id, resp);
+        //long player_id = event.getPlayerId();
+        //int mapId = event.getMapId();
+        //ResPlayerPreEnterSceneMessage resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_SUCC);
+        //MessagePusher.pushMessage(player_id, resp);
     }
     
     
@@ -171,7 +171,7 @@ public class SceneListener {
         if((keyNum -= 1)>=0) {
             player.setKeyNum(keyNum);
             player.setFocsUpdate();
-            DbService.getInstance().add2Queue(player);
+            //DbService.getInstance().add2Queue(player);
             resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_SUCC);
         } else {
             resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_FAIL, "NO_KEYS");

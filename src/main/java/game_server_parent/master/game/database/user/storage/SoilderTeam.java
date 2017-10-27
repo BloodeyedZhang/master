@@ -20,7 +20,7 @@ import game_server_parent.master.utils.IdGenerator;
  * @version 
  * 
  */
-@Entity
+@Entity(table="soilderteam")
 public class SoilderTeam extends Team{
 
     @Id

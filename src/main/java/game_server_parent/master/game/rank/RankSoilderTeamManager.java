@@ -39,7 +39,7 @@ public class RankSoilderTeamManager extends CacheService<Long, RankSoilderTeam> 
 
     @Override
     public RankSoilderTeam load(Long id) throws Exception {
-        String sql = "SELECT * FROM RankSoilderTeam where player_id = {0}";
+        String sql = "SELECT * FROM ranksoilderteam where player_id = {0}";
         sql = MessageFormat.format(sql, String.valueOf(id));
         RankSoilderTeam soilderTeam = DbUtils.queryOne(DbUtils.DB_USER, sql, RankSoilderTeam.class);
         if(soilderTeam == null) soilderTeam = new RankSoilderTeam();
@@ -81,8 +81,8 @@ public class RankSoilderTeamManager extends CacheService<Long, RankSoilderTeam> 
     /** 获取随机一条数据*/
     public RankSoilderTeam queryOnnRandonm(long id) {
        // String sql = "SELECT * FROM RankSoilderTeam where player_id != {0}";
-        String sql= "SELECT * FROM RankSoilderTeam  AS t1  JOIN (SELECT ROUND(RAND() * ((SELECT MAX(player_id) FROM RankSoilderTeam)-(SELECT MIN(player_id) FROM RankSoilderTeam))"
-                + "+(SELECT MIN(player_id) FROM RankSoilderTeam)) AS player_id) AS t2 WHERE t1.player_id >= t2.player_id and t1.player_id != {0} ORDER BY t1.player_id LIMIT 1";
+        String sql= "SELECT * FROM ranksoilderteam  AS t1  JOIN (SELECT ROUND(RAND() * ((SELECT MAX(player_id) FROM ranksoilderteam)-(SELECT MIN(player_id) FROM ranksoilderteam))"
+                + "+(SELECT MIN(player_id) FROM ranksoilderteam)) AS player_id) AS t2 WHERE t1.player_id >= t2.player_id and t1.player_id != {0} ORDER BY t1.player_id LIMIT 1";
         sql = MessageFormat.format(sql, String.valueOf(id));
         RankSoilderTeam soilderTeam = null;
         try {

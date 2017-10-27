@@ -69,4 +69,11 @@ public class EventAttrChange extends PlayerEvent {
                 + bonus_points_change + ", source_evtType=" + source_evtType +  ", playerId="
                 + getPlayerId() + ", EventType=" + getEventType() + "]";
     }
+
+    @Override
+    public boolean isSynchronized() {
+        // asynchronous
+        return false;
+    }
+    
 }

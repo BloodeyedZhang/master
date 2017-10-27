@@ -74,11 +74,11 @@ public class KapaiListener {
                 kapaiNewEvent.getJiachengzhonglei(), kapaiNewEvent.getJiachengbi(), kapaiNewEvent.getXingji());
         DbService.getInstance().add2Queue(kapai);
         
-        ArrayList<Kapai> list = new ArrayList<Kapai>();
-        list.add(kapai);
+       // ArrayList<Kapai> list = new ArrayList<Kapai>();
+       // list.add(kapai);
         
-        IoSession session = SessionManager.INSTANCE.getSessionBy(kapaiNewEvent.getPlayerId());
-        MessagePusher.pushMessage(session, new ResSelectPlayerKapaiMessage(list));
+       // IoSession session = SessionManager.INSTANCE.getSessionBy(kapaiNewEvent.getPlayerId());
+       // MessagePusher.pushMessage(session, new ResSelectPlayerKapaiMessage(list));
     }
     
     @EventHandler(value=EventType.KAPAI_UPDATE)
