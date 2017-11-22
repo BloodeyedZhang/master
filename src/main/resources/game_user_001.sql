@@ -33,12 +33,13 @@ begin
    return value; 
 end;
 
-INSERT INTO sequence VALUES ('seq_player_num', '1000000000', '1');
+INSERT INTO sequence VALUES ('seq_player_num', '1000000', '1');
 INSERT INTO sequence VALUES ('seq_kapai_num', '1000000', '1');
 INSERT INTO sequence VALUES ('seq_soilderTeam_num', '100000', '1');
 INSERT INTO sequence VALUES ('seq_treasury_num', '10000', '1');
 INSERT INTO sequence VALUES ('seq_AttrChangeRecord_num', '0', '1');
 INSERT INTO sequence VALUES ('seq_battle_num', '0', '1');
+INSERT INTO sequence VALUES ('seq_fuben_num', '0', '1');
 
 DROP FUNCTION if exists  nextval;
 create function nextval (v_seq_name VARCHAR(50))
@@ -107,8 +108,32 @@ CREATE TABLE `Player` (
    `maxTreasuryLevel` int(10) DEFAULT 0 COMMENT '宝库等级上限',
    `treasuryLevelProgress` int(10) DEFAULT 0 COMMENT '等级进度',
    `keyNum` int(3) DEFAULT 0 COMMENT '持有钥匙数量',
-   `maxKeyNum` int(3) DEFAULT 0 COMMENT '持有钥匙上限'
+   `maxKeyNum` int(3) DEFAULT 0 COMMENT '持有钥匙上限',
+   `fuben_map_id` int(10) DEFAULT 0 COMMENT '副本地图ID',
+   `is_rename` int(3) DEFAULT 0 COMMENT '是否改名',
+   `buy_key_num` int(10) DEFAULT 0 COMMENT '每日购买钥匙的数量',
+   `fuben_achieve` int(10) DEFAULT 0 COMMENT '副本奖励领取',
+   `is_ai` int(5) DEFAULT 0 COMMENT '是否是AI',
+   `rank_win_num` int(10) DEFAULT 0 COMMENT '排行战斗胜利场次',
+   `rank_win_average_fight_percent` float DEFAULT NULL COMMENT '胜利对手平均战力比值',
+   `rank_win_average_fight` float DEFAULT NULL COMMENT '胜利对手平均战力',
+   `rank_lose_num` int(10) DEFAULT 0 COMMENT '排行战斗失败场次',
+   `rank_lose_average_fight_percent` float DEFAULT NULL COMMENT '失败对手平均战力比值',
+   `rank_lose_average_fight` float DEFAULT NULL COMMENT '失败对手平均战力',
+   `rank_score` int(10) DEFAULT 0 COMMENT '当前战绩',
+   `fight` int(10) DEFAULT 0 COMMENT '玩家排行战力',
+   `fight_enemy` int(10) DEFAULT 0 COMMENT '对手排行战力',
+   `bp_enemy` int(10) DEFAULT 0 COMMENT '对手积分',
+   `is_enemy_ai` int(10) DEFAULT 0 COMMENT '对手是否是AI'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
+
+DROP TABLE IF EXISTS `player_name`;
+CREATE TABLE `player_name` (
+  `id` bigint(20) DEFAULT 0 ,
+  `name` longtext
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
+
+INSERT INTO `player_name` VALUES ('0', '');
 
 
 DROP TABLE IF EXISTS `SoilderTeam`;
@@ -198,3 +223,27 @@ CREATE TABLE `Treasury` (
   PRIMARY KEY (`player_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `fuben`;
+CREATE TABLE `fuben` (
+  `id` bigint(20) DEFAULT NULL,
+  `fuben_id` bigint(20) DEFAULT NULL,
+  `player_id` bigint(20) DEFAULT NULL,
+  `fuben_isopen` int(3) DEFAULT 1,
+  `fuben_level` int(3) DEFAULT 1,
+  `fuben_win_num` int(10) DEFAULT 0,
+  `fuben_lose_num` int(10) DEFAULT 0,
+  `fuben_reward` int(3) DEFAULT 0,
+  `fuben_canfight` int(3) DEFAULT 1,
+  `fuben_reward_type` int(3) DEFAULT 0,
+  `fuben_daojishi` int(10) DEFAULT 0,
+  `update_time` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `kapai_achievement`;
+CREATE TABLE `kapai_achievement` (
+    `id` bigint(20) DEFAULT NULL,
+    `achieve_id` bigint(20) DEFAULT NULL,
+    `player_id` bigint(20) DEFAULT NULL,
+    `kapai_id` int(10) DEFAULT NULL,
+    `achieve_state` int(3) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -38,6 +38,9 @@ public class ConfigBingzhongVT {
 
     @Column
     private int vt;
+    
+    @Column
+    private int level;
 
     public int getId() {
         return id;
@@ -63,12 +66,21 @@ public class ConfigBingzhongVT {
         this.vt = vt;
     }
     
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     @Override
     public String toString(){
     return "ConfigBingzhongVT ["
     + "id="+id+","
     + "bingzhong="+bingzhong+","
     + "vt="+vt+","
+    + "level="+level
     +"]";
 
     }

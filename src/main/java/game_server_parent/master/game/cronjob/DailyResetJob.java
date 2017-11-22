@@ -1,6 +1,7 @@
 package game_server_parent.master.game.cronjob;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
@@ -36,6 +37,8 @@ public class DailyResetJob implements Job {
         logger.info("每日５点定时任务开始");
 
         Collection<Player> onlines = PlayerManager.getInstance().getOnlinePlayers().values();
+        
+//        List<Player> loadAIs = PlayerManager.getInstance().loadAI();
 
         for (Player player:onlines) {
             int distributeKey = player.distributeKey();

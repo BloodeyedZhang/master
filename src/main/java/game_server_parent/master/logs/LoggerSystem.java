@@ -19,11 +19,14 @@ public enum LoggerSystem {
     /** 异常日志 */
     EXCEPTION,
 //  /** 网关日志 */
-    HTTP_COMMAND,
+    NET,
     /** job定时任务 */
-    CRON_JOB;
+    CRON_JOB,
 //  NET,
-    
+    /** 数据库日志 */
+    DB,
+    /** AI日志 */
+    AI
     ;
     
     public Logger getLogger() {

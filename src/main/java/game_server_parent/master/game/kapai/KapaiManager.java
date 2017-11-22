@@ -40,6 +40,13 @@ public class KapaiManager extends CacheService<Long, Kapai> {
     public static KapaiManager getInstance() {
         return instance;
     }
+    
+    private long kapai_id(long player_id, int id) {
+        if(id>=1000) id-=1000;
+        StringBuffer sb = new StringBuffer();
+        sb.append(player_id).append((int)id/100).append((int)id%100);
+        return Long.parseLong(sb.toString());
+    }
 
     public Kapai createNewKapai(long player_id, int pingzhi, int bingzhong, int dengji, int jiachengzhonglei, float jiachengbi, int xingji) {
         Kapai kapai = new Kapai();
@@ -72,13 +79,17 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         ConfigSoilderLevel configBy2 = ConfigDatasPool.getInstance().configSoilderLevelContainer.getConfigBy(kapai.getKey(configBy.getBingzhong()));
         
         kapai.setSpeed(configBy2.getSpeed());
-        kapai.setJingzun(configBy2.getJingzun());
-        kapai.setFanwei(configBy2.getFanwei());
+        /** 精准度和伤害范围 由卡牌等级表更改为兵种表控制  update by zhangjiajun at 2017/11/6  **/
+        //kapai.setJingzun(configBy2.getJingzun());
+        //kapai.setFanwei(configBy2.getFanwei());
+        kapai.setJingzun(configBy.getA_jingzhundu());
+        kapai.setFanwei(configBy.getA_fanweishanghai());
         
         ConfigXingji configBy3 = ConfigDatasPool.getInstance().configXingjiContainer.getConfigBy(kapai.getXingji());
         kapai.setJingyan_shangxian(configBy3.getJingyan_shangxian());
         
         int nextId = this.getNextId();
+        //long kapai_id = kapai_id(player_id, bingzhong);
         kapai.setKapai_id(nextId);
         //设为插入状态
         kapai.setInsert();
@@ -101,7 +112,7 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         return kapai_list;
     }
     
-    public int getNextId() {
+    public synchronized int getNextId() {
         String sql = "select nextval('seq_kapai_num') as nextId;";
         KapaiId kapaiId = DbUtils.queryOne(DbUtils.DB_USER, sql, KapaiId.class);
         return kapaiId.getNextId();

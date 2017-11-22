@@ -27,6 +27,8 @@ public interface CrossRank {
 
     long getCreateTime() ;
     
+    void setPlayerId(long playerId);
+    
     long getPlayerId();
 
     /** 
@@ -56,5 +58,5 @@ public interface CrossRank {
     double buildRankScore();
     
     long getResult();
-
+    
 }

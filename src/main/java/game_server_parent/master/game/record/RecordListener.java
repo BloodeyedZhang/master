@@ -6,7 +6,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import game_server_parent.master.db.DbService;
 import game_server_parent.master.game.database.user.record.AttrChangeRecord;
 import game_server_parent.master.game.database.user.record.TreasuryRecord;
 import game_server_parent.master.game.database.user.storage.Kapai;
@@ -19,7 +18,6 @@ import game_server_parent.master.listener.annotation.EventHandler;
 import game_server_parent.master.listener.annotation.Listener;
 import game_server_parent.master.net.MessagePusher;
 import game_server_parent.master.utils.DateUtil;
-import groovyjarjarantlr.debug.Event;
 
 /**
  * <p>Filename:RecordListener.java</p>
@@ -116,6 +114,8 @@ public class RecordListener {
             e.printStackTrace();
             logger.error("宝库战斗结束  统计宝库掉落", e);
         }
+        
+        logger.info(getClass().getSimpleName()+"发送返回客户端消息包");
         
         ResTreasuryBattleEndMessage message = new ResTreasuryBattleEndMessage();
         message.setCode(event.getBattle_result());

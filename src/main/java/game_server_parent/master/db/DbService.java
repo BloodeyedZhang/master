@@ -1,8 +1,20 @@
 package game_server_parent.master.db;
 
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.util.concurrent.AbstractIdleService;
+import com.google.common.util.concurrent.Service;
 
 import edu.emory.mathcs.backport.java.util.concurrent.atomic.AtomicBoolean;
+import game_server_parent.master.game.database.user.player.Player;
+import game_server_parent.master.game.player.PlayerManager;
 import game_server_parent.master.logs.LoggerUtils;
 import game_server_parent.master.utils.BlockingUniqueQueue;
 import game_server_parent.master.utils.NameableThreadFactory;
@@ -19,8 +31,16 @@ import game_server_parent.master.utils.NameableThreadFactory;
  * @version 
  * 
  */
-public class DbService {
+public class DbService extends AbstractIdleService  {
+    
+    private Logger logger = LoggerFactory.getLogger(DbService.class);
+    
+    public static final int BatchNumber = 20;
 
+    public static final long Save_Interval_Time = 5 * 60 * 1000l / BatchNumber;
+    
+    private ScheduledFuture<?> scheduledFuture;
+    
     private static volatile DbService instance;
     
     public static DbService getInstance() {
@@ -38,12 +58,15 @@ public class DbService {
     /**
      * 启动消费者线程
      */
+    
     public void init() {
         new NameableThreadFactory("db-save-service").newThread(new Worker()).start();
     }
     
+    
     @SuppressWarnings("rawtypes")
     private BlockingQueue<BaseEntity> queue = new BlockingUniqueQueue<BaseEntity>();
+    //private BlockingQueue<BaseEntity> queue_secondary = new BlockingUniqueQueue<BaseEntity>();
     
     private final AtomicBoolean run = new AtomicBoolean(true);
     
@@ -57,6 +80,9 @@ public class DbService {
         public void run() {
             while(run.get()) {
                 try {
+                    if(logger.isDebugEnabled()) {
+                        logger.debug("执行DBService数据持久化");
+                    }
                     BaseEntity<?> entity = queue.take();
                     saveToDb(entity);
                 } catch (InterruptedException e) {
@@ -72,6 +98,36 @@ public class DbService {
      */
     private void saveToDb(BaseEntity<?> entity) {
         entity.save();
+    }
+
+
+    @Override
+    protected void startUp() throws Exception {
+        scheduledFuture = Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                if(logger.isDebugEnabled()) {
+                    logger.debug("执行DBService数据持久化");
+                }
+                while(run.get()) {
+                    try {
+                        BaseEntity<?> entity = queue.take();
+                        saveToDb(entity);
+                    } catch (InterruptedException e) {
+                        LoggerUtils.error("DBService exception", e);
+                    }
+                }
+            }
+
+        }, Save_Interval_Time, Save_Interval_Time, TimeUnit.MILLISECONDS);
+    }
+
+
+    @Override
+    protected void shutDown() throws Exception {
+        // TODO Auto-generated method stub
+        scheduledFuture.cancel(false);
+        scheduledFuture.get();
     }
 
 }

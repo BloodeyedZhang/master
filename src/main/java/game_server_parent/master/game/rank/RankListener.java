@@ -65,6 +65,9 @@ public class RankListener {
         
         long player_id = event.getPlayerId();
         int battle_id = event.getBattle_id();
+        
+        PlayerManager.getInstance().executeBattleWin(player_id);
+        
         // 计算奖励
         RankManager.getInstance().executeRankBattle(player_id, battle_id, EventType.BATTLE_WIN, event.getEventType());
 
@@ -76,6 +79,8 @@ public class RankListener {
         
         long player_id = event.getPlayerId();
         int battle_id = event.getBattle_id();
+        
+        PlayerManager.getInstance().executeBattleLose(player_id);
         
         // 计算奖励
         RankManager.getInstance().executeRankBattle(player_id, battle_id, EventType.BATTLE_LOSE, event.getEventType());
@@ -100,12 +105,12 @@ public class RankListener {
         long player_id = event.getPlayerId();
         Player player = PlayerManager.getInstance().get(player_id);
         
-/*        if(player.getRank_battle_id() == 0) {
+        if(player.getRank_battle_id() == 0) {
             
         } else {
             
             RankManager.getInstance().executeRankBattle(player_id, player.getRank_battle_id(), EventType.BATTLE_LOSE, event.getEventType());
-        }*/
+        }
     }
 
 }

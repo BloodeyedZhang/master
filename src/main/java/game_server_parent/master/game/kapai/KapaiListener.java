@@ -158,4 +158,9 @@ public class KapaiListener {
         }
         MessagePusher.pushMessage(session, new ResKapaiRemoveMessage(kapais));
     }
+    
+    @EventHandler(value=EventType.KAPAI_UPDATE_JIACHENG)
+    public void onKapaiUpdateJiacheng(EventKapaiUpdate event) {
+        
+    }
 }

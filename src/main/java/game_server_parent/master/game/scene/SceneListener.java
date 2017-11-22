@@ -7,17 +7,25 @@ import org.apache.mina.core.session.IoSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import game_server_parent.master.db.DbService;
+import game_server_parent.master.game.achievement.AchievementManager;
+import game_server_parent.master.game.achievement.message.ResAchieveListMessage;
+import game_server_parent.master.game.crossrank.CrossRankKinds;
+import game_server_parent.master.game.crossrank.CrossRankService;
+import game_server_parent.master.game.crossrank.impl.CrossBonusPointsRank;
 import game_server_parent.master.game.database.user.player.Player;
+import game_server_parent.master.game.database.user.storage.Fuben;
 import game_server_parent.master.game.database.user.storage.Kapai;
+import game_server_parent.master.game.database.user.storage.KapaiAchievement;
 import game_server_parent.master.game.database.user.storage.RankSoilderTeam;
 import game_server_parent.master.game.database.user.storage.SoilderTeam;
 import game_server_parent.master.game.database.user.storage.Treasury;
+import game_server_parent.master.game.fuben.FubenManager;
+import game_server_parent.master.game.fuben.message.ResFubenListMessage;
+import game_server_parent.master.game.fuben.message.ResFubenSoilderTeamMessage;
 import game_server_parent.master.game.kapai.KapaiManager;
 import game_server_parent.master.game.kapai.message.ResSelectPlayerKapaiMessage;
 import game_server_parent.master.game.player.PlayerManager;
 import game_server_parent.master.game.player.message.ResPlayerMessage;
-import game_server_parent.master.game.rank.RankListener;
 import game_server_parent.master.game.rank.RankSoilderTeamManager;
 import game_server_parent.master.game.rank.message.ResRankSoilderTeamMessage;
 import game_server_parent.master.game.scene.events.EventEnterScene;
@@ -50,6 +58,8 @@ import game_server_parent.master.net.combine.CombineMessage;
 public class SceneListener {
     
     private Logger logger = LoggerFactory.getLogger(SceneListener.class);
+    
+    public final static int twoH = 7200;
 
     @EventHandler(value=EventType.ENTER_DATING)
     public void onEnterDating(EventEnterScene event) {
@@ -70,13 +80,55 @@ public class SceneListener {
         List<SoilderTeam> playerTeamList = TeamManager.getInstance().getPlayerTeamList(player_id);
         combineMessage.addMessage(new ResPlayerTeamMessage(playerTeamList));
         // 推送角色消息
+        // 角色排行信息
+        CrossBonusPointsRank cbpr = new CrossBonusPointsRank(player_id);
+        Long revrank = CrossRankService.getInstance().queryRevrank(CrossRankKinds.BONUS_POINTS, cbpr);
         Player player = PlayerManager.getInstance().get(player_id);
+        if(revrank==null) revrank=-2L;
+        player.setRank((int)(revrank+1));
+
+        updateNow(player);
         ResPlayerMessage resPlayerMessage = new ResPlayerMessage();
         resPlayerMessage.setPlayer(player);
         combineMessage.addMessage(resPlayerMessage);
         
+        // 角色成就信息
+        List<KapaiAchievement> achieveList = AchievementManager.getInstance().getList(player_id);
+        ResAchieveListMessage resAchieveListMessage = new ResAchieveListMessage();
+        resAchieveListMessage.setAchieveList(achieveList);
+        combineMessage.addMessage(resAchieveListMessage);
+
+        
         IoSession session = SessionManager.INSTANCE.getSessionBy(player_id);
         MessagePusher.pushMessage(session, combineMessage);
+        
+        AchievementManager.getInstance().upList(player_id);
+    }
+    
+    public static void updateNow(Player player) {
+        int keyNum = player.getKeyNum();
+        int maxKeyNum = player.getMaxKeyNum();
+        if(keyNum==maxKeyNum) {
+            player.setNow(0);
+            long now = System.currentTimeMillis();
+            player.setLastDailyReset(now);
+        } else {
+         // 服务器当前时间
+            long now = System.currentTimeMillis();
+            long lastDailyReset = player.getLastDailyReset();
+            int h = (int)(now - lastDailyReset) / twoH;
+            //int time = (int)(now/1000 - lastDailyReset/1000) % twoH;
+            int mix = (int)(now/1000 - lastDailyReset/1000) % twoH;
+            int time = twoH-mix;
+            player.setNow(time);
+            if(h>0) {
+                keyNum+=h;
+                if(keyNum>maxKeyNum) {
+                    keyNum = maxKeyNum;
+                }
+                player.setLastDailyReset(now);
+            }
+        }
     }
     
     @EventHandler(value=EventType.PRE_ENTER_DATING)
@@ -139,9 +191,21 @@ public class SceneListener {
             rst_enemy = (RankSoilderTeam) rankSoilderTeam.clone();
             rst_enemy.setPlayer_name("心魔");
             rst_enemy.setPlayer_id(0);
+            player.setFight_enemy(player.getFight());
+            player.setBp_enemy(player.getBonus_points());
+            player.setIs_enemy_ai(player.getIs_ai());
         } else {
             Player enemy = PlayerManager.getInstance().get(rst_enemy.getPlayer_id());
             rst_enemy.setPlayer_name(enemy.getName());
+            player.setFight_enemy(enemy.getFight());
+            player.setBp_enemy(enemy.getBonus_points());
+            int is_ai = enemy.getIs_ai();
+            if(is_ai==1) { // 是AI
+                player.setIs_enemy_ai((int)enemy.getPlayer_id());
+            } else {
+                player.setIs_enemy_ai(enemy.getIs_ai());
+            }
+            
         }
 
         rsts.add(rst_enemy);
@@ -168,15 +232,27 @@ public class SceneListener {
         
         Player player = PlayerManager.getInstance().get(player_id);
         int keyNum = player.getKeyNum();
+        
         if((keyNum -= 1)>=0) {
             player.setKeyNum(keyNum);
-            player.setFocsUpdate();
+            //player.setFocsUpdate();
             //DbService.getInstance().add2Queue(player);
             resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_SUCC);
         } else {
             resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_FAIL, "NO_KEYS");
         }
-        MessagePusher.pushMessage(player_id, resp);
+        resp = new ResPlayerPreEnterSceneMessage(mapId, SceneDataPool.ENTER_SUCC);
+        
+        updateNow(player);
+        ResPlayerMessage resPlayerMessage = new ResPlayerMessage();
+        resPlayerMessage.setPlayer(player);
+        
+        // 准备组合包 发送给客户端
+        CombineMessage combineMessage = new CombineMessage();
+        combineMessage.addMessage(resp);
+        combineMessage.addMessage(resPlayerMessage);
+        
+        MessagePusher.pushMessage(player_id, combineMessage);
     }
     
     @EventHandler(value=EventType.ENTER_JINKU)
@@ -208,6 +284,76 @@ public class SceneListener {
         resTreasuryTeamMessage.setTreasury(treasury);
         
         combineMessage.addMessage(resTreasuryTeamMessage);
+        
+        MessagePusher.pushMessage(player_id, combineMessage);
+    }
+    
+    @EventHandler(value=EventType.ENTER_FUBEN_LEVEL)
+    public void onEnterFubenLevel(EventEnterScene event) {
+        logger.info(getClass().getSimpleName()+"捕捉到事件"+event);
+        
+        long player_id = event.getPlayerId();
+        //Player player = PlayerManager.getInstance().get(player_id);
+        // 准备组合包 发送给客户端
+        CombineMessage combineMessage = new CombineMessage();
+        
+        // 添加场景ID消息
+        ResPlayerEnterSceneMessage resPlayerEnterSceneMessage = new ResPlayerEnterSceneMessage();
+        resPlayerEnterSceneMessage.setMapId(MapEnum.Treasury.value());
+        combineMessage.addMessage(resPlayerEnterSceneMessage);
+        
+        // 添加副本列表信息
+        ResFubenListMessage resFubenListMessage = new ResFubenListMessage();
+        List<Fuben> fubens = FubenManager.getInstance().getFubenList(player_id);
+        resFubenListMessage.setFubens(fubens);
+        combineMessage.addMessage(resFubenListMessage);
+        
+        MessagePusher.pushMessage(player_id, combineMessage);
+    }
+    
+    
+    @EventHandler(value=EventType.ENTER_FUBEN_ZHANDOU)
+    public void onEnterFubenZhandou(EventEnterScene event) {
+        logger.info(getClass().getSimpleName()+"捕捉到事件"+event);
+        
+        long player_id = event.getPlayerId();
+        int map_id = event.getMapId();
+        // 准备组合包 发送给客户端
+        CombineMessage combineMessage = new CombineMessage();
+        
+        // 添加场景ID消息
+        ResPlayerEnterSceneMessage resPlayerEnterSceneMessage = new ResPlayerEnterSceneMessage();
+        resPlayerEnterSceneMessage.setMapId(map_id);
+        combineMessage.addMessage(resPlayerEnterSceneMessage);
+        
+        // 添加己方排行队伍消息
+        ArrayList<RankSoilderTeam> rsts = new ArrayList<RankSoilderTeam>();
+        RankSoilderTeam rankSoilderTeam = RankSoilderTeamManager.getInstance().get(player_id);
+        List<Kapai> teamKapais = TeamManager.getInstance().getTeamKapai(rankSoilderTeam);
+        ResFubenSoilderTeamMessage resRankSoilderTeamMessage = new ResFubenSoilderTeamMessage();
+        Player player = PlayerManager.getInstance().get(player_id);
+        rankSoilderTeam.setPlayer_name(player.getName());
+        rsts.add(rankSoilderTeam);
+        resRankSoilderTeamMessage.setKapais(teamKapais);
+     // 添加敌方排行队伍列表消息
+        RankSoilderTeam rst_enemy = FubenManager.getInstance().getTeam(player_id, map_id);
+        Kapai fuben_boss = FubenManager.getInstance().queryOneEnemy(player_id, map_id);
+        rst_enemy.setShengmingzhi(fuben_boss.getShengmingzhi());
+        rst_enemy.setGongjizhi(fuben_boss.getGongjizhi());
+        Kapai kapai1 = new Kapai();
+        Kapai kapai2 = new Kapai();
+        Kapai kapai4 = new Kapai();
+        Kapai kapai5 = new Kapai();
+        rsts.add(rst_enemy);
+        List<Kapai> teamKapais_enemy = new ArrayList<>();
+        teamKapais_enemy.add(kapai1);
+        teamKapais_enemy.add(kapai2);
+        teamKapais_enemy.add(fuben_boss);
+        teamKapais_enemy.add(kapai4);
+        teamKapais_enemy.add(kapai5);
+        resRankSoilderTeamMessage.setKapais_enemy(teamKapais_enemy);
+        resRankSoilderTeamMessage.setRsts(rsts);
+        combineMessage.addMessage(resRankSoilderTeamMessage);
         
         MessagePusher.pushMessage(player_id, combineMessage);
     }

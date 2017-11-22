@@ -5,6 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import game_server_parent.master.db.DbService;
+import game_server_parent.master.game.crossrank.CrossRankKinds;
+import game_server_parent.master.game.crossrank.CrossRankService;
+import game_server_parent.master.game.crossrank.impl.CrossBonusPointsRank;
 import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.database.user.record.AttrChangeRecord;
 import game_server_parent.master.game.player.events.EventAttrChange;
@@ -41,10 +44,19 @@ public class PlayerListener {
         
         long player_id = event.getPlayerId();
         Player player = PlayerManager.getInstance().get(player_id);
+        
+        CrossBonusPointsRank cbpr = new CrossBonusPointsRank(player_id);
+        Long revrank = CrossRankService.getInstance().queryRevrank(CrossRankKinds.BONUS_POINTS, cbpr);
+        if(revrank!=null)
+            player.setRank((int)(revrank+1));
+        
         ResPlayerMessage resPlayerMessage = new ResPlayerMessage();
         resPlayerMessage.setPlayer(player);
+        
         IoSession session = SessionManager.INSTANCE.getSessionBy(player_id);
         MessagePusher.pushMessage(session, resPlayerMessage);
+        
+        
     }
     
     @EventHandler(value=EventType.PLAYER_CREATE)
@@ -52,6 +64,7 @@ public class PlayerListener {
         long playerId = event.getPlayerId();
         Player player = PlayerManager.getInstance().createNewPlayer(playerId, "test"+playerId, (byte)1);
         DbService.getInstance().add2Queue(player);
+        //PlayerNameManager.getInstance().add(player.getName());
     }
 
 }

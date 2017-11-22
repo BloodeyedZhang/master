@@ -247,7 +247,7 @@ public class TreasuryManager extends CacheService<Long, Treasury> {
             pinzhi[i] = pinzhis.get(i);
         }
 
-        List<int[]> params = ChoukaManager.getInstance().getParams(count, level, pinzhi);
+        List<int[]> params = ChoukaManager.getInstance().getParams(count, level, pinzhi, player_id);
         if (params.size() < 4) {
             logger.error("获得抽卡参数出错 params.size=" + params.size());
             return null;

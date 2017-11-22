@@ -36,10 +36,55 @@
             <param name="ConversionPattern" value="%d{MM-dd HH:mm:ss} %p %F:%L - %m%n" />
         </layout>
     </appender>
+    
+    <appender name="net" class="org.apache.log4j.rolling.RollingFileAppender">
+        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+            <param name="FileNamePattern"
+                value="logs/backup_net/net.log.%d{yyyy-MM-dd}" />
+        </rollingPolicy>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{MM-dd HH:mm:ss} %p %F:%L - %m%n" />
+        </layout>
+    </appender>
+    
+    <appender name="db" class="org.apache.log4j.rolling.RollingFileAppender">
+        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+            <param name="FileNamePattern"
+                value="logs/backup_db/db.log.%d{yyyy-MM-dd}" />
+        </rollingPolicy>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{MM-dd HH:mm:ss} %p %F:%L - %m%n" />
+        </layout>
+    </appender>
+    
+    <appender name="ai" class="org.apache.log4j.rolling.RollingFileAppender">
+        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+            <param name="FileNamePattern"
+                value="logs/backup_ai/ai.log.%d{yyyy-MM-dd}" />
+        </rollingPolicy>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{MM-dd HH:mm:ss} %p %F:%L - %m%n" />
+        </layout>
+    </appender>
 
     <logger name="EXCEPTION">
         <level value="ALL" />
         <appender-ref ref="exception" />
+    </logger>
+    
+    <logger name="NET">
+        <level value="ALL" />
+        <appender-ref ref="net" />
+    </logger>
+    
+    <logger name="DB">
+        <level value="ALL" />
+        <appender-ref ref="db" />
+    </logger>
+    
+    <logger name="AI">
+        <level value="ALL" />
+        <appender-ref ref="ai" />
     </logger>
 
     <!-- 根logger的设置 -->

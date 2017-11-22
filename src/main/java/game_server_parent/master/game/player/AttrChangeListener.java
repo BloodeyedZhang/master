@@ -147,6 +147,8 @@ public class AttrChangeListener {
                 } else if(treasuryLevelProgress==2) {
                     treasuryLevelProgress = 0;
                     treasuryLevel++;
+                    
+                    logger.info(getClass().getSimpleName()+"发送宝库升级奖励事件");
                     // 发送宝库升级奖励事件
                     EventDispatcher.getInstance().fireEvent(new EventTreasuryUpdate(EventType.TREASURY_UPDATE, player_id, treasuryLevel));
                 }

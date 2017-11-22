@@ -1,26 +1,14 @@
 package game_server_parent.master.game.login;
 
-import java.util.List;
-
 import org.apache.mina.core.session.IoSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import game_server_parent.master.db.BaseEntity;
-import game_server_parent.master.db.DbService;
+import game_server_parent.master.game.crossrank.CrossRankListener;
 import game_server_parent.master.game.database.user.player.Player;
-import game_server_parent.master.game.database.user.storage.Kapai;
-import game_server_parent.master.game.database.user.storage.SoilderTeam;
-import game_server_parent.master.game.gm.message.ResGmResultMessage;
-import game_server_parent.master.game.kapai.KapaiManager;
-import game_server_parent.master.game.kapai.message.ResSelectPlayerKapaiMessage;
-import game_server_parent.master.game.login.events.EventLogin;
 import game_server_parent.master.game.login.message.ResLoginMessage;
 import game_server_parent.master.game.player.PlayerManager;
-import game_server_parent.master.game.player.events.EventNewPlayer;
 import game_server_parent.master.game.scene.message.ResPlayerEnterSceneMessage;
-import game_server_parent.master.game.team.TeamManager;
-import game_server_parent.master.listener.EventDispatcher;
-import game_server_parent.master.listener.EventType;
-import game_server_parent.master.listener.PlayerEvent;
 import game_server_parent.master.net.MessagePusher;
 import game_server_parent.master.net.SessionManager;
 import game_server_parent.master.net.SessionProperties;
@@ -40,6 +28,8 @@ import game_server_parent.master.net.combine.CombineMessage;
  */
 public class LoginManager {
 
+    private Logger logger = LoggerFactory.getLogger(CrossRankListener.class);
+    
     private static LoginManager instance = new LoginManager();
     
     private LoginManager() {}
@@ -63,9 +53,9 @@ public class LoginManager {
                // SessionManager.INSTANCE.registerNewPlayer(accountId, session);
                // PlayerManager.getInstance().add2Online(player);
                 
-                ResLoginMessage response = new ResLoginMessage(LoginDataPool.LOGIN_SUCC, String.valueOf(accountId));
+                //ResLoginMessage response = new ResLoginMessage(LoginDataPool.LOGIN_SUCC, String.valueOf(accountId));
                 
-                MessagePusher.pushMessage(session, response);
+               // MessagePusher.pushMessage(session, response);
                 return true;
            // }
         } else {
@@ -92,8 +82,9 @@ public class LoginManager {
         if (player.getPlayer_id()>0) {
             
             IoSession sessionBy = SessionManager.INSTANCE.getSessionBy(playerId);
-            if(sessionBy!=null) {
-                sessionBy.close(true);
+            if(sessionBy!=null&&!sessionBy.equals(session)) {
+                //sessionBy.close(true);
+                logger.error("一个playerId有两条session?");
             }
             
             //绑定session与玩家id
@@ -104,13 +95,26 @@ public class LoginManager {
             //推送进入场景
             ResPlayerEnterSceneMessage response = new ResPlayerEnterSceneMessage();
             response.setMapId(0);
-            MessagePusher.pushMessage(session, response);
+
+            
+            ResLoginMessage response_login = new ResLoginMessage(LoginDataPool.LOGIN_SUCC, String.valueOf(playerId));
+            
+         // 下发组合包
+            CombineMessage combineMessage = new CombineMessage();
+            combineMessage.addMessage(response_login);
+            combineMessage.addMessage(response);
+            MessagePusher.pushMessage(session, combineMessage);
+            
             //检查日重置
             PlayerManager.getInstance().checkDailyReset(player);
         } else {
-            MessagePusher.pushMessage(session, new ResLoginMessage(LoginDataPool.LOGIN_FAIL, "用户不存在"));
+            MessagePusher.pushMessage(session, new ResLoginMessage(LoginDataPool.LOGIN_FAIL, "用户不存在 playerId["+playerId+"]"));
+            PlayerManager.getInstance().remove(playerId);
         }
     }
     
+    public void handleUUID(IoSession session, String uuid) {
+        
+    } 
 
 }

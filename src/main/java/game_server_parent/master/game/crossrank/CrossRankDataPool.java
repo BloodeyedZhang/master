@@ -15,10 +15,15 @@ package game_server_parent.master.game.crossrank;
 public class CrossRankDataPool {
 
     //cmd请求协议枚举
+    /** 请求——设备唯一码 */
+    public static final int REQ_CrossRank_UUID = 9;
     /** 请求——排行榜 */
     public static final int REQ_CrossRank_BP = 10;
     
     //cmd响应协议枚举
+    /** 响应——设备唯一码 */
+    public static final int RES_CrossRank_UUID = 509;
     /** 响应——排行榜 */
     public static final int RES_CrossRank_BP = 510;
+
 }

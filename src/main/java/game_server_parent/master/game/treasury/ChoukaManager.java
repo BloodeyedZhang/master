@@ -1,12 +1,15 @@
 package game_server_parent.master.game.treasury;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import game_server_parent.master.game.achievement.AchievementManager;
 import game_server_parent.master.game.database.config.ConfigDatasPool;
 import game_server_parent.master.game.database.config.bean.ConfigBingzhongVT;
 import game_server_parent.master.game.database.config.bean.ConfigJiachengTypePR;
@@ -18,10 +21,14 @@ import game_server_parent.master.game.database.config.bean.ConfigTreasuryVT;
 import game_server_parent.master.game.database.config.bean.ConfigXingjiPR;
 import game_server_parent.master.game.database.config.container.ConfigBingzhongVTContainer;
 import game_server_parent.master.game.database.config.container.ConfigJiachengVTContainer;
+import game_server_parent.master.game.database.config.container.ConfigTreasuryVTContainer;
 import game_server_parent.master.game.database.config.container.ConfigXingjiPRContainer;
+import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.database.user.storage.Kapai;
+import game_server_parent.master.game.database.user.storage.KapaiAchievement;
 import game_server_parent.master.game.kapai.KapaiDataPool;
-import game_server_parent.master.orm.utils.StringUtils;
+import game_server_parent.master.game.player.PlayerManager;
+import game_server_parent.master.utils.ByteUtils;
 import game_server_parent.master.utils.RollUtils;
 
 /**
@@ -45,19 +52,54 @@ public class ChoukaManager {
         return instance;
     }
     
+    public void init() {
+        ConfigTreasuryVTContainer configTreasuryVTContainer = ConfigDatasPool.getInstance().configTreasuryVTContainer;
+        Map<Integer, ConfigTreasuryVT> all_treasury = configTreasuryVTContainer.getAll();
+        Collection<ConfigTreasuryVT> values = all_treasury.values();
+        for(ConfigTreasuryVT configTreasuryVT : values) {
+            configTreasuryVT.setVt(0);
+        }
+        
+        ConfigBingzhongVTContainer configBingzhongVTContainer = ConfigDatasPool.getInstance().configBingzhongVTContainer;
+        List<ConfigBingzhongVT> all_bingzhong = configBingzhongVTContainer.getAll();
+        
+        for(ConfigBingzhongVT configBingzhongVT : all_bingzhong) {
+            int level = configBingzhongVT.getLevel();
+            if(level>0) {
+                ConfigTreasuryVT configTreasuryVT = all_treasury.get(level);
+                int vt = configTreasuryVT.getVt();
+                vt = vt + configBingzhongVT.getVt();
+                configTreasuryVT.setVt(vt);
+            }
+        }
+        
+        Set<Integer> keySet = all_treasury.keySet();
+        int count = keySet.size();
+        for(int i=2;i<=count;i++) {
+            ConfigTreasuryVT configTreasuryVT = all_treasury.get(i);
+            if(configTreasuryVT.getVt()==0) {
+                ConfigTreasuryVT configTreasuryVT2 = all_treasury.get(i-1);
+                configTreasuryVT.setVt(configTreasuryVT2.getVt());
+            }
+        }
+        
+        configTreasuryVTContainer.setAll(all_treasury);
+    } 
+    
     /**
      * 商城开包
      * @param count 数量
      * @param level 宝库等级
      * @param type 卡包类型
+     * @param player_id 
      * @return
      */
-    public List<Kapai> getKapais(int count, int level, String type) {
+    public List<Kapai> getKapais(int count, int level, String type, long player_id) {
         
         List<Kapai> list = new ArrayList<Kapai>(count);
         
         int[] pinzhi = getPinzhi(count, type);
-        List<int[]> params = getParams(count, level, pinzhi);
+        List<int[]> params = getParams(count, level, pinzhi, player_id);
         
         // 概率获得兵种
         int[] bingzhong = params.get(0);
@@ -85,16 +127,17 @@ public class ChoukaManager {
      * @param count
      * @param level
      * @param pingzhi
+     * @param player_id 
      * @return
      */
-    public List<int[]> getParams(int count, int level, int[] pingzhi) {
+    public List<int[]> getParams(int count, int level, int[] pingzhi, long player_id) {
         int[] bingzhong = new int[count];
         int[] jiachengbi = new int[count];
         int[] xingji = new int[count];
         int[] jiachengype = new int[count];
         
         for(int i=0;i<count;i++) {
-            bingzhong[i] = getBingzhong(level);
+            bingzhong[i] = getBingzhong(level, player_id);
             xingji[i] = getXingji();
             jiachengbi[i] = getJiachengbi(pingzhi[i]);
             jiachengype[i] = getJiachengzhonglei();
@@ -149,35 +192,100 @@ public class ChoukaManager {
     
     /**
      * 兵种概率获得
+     * @param player_id 
+     * @param level 宝库等级
      * @return
      */
-    public int getBingzhong(int level) {
+    public int getBingzhong(int level, long player_id) {
         
         // 获得总权重
         ConfigTreasuryVT configTreasuryVT = ConfigDatasPool.getInstance().configTreasuryVTContainer.getConfigBy(level);
-        // 掷骰子
-        int roll = RollUtils.roll(configTreasuryVT.getVt());
         
         ConfigTreasuryBingzhong configTB = ConfigDatasPool.getInstance().configTreasuryBingzhongContainer.getConfigBy(level);
         ConfigBingzhongVTContainer configBingzhongVTContainer = ConfigDatasPool.getInstance().configBingzhongVTContainer;
-        int size = configBingzhongVTContainer.size();
-        try {
-            for (int i = 1; i <= size; i++) {
-                String bingzhong = "s"+i;
-                Method method = configTB.getClass().getMethod("get" + StringUtils.firstLetterToUpperCase(bingzhong));
-                float isHave = (float) method.invoke(configTB);
-                if (isHave > 0) {
-                    ConfigBingzhongVT configBingzhongVT = configBingzhongVTContainer.getConfigBy(bingzhong);
-                    if((roll -= configBingzhongVT.getVt()) <= 0) {
-                        return configBingzhongVT.getId();
+        
+        KapaiAchievement kapaiAchieve1 = AchievementManager.getInstance().get(AchievementManager.getInstance().achieve_id(player_id, 1038));
+        KapaiAchievement kapaiAchieve2 = AchievementManager.getInstance().get(AchievementManager.getInstance().achieve_id(player_id, 1039));
+        KapaiAchievement kapaiAchieve3 = AchievementManager.getInstance().get(AchievementManager.getInstance().achieve_id(player_id, 1040));
+        
+        /**  添加BOSS新卡权重 BEGIN **/
+        int add_vt = 0;
+        
+        // 获取副本领取情况
+        Player player = PlayerManager.getInstance().get(player_id);
+        int fuben_achieve = player.getFuben_achieve();
+        boolean bit1 = ByteUtils.getBit(fuben_achieve, 0);
+        boolean bit2 = ByteUtils.getBit(fuben_achieve, 1);
+        boolean bit3 = ByteUtils.getBit(fuben_achieve, 2);
+        
+        if(bit1) {
+            add_vt += configBingzhongVTContainer.getConfigBy(1038).getVt();
+        }
+        if(bit2) {
+            add_vt += configBingzhongVTContainer.getConfigBy(1039).getVt();
+        }
+        if(bit3) {
+            add_vt += configBingzhongVTContainer.getConfigBy(1040).getVt();
+        }
+        
+        /**  END **/
+        
+        // 玩家总权重
+        int vt2 = configTreasuryVT.getVt();
+        vt2 += add_vt;
+        
+        // 获取宝库等级情况
+        int treasuryLevel = player.getTreasuryLevel();
+        
+        // 掷骰子
+        List<ConfigBingzhongVT> all = configBingzhongVTContainer.getAll();
+        
+        int n = 5;
+        for(int i=0;i<n;i++) {
+            double rollDouble = RollUtils.rollDouble();
+            //ConfigBingzhongVT getConfigBinzhong = null;
+            for(ConfigBingzhongVT cBingzhongVT : all) {
+                int tmp_level = cBingzhongVT.getLevel();
+                // 副本相关
+                int id = cBingzhongVT.getId();
+                if(id==1038 && !bit1) continue; 
+                if(id==1039 && !bit2) continue; 
+                if(id==1040 && !bit3) continue; 
+                
+                if(tmp_level==0) {
+                    // 不考虑宝库等级
+
+                    boolean isbingzhongVT = getBingzhongVT(rollDouble, (double)vt2, cBingzhongVT);
+                    if(isbingzhongVT) {
+                       // getConfigBinzhong = cBingzhongVT;
+                        return id;
+                    }
+                } else if(tmp_level<=treasuryLevel) {
+                    boolean isbingzhongVT = getBingzhongVT(rollDouble, (double)vt2, cBingzhongVT);
+                    if(isbingzhongVT) {
+                        //getConfigBinzhong = cBingzhongVT;
+                        return cBingzhongVT.getId();
                     }
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
+        }
+
+        int size = all.size();
+        int roll = RollUtils.roll(8);
+        
         logger.error("返回默认兵种: 卫兵");
-        return 1011; // 返回默认兵种: 卫兵
+        return all.get(roll).getId(); // 返回默认兵种: 卫兵
+    }
+    
+    public boolean getBingzhongVT(Double rollDouble, Double vt2, ConfigBingzhongVT cBingzhongVT) {
+        int vt = cBingzhongVT.getVt();
+        if(vt>0) {
+            Double d = (double)vt/vt2;
+            if((rollDouble -= d) <=0) {
+                return true;
+            }
+        }
+        return false;
     }
     
     /**

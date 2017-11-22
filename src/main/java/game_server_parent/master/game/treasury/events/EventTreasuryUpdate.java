@@ -38,6 +38,12 @@ public class EventTreasuryUpdate extends PlayerEvent {
     }
     
     @Override
+    public boolean isSynchronized() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "EventTreasuryUpdate [player_id="+getPlayerId() 
         + ", eventType=" + getEventType() 

@@ -1,5 +1,6 @@
 package game_server_parent.master.game.player;
 
+import game_server_parent.master.db.DbService;
 import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.net.context.TimerTask;
 
@@ -33,6 +34,8 @@ public class DailyResetTask extends TimerTask {
         System.err.println("玩家"+player.getName()+"进行每日重置");
         
         PlayerManager.getInstance().checkDailyReset(player); 
+        
+        DbService.getInstance().add2Queue(player);
     }
 
 }

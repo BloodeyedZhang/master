@@ -78,7 +78,7 @@ public class SocketServer {
     private SocketSessionConfig getSessionConfig() {
         SocketSessionConfig config = new DefaultSocketSessionConfig();
         config.setKeepAlive(true);
-        config.setIdleTime(IdleStatus.BOTH_IDLE, 30);
+        config.setIdleTime(IdleStatus.BOTH_IDLE, 10);
         config.setReuseAddress(true);
         config.setTcpNoDelay(true);
 

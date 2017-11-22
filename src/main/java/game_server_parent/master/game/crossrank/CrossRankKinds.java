@@ -17,4 +17,8 @@ public interface CrossRankKinds {
     int FIGHTING = 1;
     /** 排行积分 */
     int BONUS_POINTS = 2;
+    /** 唯一码 **/
+    int UUID = 3;
+    /** 玩家名称 **/
+    int PLAYER_NAME = 4;
 }

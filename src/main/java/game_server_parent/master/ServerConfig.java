@@ -38,7 +38,7 @@ public class ServerConfig {
     private String pwd;
     
     /**  客户端断线重连最大尝试次数 */
-    public final static int MAX_RECONNECT_TIMES = 10;
+    public final static int MAX_RECONNECT_TIMES = 3;
 
     private ServerConfig() {}
 

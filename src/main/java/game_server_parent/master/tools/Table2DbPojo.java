@@ -140,8 +140,8 @@ public class Table2DbPojo {
     }
 
     public static void main(String[] args) throws Exception {
-        config("ConfigMall");
-       // user("Treasury");
+        config("ConfigAi");
+       // user("kapai_achievement");
     }
 
     private static List<Column> listTableColumns(DatabaseMetaData meta, String tableName)

@@ -1,13 +1,12 @@
 package game_server_parent.master.orm.cache;
 
-import game_server_parent.master.orm.utils.DbUtils;
-import game_server_parent.master.orm.utils.SqlUtils;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.org.apache.xml.internal.resolver.helpers.Debug;
+import game_server_parent.master.logs.LoggerSystem;
+import game_server_parent.master.orm.utils.DbUtils;
+import game_server_parent.master.orm.utils.SqlUtils;
 
 /**
  * <p>Filename:AbstractCacheable.java</p>
@@ -22,7 +21,8 @@ import com.sun.org.apache.xml.internal.resolver.helpers.Debug;
  * 
  */
 public class AbstractCacheable extends Cacheable {
-    private static Logger logger = LoggerFactory.getLogger(AbstractCacheable.class); 
+//    private static Logger logger = LoggerFactory.getLogger(AbstractCacheable.class); 
+    private static final Logger logger = LoggerSystem.DB.getLogger();
 
     @Override
     public DbStatus getStatus() {

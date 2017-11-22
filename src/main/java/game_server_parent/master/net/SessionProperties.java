@@ -21,4 +21,6 @@ public interface SessionProperties {
     AttributeKey DISTRIBUTE_KEY = new AttributeKey(SessionProperties.class, "DISTRIBUTE_KEY");
     /** 玩家id */
     AttributeKey PLAYER_ID = new AttributeKey(SessionProperties.class, "PLAYER_ID");
+    /** 玩家地图id */
+    AttributeKey PLAYER_MAP_ID = new AttributeKey(SessionProperties.class, "PLAYER_MAP_ID");
 }

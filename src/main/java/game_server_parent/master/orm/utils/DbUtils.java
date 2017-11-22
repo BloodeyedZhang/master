@@ -229,7 +229,7 @@ public class DbUtils {
             statement.execute(sql); 
             return true;
         }catch (Exception e) {
-            logger.error("DbUtils executeSql failed", e);
+            logger.error("DbUtils executeSql failed ["+sql+"]", e);
         }finally {
             if (connection != null) {
                 try{

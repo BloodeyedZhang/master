@@ -1,7 +1,5 @@
 package game_server_parent.master.game.scene;
 
-import com.sun.org.apache.bcel.internal.generic.ReturnaddressType;
-
 /**
  * <p>Filename:MapEnum.java</p>
  * <p>Description: </p>
@@ -26,7 +24,18 @@ public enum MapEnum {
     // 排行榜
     CrossRank(1004),
     // 商城
-    Mall(1005);
+    Mall(1005),
+    // 副本关卡
+    Fuben_Level(1006),
+    
+    /** 副本战斗地图添加 必须要在1100以后添加，如 1100+id **/
+    Fuben_Zhandou(1100),
+    // 副本战斗_1
+    Fuben_Zhandou_1(1101),
+    // 副本战斗_2
+    Fuben_Zhandou_2(1102),
+    // 副本战斗_3
+    Fuben_Zhandou_3(1103);
     
     private int id;
     private MapEnum(int id)

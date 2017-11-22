@@ -58,6 +58,7 @@ public class RedisRankTest {
         RedisCluster cluster = RedisCluster.INSTANCE;
         cluster.init();
         cluster.clearAllData();
+        /*
         CrossRankService rankService = CrossRankService.getInstance();
         
         final int N_RECORD =  10;
@@ -78,7 +79,7 @@ public class RedisRankTest {
         System.err.println("rank="+(revrank+1));
         //assertTrue(ranks.size() == N_RECORD);
         assertTrue(ranks.get(0).getScore() >= ranks.get(1).getScore());
-        
+        */
     }
 
     

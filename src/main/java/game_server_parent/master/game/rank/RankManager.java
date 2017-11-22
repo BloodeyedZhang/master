@@ -37,14 +37,23 @@ public class RankManager {
         return instance;
     }
     
-    /** 计算战斗奖励或惩罚 */
-    private int[] executeRankBattle(EventType eventType) {
+    /** 计算战斗奖励或惩罚 
+     * @param player */
+    private int[] executeRankBattle(Player player, EventType eventType) {
         if(eventType.equals(EventType.BATTLE_WIN)) {
             // 战斗胜利获得100金币和100积分
-            return new int[] {100,100};
+            // Rn=Ro+30*(1-W)*t
+            int gold = 0;
+            if(player.getIs_enemy_ai() == 1) {
+                // 敌人是AI
+                gold = player.getFight()/1000;
+            } else {
+                gold = (player.getFight()+player.getFight_enemy()) / 1000;
+            }
+            return new int[] {gold,0};
         } else {
-         // 战斗失败扣除50金币和50积分
-            return new int[] {50,50};
+         // 战斗失败扣除0金币和0积分
+            return new int[] {0,0};
         }
     }
     
@@ -55,10 +64,18 @@ public class RankManager {
         int bpc_change = 0;
         EventAttrChange eventAttrChange_money1 = null;
         EventAttrChange eventAttrChange_bpc = null;
-        int[] vals = executeRankBattle(eventType);
+        Player player = PlayerManager.getInstance().get(player_id);
+        
+        // 计算积分
+        int Re = player.getBp_enemy();
+        int fight_enemy = player.getFight_enemy();
+        float t = fight_enemy==0?0:player.getFight() / player.getFight_enemy();
+        player.getFight_enemy();
+        PlayerManager.getInstance().calcuteBonusPoints(player, Re , t, eventType.equals(EventType.BATTLE_WIN)?RankDataPool.BATTLE_WIN:RankDataPool.BATTLE_LOSE);
+        
+        int[] vals = executeRankBattle(player, eventType);
         money1_change = vals[0];
         bpc_change = vals[1];
-        Player player = PlayerManager.getInstance().get(player_id);
         int money1 = player.getMoney1();
         int bonus_points = player.getBonus_points();
         
@@ -96,7 +113,7 @@ public class RankManager {
 
         
         EventDispatcher.getInstance().fireEvent(eventAttrChange_money1); // 发送金币增加/减少事件
-        EventDispatcher.getInstance().fireEvent(eventAttrChange_bpc); // 发送积分增加/减少事件
+        //EventDispatcher.getInstance().fireEvent(eventAttrChange_bpc); // 发送积分增加/减少事件
         
         
         // 修改数值
@@ -152,4 +169,5 @@ public class RankManager {
         rrbe.setBonus_points(bpc_change);
         MessagePusher.pushMessage(player_id, rrbe);
     }
+    
 }

@@ -47,6 +47,14 @@ public class EventTreasuryEnd extends PlayerEvent {
         this.battle_result = battle_result;
     }
     
+    
+    
+    @Override
+    public boolean isSynchronized() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
     @Override
     public String toString() {
         return "EventTreasuryEnd [treasury_id="+ treasury_id 

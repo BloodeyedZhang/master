@@ -33,7 +33,7 @@ import com.baidu.bjf.remoting.protobuf.ProtobufProxy;
  * 
  */
 public class MessageDecoder implements ProtocolDecoder {
-    private static final Logger logger = LoggerSystem.EXCEPTION.getLogger();
+    private static final Logger logger = LoggerSystem.NET.getLogger();
 
     public void decode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws Exception {
         _decode(session, in, out);
@@ -42,7 +42,7 @@ public class MessageDecoder implements ProtocolDecoder {
 
     private void _decode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) {
         //必须保证每一个数据包的字节缓存都和session绑定在一起，不然就读取不了上一次剩余的数据了
-        logger.debug("_decode");
+        logger.info("_decode");
         CodecContext context = SessionManager.INSTANCE.getSessionAttr(session, SessionProperties.CODEC_CONTEXT, CodecContext.class);
         if (context == null) {
             context = new CodecContext();

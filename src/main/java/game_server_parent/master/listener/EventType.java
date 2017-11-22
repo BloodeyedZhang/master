@@ -58,6 +58,8 @@ public enum EventType {
     KAPAI_NEW,
     /** 获得卡牌升级事件 **/
     KAPAI_UPDATE,
+    /** 获得卡牌升级加成事件 **/
+    KAPAI_UPDATE_JIACHENG,
     /** 出售卡牌事件 **/
     KAPAI_SELL,
     /** 删除卡牌事件 **/
@@ -77,6 +79,8 @@ public enum EventType {
     
     /** 商城购买事件 **/
     MALL_BUY,
+    /** 商城购买成功，发放商品事件 **/
+    MALL_BUY_SUC,
     
     /** 即将进入大厅事件 **/
     PRE_ENTER_DATING,
@@ -84,12 +88,18 @@ public enum EventType {
     PRE_ENTER_ZHANDOU,
     /** 即将进入金库事件 **/
     PRE_ENTER_JINKU,
+    /** 即将进入副本战斗事件 **/
+    PRE_ENTER_FUBEN_ZHANDOU,
     /** 进入大厅事件 **/
     ENTER_DATING,
     /** 进入战斗事件 **/
     ENTER_ZHANDOU,
     /** 进入金库事件 **/
     ENTER_JINKU,
+    /** 进入副本关卡事件 **/
+    ENTER_FUBEN_LEVEL,
+    /** 进入副本战斗事件 **/
+    ENTER_FUBEN_ZHANDOU,
     
     /** 排行榜积分变化事件 **/
     CROSSRANK_BP_UPDATE,

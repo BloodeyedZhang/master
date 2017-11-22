@@ -87,6 +87,11 @@ public abstract class AbstractCrossRank implements CrossRank {
     public long getPlayerId() {
         return this.playerId;
     }
+    
+    @Override
+    public void setPlayerId(long playerId) {
+        this.playerId = playerId;
+    }
 
     @Override
     public int getScore() {

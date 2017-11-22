@@ -2,6 +2,7 @@ package game_server_parent.master.net.codec;
 
 import java.io.IOException;
 
+import game_server_parent.master.logs.LoggerSystem;
 import game_server_parent.master.net.Message;
 import game_server_parent.master.net.MessageFactory;
 import game_server_parent.master.net.SessionProperties;
@@ -10,6 +11,8 @@ import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolEncoder;
 import org.apache.mina.filter.codec.ProtocolEncoderOutput;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.baidu.bjf.remoting.protobuf.Codec;
 import com.baidu.bjf.remoting.protobuf.ProtobufProxy;
@@ -28,6 +31,8 @@ import com.baidu.bjf.remoting.protobuf.ProtobufProxy;
  */
 public class MessageEncoder implements ProtocolEncoder {
 
+    private static final Logger logger = LoggerSystem.NET.getLogger();
+    
     @Override
     public void dispose(IoSession arg0) throws Exception {
         // TODO Auto-generated method stub
@@ -41,6 +46,7 @@ public class MessageEncoder implements ProtocolEncoder {
     }
     
     public void _encode(IoSession session, Object message, ProtocolEncoderOutput out) throws Exception {
+        logger.info("_encode");
         CodecContext context = (CodecContext) session.getAttribute(SessionProperties.CODEC_CONTEXT);
         if (context == null) {
             context = new CodecContext();
@@ -74,6 +80,7 @@ public class MessageEncoder implements ProtocolEncoder {
         Class<Message> msgClazz = (Class<Message>) MessageFactory.INSTANCE.getMessage(moduleId, cmd);
         try {
             System.out.println("moduleId:"+moduleId+";cmd:"+cmd+"msgClazz:"+msgClazz);
+            logger.info("_encode moduleId:"+moduleId+";cmd:"+cmd+"msgClazz:"+msgClazz);
             Codec<Message> codec = ProtobufProxy.create(msgClazz);
             body = codec.encode(message);
         } catch (IOException e) {

@@ -1,5 +1,6 @@
 package game_server_parent.master.game.database.config.bean;
 
+import game_server_parent.master.game.http.CommandHandler;
 import game_server_parent.master.orm.annotation.Column;
 import game_server_parent.master.orm.annotation.Entity;
 
@@ -255,6 +256,16 @@ public class ConfigBingzhong {
 	 */
 	@Column
 	private float u_yidongsudu_huifuzhi;
+	/**
+	 * 攻速修正
+	 */
+	@Column
+	private float fix_attack_speed;
+	/**
+	 * 范围修正
+	 */
+	@Column
+	private float fix_fanwei;
 	public int getId() {
 		return id;
 	}
@@ -555,4 +566,16 @@ public class ConfigBingzhong {
 	public void setU_yidongsudu_huifuzhi(float u_yidongsudu_huifuzhi) {
 		this.u_yidongsudu_huifuzhi = u_yidongsudu_huifuzhi;
 	}
+    public float getFix_attack_speed() {
+        return fix_attack_speed;
+    }
+    public void setFix_attack_speed(float fix_attack_speed) {
+        this.fix_attack_speed = fix_attack_speed;
+    }
+    public float getFix_fanwei() {
+        return fix_fanwei;
+    }
+    public void setFix_fanwei(float fix_fanwei) {
+        this.fix_fanwei = fix_fanwei;
+    }
 }

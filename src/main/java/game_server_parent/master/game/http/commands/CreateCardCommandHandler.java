@@ -35,7 +35,7 @@ public class CreateCardCommandHandler extends HttpCommandHandler {
         
         // http://192.168.1.140:8080/?cmd=4&params={pwd=winturn,name=gm1,card_playerId=10000001,card_bingzhong=1014,card_dengji=1,card_jiachengzhonglei,card_jiachengbi=0.1}
         
-        LoggerSystem.HTTP_COMMAND.getLogger().info("收到后台命令，准备创建新卡牌");
+        LoggerSystem.NET.getLogger().info("收到后台命令，准备创建新卡牌");
 
         String pwd = null;
         String name = null;

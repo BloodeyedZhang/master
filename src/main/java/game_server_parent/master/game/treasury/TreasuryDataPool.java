@@ -26,6 +26,8 @@ public class TreasuryDataPool {
     public static final int REQ_TREASURY_DESTROY_BOX = 11;
     /** 请求--宝库升级显示 **/
     public static final int REQ_TREASURY_UPATE_SHOW = 12;
+    /** 请求--宝库钥匙增加 **/
+    public static final int REQ_TREASURY_ADD_KEY = 13;
     
     //cmd响应协议枚举
     /** 响应——宝库队伍 */
@@ -36,4 +38,6 @@ public class TreasuryDataPool {
     public static final int RES_TREASURY_DESTROY_BOX = 511;
     /** 响应--宝库升级**/
     public static final int RES_TREASURY_UPDATE = 512;
+    /** 响应--宝库钥匙增加 **/
+    public static final int RES_TREASURY_ADD_KEY = 513;
 }

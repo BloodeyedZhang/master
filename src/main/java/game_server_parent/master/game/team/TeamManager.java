@@ -8,8 +8,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.javafx.collections.MappingChange.Map;
-
 import game_server_parent.master.cache.CacheService;
 import game_server_parent.master.db.DbService;
 import game_server_parent.master.game.database.config.ConfigDatasPool;
@@ -20,7 +18,6 @@ import game_server_parent.master.game.database.user.storage.SoilderTeam;
 import game_server_parent.master.game.database.user.storage.Team;
 import game_server_parent.master.game.kapai.KapaiManager;
 import game_server_parent.master.orm.utils.DbUtils;
-import groovy.ui.view.MacOSXDefaults;
 
 /**
  * <p>Filename:TeamManager.java</p>
@@ -70,7 +67,7 @@ public class TeamManager extends CacheService<Long, SoilderTeam> {
         return kapai_list;
     }
     
-    public int getNextId() {
+    public synchronized int getNextId() {
         String sql = "select nextval('seq_soilderTeam_num') as nextId;";
         KapaiId kapaiId = DbUtils.queryOne(DbUtils.DB_USER, sql, KapaiId.class);
         return kapaiId.getNextId();
@@ -144,9 +141,10 @@ public class TeamManager extends CacheService<Long, SoilderTeam> {
     }
     
     /** 更新堆中对象信息 */
-    public void updateSoilderTeam(Team st, String[] split) {
+    public int updateSoilderTeam(Team st, String[] split) {
         int sum_shengming = 0;
         int sum_gongji = 0;
+        int sum_fight = 0; // 战力
         for (String str : split) {
             if(str.isEmpty() || str.equals("0")) {
                 continue;
@@ -156,6 +154,7 @@ public class TeamManager extends CacheService<Long, SoilderTeam> {
                     Kapai kapai = KapaiManager.getInstance().get((long)id);
                     sum_shengming += kapai.getShengmingzhi();
                     sum_gongji += kapai.getGongjizhi();
+                    sum_fight += (int)calcuteFight(kapai);
                 } catch (NumberFormatException e) {
                     logger.error("获取成员生命攻击数值出错 卡牌实例ID：{}",str, e);
                 }
@@ -163,6 +162,8 @@ public class TeamManager extends CacheService<Long, SoilderTeam> {
         }
         st.setShengmingzhi(sum_shengming);
         st.setGongjizhi(sum_gongji);
+        
+        return sum_fight; // 返回队伍战力
     }
     
     /** 获取队伍中的成员列表 */
@@ -186,5 +187,28 @@ public class TeamManager extends CacheService<Long, SoilderTeam> {
             }
         }
         return kapais;
+    }
+    
+    // 计算战力
+    public float calcuteFight(Kapai kapai) {
+        int dalei = kapai.getDalei();
+        ConfigBingzhong configBy = ConfigDatasPool.getInstance().configBingzhongContainer.getConfigBy(kapai.getBingzhong());
+        switch(dalei) {
+            case 1:
+                return kapai.getGongjizhi()*configBy.getFix_attack_speed()*configBy.getFix_fanwei()*7+kapai.getShengmingzhi();
+            case 2:
+                return kapai.getShengmingzhi()*1.8F;
+            case 3:
+                return kapai.getShengmingzhi()*2;
+            case 4:
+                return kapai.getGongjizhi()*4+kapai.getShengmingzhi();
+            case 5:
+                return kapai.getGongjizhi()*12+kapai.getShengmingzhi()*1.5F;
+            case 6:
+                return kapai.getGongjizhi()*2.5F;
+            case 7:
+                return kapai.getShengmingzhi();
+        }
+        return 0F;
     }
 }

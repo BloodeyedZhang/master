@@ -24,4 +24,6 @@ public final class HttpCommands {
     public static final int CREATE_NEW_CARD = 4;
     /**  加金币 */
     public static final int ADD_MONEY = 5;
+    /**  购买商品成功 */
+    public static final int BUY_GOOD_SUC = 6;
 }

@@ -1,5 +1,6 @@
 package game_server_parent.master.game.database.config.container;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,16 @@ public class ConfigTreasuryVTContainer implements Reloadable {
             pinzhi_zhonglei = datas.stream().collect(
                     Collectors.toMap(ConfigTreasuryVT::getLevel, Function.identity()));
     }
-     public ConfigTreasuryVT getConfigBy(int level) {
+    
+    public Map<Integer,ConfigTreasuryVT> getAll() {
+        return pinzhi_zhonglei;
+    }
+    
+    public void setAll(Map<Integer, ConfigTreasuryVT> all) {
+        this.pinzhi_zhonglei = all;
+    }
+    
+    public ConfigTreasuryVT getConfigBy(int level) {
             return pinzhi_zhonglei.get(level);
     }
 }

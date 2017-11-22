@@ -1,22 +1,14 @@
 package game_server_parent.master.game.crossrank;
 
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
-
 import game_server_parent.master.game.crossrank.annotation.CrossHandler;
-import game_server_parent.master.game.crossrank.impl.CrossBonusPointsRank;
-import game_server_parent.master.game.crossrank.impl.CrossLevelRank;
-import game_server_parent.master.listener.annotation.Listener;
-import game_server_parent.master.net.annotation.MessageMeta;
 import game_server_parent.master.redis.RedisCluster;
 import game_server_parent.master.redis.RedisCodecHelper;
-import game_server_parent.master.utils.ClassFilter;
 import game_server_parent.master.utils.ClassScanner;
 import redis.clients.jedis.Tuple;
 
@@ -78,8 +70,24 @@ public class CrossRankService {
         cluster.hset(rank.buildResultKey(), member, data);
     }
     
+    public void addRankOnName(CrossRank rank) {
+        String key = rank.buildRankKey();
+        String member = buildRankMember(rank.getName());
+        double score = rank.buildRankScore();
+        //System.out.println("zscore:"+cluster.zscore(key, member));
+        System.out.println("zincrby:"+cluster.zincrby(key, score, member)); 
+
+        // add challenge result data.
+        String data = RedisCodecHelper.serialize(rank);
+        cluster.hset(rank.buildResultKey(), member, data);
+    }
+    
     private String buildRankMember(long  playerId) {
         return String.valueOf(playerId);
+    }
+    
+    private String buildRankMember(String name) {
+        return name;
     }
     
     public List<CrossRank> queryRank(int rankType, int start, int end) {
@@ -107,6 +115,14 @@ public class CrossRankService {
         
         String member = buildRankMember(rank.getPlayerId());
         String data = cluster.hget(rank.buildResultKey(), member);
+        Class<? extends AbstractCrossRank> rankClazz = rank2Class.get(rankType);
+        return unserialize(data, rankClazz);
+    }
+    
+    public CrossRank queryOneByName(int rankType, CrossRank rank) {
+        String member = buildRankMember(rank.getName());
+        String data = cluster.hget(rank.buildResultKey(), member);
+        if(data==null) return null;
         Class<? extends AbstractCrossRank> rankClazz = rank2Class.get(rankType);
         return unserialize(data, rankClazz);
     }

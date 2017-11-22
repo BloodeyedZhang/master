@@ -2,8 +2,12 @@ package game_server_parent.master.game.database.config;
 
 import java.lang.reflect.Field;
 
+import game_server_parent.master.game.database.config.container.ConfigAiContainer;
 import game_server_parent.master.game.database.config.container.ConfigBingzhongContainer;
 import game_server_parent.master.game.database.config.container.ConfigBingzhongVTContainer;
+import game_server_parent.master.game.database.config.container.ConfigFubenContainer;
+import game_server_parent.master.game.database.config.container.ConfigFubenbossContainer;
+import game_server_parent.master.game.database.config.container.ConfigFubenlevelContainer;
 import game_server_parent.master.game.database.config.container.ConfigJiachengTypePRContainer;
 import game_server_parent.master.game.database.config.container.ConfigJiachengVTContainer;
 import game_server_parent.master.game.database.config.container.ConfigMallContainer;
@@ -62,12 +66,15 @@ public class ConfigDatasPool {
     public ConfigBingzhongVTContainer configBingzhongVTContainer = new ConfigBingzhongVTContainer();
     
     public ConfigJiachengTypePRContainer configJiachengTypePRContainer = new ConfigJiachengTypePRContainer();
-    
     public ConfigJiachengVTContainer configJiachengVTContainer = new ConfigJiachengVTContainer();
-    
     public ConfigXingjiPRContainer configXingjiPRContainer = new ConfigXingjiPRContainer();
-    
     public ConfigMallContainer configMallContainer = new ConfigMallContainer();
+    
+    public ConfigFubenContainer configFubenContainer = new ConfigFubenContainer();
+    public ConfigFubenbossContainer configFubenbossContainer = new ConfigFubenbossContainer();
+    public ConfigFubenlevelContainer configFubenlevelContainer = new ConfigFubenlevelContainer();
+    
+    public ConfigAiContainer configAiContainer = new ConfigAiContainer();
     
     /**
      * 起服读取所有的配置数据

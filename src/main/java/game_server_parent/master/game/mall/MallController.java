@@ -45,6 +45,17 @@ public class MallController {
         Collection<ConfigMall> all = ConfigDatasPool.getInstance().configMallContainer.getAll();
         List<ConfigMall> malls = new ArrayList<ConfigMall>(all);
         
+        // 重新设置价格
+        Player player = PlayerManager.getInstance().get(player_id);
+        int buy_key_num = player.getBuy_key_num();
+        int feibonaqie = MallManager.getInstance().getFeibonaqie(buy_key_num);
+        for(int i=0, l=malls.size(); i<l;i++) {
+            ConfigMall configMall = malls.get(i);
+            if(configMall.getName().equals("宝库钥匙")) {
+                configMall.setMoney(feibonaqie);
+                break;
+            }
+        }
         ResMallConfigMessage resMallConfigMessage = new ResMallConfigMessage();
         resMallConfigMessage.setGoods(malls);
         
@@ -87,13 +98,24 @@ public class MallController {
                 
                 message.setDeduct_type(2);
                 message.setDeduct_num((int)configMall.getMoney());
-                obj = MallManager.getInstance().openPackage(player, configMall);
+                
+                if(configMall.getName().equals("宝库钥匙")) {
+                    int buy_key_num = player.getBuy_key_num();
+                    player.setBuy_key_num(++buy_key_num);
+                    int keyNum = player.getKeyNum();
+                    player.setKeyNum(++keyNum);
+                    obj = configMall.getNum();
+                } else {
+                    obj = MallManager.getInstance().openPackage(player, configMall);
+                }
+                
+                
             } else {
                 message.setCode(MallDataPool.BUY_FAI);
                 message.setTips("NOT_ENOUGH_DIAMONDS");
             }
         } else if(coinType==MallDataPool.COINTYPE_CNY) {
-            obj = MallManager.getInstance().openPackage(player, configMall);
+            //obj = MallManager.getInstance().openPackage(player, configMall);
         }
         
         if(obj!=null) {
@@ -101,12 +123,17 @@ public class MallController {
             if(type==MallDataPool.TYPE_DIAMOND) {
                 message.setDiamond((int)obj);
             } else if(type==MallDataPool.TYPE_KEYS) {
-                message.setKeyNum((int)obj);
+                message.setKeyNum(player.getKeyNum());
+                int buy_key_num = player.getBuy_key_num();
+                int feibonaqie = MallManager.getInstance().getFeibonaqie(buy_key_num);
+                message.setDiamond(feibonaqie);
+                message.setCode(id);
             } else if(type==MallDataPool.TYPE_KAPAI) {
                 message.setKapais((List<Kapai>)obj);
                 message.setCode(id);
             }
         }
+        
         
         MessagePusher.pushMessage(player_id, message);
     }

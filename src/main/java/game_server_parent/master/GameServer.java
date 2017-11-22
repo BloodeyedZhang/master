@@ -1,6 +1,7 @@
 package game_server_parent.master;
 
 import java.lang.management.ManagementFactory;
+import java.util.List;
 import java.util.concurrent.ConcurrentMap;
 
 import javax.management.MBeanServer;
@@ -11,7 +12,10 @@ import org.quartz.SchedulerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.util.concurrent.Service;
+
 import game_server_parent.master.db.DbService;
+import game_server_parent.master.game.ai.AiManager;
 import game_server_parent.master.game.core.SchedulerHelper;
 import game_server_parent.master.game.core.SystemParameters;
 import game_server_parent.master.game.crossrank.CrossRankService;
@@ -19,6 +23,7 @@ import game_server_parent.master.game.database.config.ConfigDatasPool;
 import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.http.HttpServer;
 import game_server_parent.master.game.player.PlayerManager;
+import game_server_parent.master.game.player.persistence.PlayerPeriodSaveService;
 import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.ListenerManager;
 import game_server_parent.master.logs.LoggerUtils;
@@ -30,6 +35,7 @@ import game_server_parent.master.net.context.TaskHandlerContext;
 import game_server_parent.master.orm.OrmProcessor;
 import game_server_parent.master.orm.utils.DbUtils;
 import game_server_parent.master.redis.RedisCluster;
+import game_server_parent.master.utils.ArrayUtils;
 import game_server_parent.master.utils.TimeUtils;
 
 /**
@@ -97,11 +103,17 @@ public class GameServer {
         //初始化数据库连接池
         DbUtils.init();
         //初始化job定时任务
-        //SchedulerHelper.initAndStart();
+        SchedulerHelper.initAndStart();
         //读取所有策划配置
         ConfigDatasPool.getInstance().loadAllConfigs();
         //异步持久化服务
         DbService.getInstance().init();
+/*        if(dbService.state() != Service.State.RUNNING) {
+            logger.error("dbService start failed.");
+           // throw new RuntimeException("SaveGameDataService start failed.");
+        } else {
+            logger.info("dbService was started.");
+        }*/
         ListenerManager.INSTANCE.initalize();
         //读取系统参数
         loadSystemRecords();
@@ -135,10 +147,38 @@ public class GameServer {
 
 
     private void gameLogicStart() {
+        
+        Service playerSaveService = PlayerPeriodSaveService.getInstance().startAsync();
+        /*
+        if(playerSaveService.state() != Service.State.RUNNING) {
+            logger.error("playerSaveService start failed.");
+            throw new RuntimeException("playerSaveService start failed.");
+        } else {
+            logger.info("playerSaveService was started.");
+        }*/
+        
         //初始化排行业务服务
         CrossRankService.getInstance();
         
         EventDispatcher.getInstance();
+        
+        // 初始化商城斐波那契数列
+        ArrayUtils.initFeibonaqie();
+        
+        // 初始化商城抽卡兵种总权重
+        
+        // 初始化AI
+        try {
+            AiManager.getInstance().loadAll();
+        } catch (Exception e) {
+            logger.error("初始化AI ERROR：",e);
+        }
+        
+        // 加载AI 放入online
+        List<Player> loadAIs = PlayerManager.getInstance().loadAI();
+        for(Player player : loadAIs) {
+            PlayerManager.getInstance().add2Online(player);
+        }
     }
     
     private void gameLogicShutDown() {
@@ -156,6 +196,14 @@ public class GameServer {
         gameLogicShutDown();
         socketServer.shutdown();
         httpServer.shutdown();
+        
+        Service dbService = DbService.getInstance().stopAsync();
+        if(dbService.state() != Service.State.TERMINATED) {
+            logger.error("dbService start failed.");
+            throw new RuntimeException("SaveGameDataService stop failed.");
+        } else {
+            logger.info("dbService was terminated.");
+        }
         
         stopWatch.stop();
         logger.error("游戏服务正常关闭，耗时[{}]毫秒", stopWatch.getTime());

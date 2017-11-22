@@ -8,12 +8,15 @@ import game_server_parent.master.db.DbService;
 import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.player.PlayerManager;
 import game_server_parent.master.game.player.events.EventAttrChange;
+import game_server_parent.master.game.player.message.ResPlayerMessage;
 import game_server_parent.master.game.record.events.EventTreasuryRecord;
+import game_server_parent.master.game.scene.SceneListener;
 import game_server_parent.master.game.treasury.events.EventTreasuryEnd;
 import game_server_parent.master.game.treasury.events.EventTreasuryUpdate;
 import game_server_parent.master.game.treasury.message.ReqDestroyBoxMessage;
 import game_server_parent.master.game.treasury.message.ReqTreasuryBattleEndMessage;
 import game_server_parent.master.game.treasury.message.ReqTreasuryUpdateShowMessage;
+import game_server_parent.master.game.treasury.message.ReqTreasuryaddkeyMessage;
 import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.EventType;
 import game_server_parent.master.net.MessagePusher;
@@ -72,5 +75,24 @@ public class TreasuryController {
         long player_id = (long) session.getAttribute(SessionProperties.PLAYER_ID);
         EventDispatcher.getInstance().fireEvent(
                 (new EventTreasuryUpdate(EventType.TREASURY_UPDATE_SHOW, player_id, request.getTreasury_level())));
+    }
+    
+    @RequestMapping
+    public void reqTreasuryAddKey(IoSession session, ReqTreasuryaddkeyMessage request) {
+        System.out.println("金库钥匙增加请求");
+        long player_id = (long) session.getAttribute(SessionProperties.PLAYER_ID);
+        Player player = PlayerManager.getInstance().get(player_id);
+        int keyNum = player.getKeyNum();
+        if(keyNum<player.getMaxKeyNum()) {
+            keyNum++;
+            player.setKeyNum(keyNum);
+            SceneListener.updateNow(player);
+            
+            ResPlayerMessage resPlayerMessage = new ResPlayerMessage();
+            resPlayerMessage.setPlayer(player);
+            
+            MessagePusher.pushMessage(player_id, resPlayerMessage);
+        }
+        
     }
 }

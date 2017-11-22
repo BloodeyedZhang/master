@@ -1,5 +1,6 @@
 package game_server_parent.master.game.mall;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -14,6 +15,8 @@ import game_server_parent.master.game.treasury.ChoukaDataPool;
 import game_server_parent.master.game.treasury.ChoukaManager;
 import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.EventType;
+import game_server_parent.master.utils.ArrayUtils;
+import javassist.expr.NewArray;
 
 /**
  * <p>
@@ -42,6 +45,7 @@ import game_server_parent.master.listener.EventType;
 public class MallManager {
 
     private Logger logger = LoggerFactory.getLogger(MallManager.class);
+    
 
     private static MallManager instance = new MallManager();
 
@@ -87,7 +91,7 @@ public class MallManager {
             } else {
                 return null;
             }
-            List<Kapai> kapais = ChoukaManager.getInstance().getKapais(num, player.getTreasuryLevel(), type_name);
+            List<Kapai> kapais = ChoukaManager.getInstance().getKapais(num, player.getTreasuryLevel(), type_name, player.getPlayer_id());
 
             int count = kapais.size();
 
@@ -100,5 +104,10 @@ public class MallManager {
             return kapais;
         }
         return null;
+    }
+    
+
+    public int getFeibonaqie(int index) {
+        return ArrayUtils.getFeibonaqie(index);
     }
 }

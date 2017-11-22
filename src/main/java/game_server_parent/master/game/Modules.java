@@ -37,4 +37,8 @@ public interface Modules {
     int MALL = 108;
     /** 排行榜 */
     int CROSS_RANK = 109;
+    /** 副本 */
+    int FUBEN = 110;
+    /** 成就 */
+    int ACHIEVE = 111;
 }
