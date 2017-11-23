@@ -112,6 +112,7 @@ public class FubenManager extends CacheService<Long, Fuben> {
     }
     
     public List<Fuben> getFubenList(Long player_id) {
+        
         Set<Integer> keys = ConfigDatasPool.getInstance().configFubenContainer.getKeys();
         Iterator<Integer> it = keys.iterator();
         List<Fuben> fubens = new ArrayList<>(keys.size());
@@ -127,6 +128,9 @@ public class FubenManager extends CacheService<Long, Fuben> {
             // fuben_daojishi = 20;
             /** 以上 **/
             fuben.setFuben_daojishi(fuben_daojishi);
+            
+             ConfigFubenlevel configFuben = ConfigDatasPool.getInstance().configFubenlevelContainer.getConfigBy(fuben.getFuben_level());
+            fuben.setFuben_reward(configFuben.getJiacheng());
             fubens.add(fuben);
         }
         return fubens;
@@ -231,32 +235,34 @@ public class FubenManager extends CacheService<Long, Fuben> {
         ConfigFubenlevel configFubenlevel = ConfigDatasPool.getInstance().configFubenlevelContainer.getConfigBy(fuben.getFuben_level());
         
         // 获取副本领取情况
-        int fuben_achieve = player.getFuben_achieve();
-        int i=id-1;
-        boolean bit = ByteUtils.getBit(fuben_achieve, i);
-        if(bit) {
-            //已领取
-        } else {
-            // 未领取
-            
-            // 设置领取
-            ByteUtils.setBitTo1(fuben_achieve, i);
-            player.setFuben_achieve(fuben_achieve);
-            
-            // 奖励卡牌
-            int pingzhi = configFuben.getPingzhi();
-            if(pingzhi==3) {
-                pingzhi = RollUtils.roll(2);
-            }
-            
-            EventDispatcher.getInstance()
-            .fireEvent(new EventKapaiNew(EventType.KAPAI_NEW, player_id, configFuben.getPingzhi(),
-                    configFuben.getBingzhong(), 1, pingzhi,
-                    1, configFuben.getStar()));
-            
-            
+        if(fuben.getFuben_level()==25) {
+        
+            int fuben_achieve = player.getFuben_achieve();
+            int i=id-1;
+            boolean bit = ByteUtils.getBit(fuben_achieve, i);
+            if(bit) {
+                //已领取
+            } else {
+                // 未领取
+                
+                // 设置领取
+                ByteUtils.setBitTo1(fuben_achieve, i);
+                player.setFuben_achieve(fuben_achieve);
+                
+                // 奖励卡牌
+                int pingzhi = configFuben.getPingzhi();
+                if(pingzhi==3) {
+                    pingzhi = RollUtils.roll(2);
+                }
+                
+                EventDispatcher.getInstance()
+                .fireEvent(new EventKapaiNew(EventType.KAPAI_NEW, player_id, configFuben.getPingzhi(),
+                        configFuben.getBingzhong(), 1, pingzhi,
+                        1, configFuben.getStar()));
+                
+                
         }
-
+        }
 
         
         // 副本操作基准时间戳

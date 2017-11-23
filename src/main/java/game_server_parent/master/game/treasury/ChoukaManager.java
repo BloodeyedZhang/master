@@ -239,7 +239,7 @@ public class ChoukaManager {
         
         // 掷骰子
         List<ConfigBingzhongVT> all = configBingzhongVTContainer.getAll();
-        
+        List<ConfigBingzhongVT> chose = new ArrayList<>(); // 可选择的容器
         int n = 5;
         for(int i=0;i<n;i++) {
             double rollDouble = RollUtils.rollDouble();
@@ -248,19 +248,24 @@ public class ChoukaManager {
                 int tmp_level = cBingzhongVT.getLevel();
                 // 副本相关
                 int id = cBingzhongVT.getId();
+                if(id==1034) continue;
+                if(id==1035) continue;
+                if(id==1036) continue;
+                if(id==1037) continue;
                 if(id==1038 && !bit1) continue; 
                 if(id==1039 && !bit2) continue; 
                 if(id==1040 && !bit3) continue; 
                 
                 if(tmp_level==0) {
                     // 不考虑宝库等级
-
+                    chose.add(cBingzhongVT);
                     boolean isbingzhongVT = getBingzhongVT(rollDouble, (double)vt2, cBingzhongVT);
                     if(isbingzhongVT) {
                        // getConfigBinzhong = cBingzhongVT;
                         return id;
                     }
                 } else if(tmp_level<=treasuryLevel) {
+                    chose.add(cBingzhongVT);
                     boolean isbingzhongVT = getBingzhongVT(rollDouble, (double)vt2, cBingzhongVT);
                     if(isbingzhongVT) {
                         //getConfigBinzhong = cBingzhongVT;
@@ -270,11 +275,11 @@ public class ChoukaManager {
             }
         }
 
-        int size = all.size();
+        int size = chose.size();
         int roll = RollUtils.roll(8);
         
-        logger.error("返回默认兵种: 卫兵");
-        return all.get(roll).getId(); // 返回默认兵种: 卫兵
+        logger.error("返回默认兵种: "+roll);
+        return chose.get(roll).getId(); // 返回默认兵种: 卫兵
     }
     
     public boolean getBingzhongVT(Double rollDouble, Double vt2, ConfigBingzhongVT cBingzhongVT) {

@@ -16,12 +16,14 @@ import game_server_parent.master.game.mall.message.ResBuyMessage;
 import game_server_parent.master.game.mall.message.ResMallConfigMessage;
 import game_server_parent.master.game.player.PlayerManager;
 import game_server_parent.master.game.player.events.EventAttrChange;
+import game_server_parent.master.game.record.events.EventMallRecord;
 import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.EventType;
 import game_server_parent.master.net.MessagePusher;
 import game_server_parent.master.net.SessionProperties;
 import game_server_parent.master.net.annotation.Controller;
 import game_server_parent.master.net.annotation.RequestMapping;
+import game_server_parent.master.utils.DateUtil;
 
 /**
  * <p>Filename:MallController.java</p>
@@ -132,9 +134,19 @@ public class MallController {
                 message.setKapais((List<Kapai>)obj);
                 message.setCode(id);
             }
+            
+            // 发送记录商品购买记录事件
+            
+            EventMallRecord eventMallRecord = new EventMallRecord(EventType.MALL_BUY_RECORD, player_id);
+            eventMallRecord.setGoods_id(configMall.getId());
+            eventMallRecord.setCreatetime(DateUtil.getCurrentTime());
+            EventDispatcher.getInstance().fireEvent(eventMallRecord);
+            
         }
         
         
         MessagePusher.pushMessage(player_id, message);
+        
+
     }
 }

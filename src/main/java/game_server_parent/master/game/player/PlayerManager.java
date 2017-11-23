@@ -216,12 +216,27 @@ public class PlayerManager extends CacheService<Long, Player> {
     }
     
     /**
+     * 计算战绩
+     * @param player
+     * @param battleResult
+     */
+    public void calcuteRankScore(Player player, int battleResult) {
+        int rank_score = player.getRank_score();
+        if(battleResult == PlayerDataPool.BATTLE_WIN) {
+            player.setRank_score(++rank_score);
+        } else {
+            player.setRank_score(--rank_score);
+        }
+        
+    }
+    
+    /**
      * 计算积分
      * @param player
      * @param Re 对手积分
      * @param t 己方与对手的战力比值
      */
-    public void calcuteBonusPoints(Player player, int Re, float t, int battleResult) {
+    public int calcuteBonusPoints(Player player, int Re, float t, int battleResult) {
         int Ro = player.getBonus_points();
         int Rn = 0;
         double a = 10.0;
@@ -239,6 +254,7 @@ public class PlayerManager extends CacheService<Long, Player> {
         int bp = player.getBonus_points();
         String name = player.getName();
         CrossRankService.getInstance().addRank(new CrossBonusPointsRank(player.getPlayer_id(), change_score, treasury_level, name, bp));
+        return change_score;
     }
     
     /**

@@ -338,4 +338,14 @@ INSERT INTO `configtreasurybingzhong` VALUES ('23', '3.94', '3.94', '3.94', '3.9
 INSERT INTO `configtreasurybingzhong` VALUES ('24', '3.94', '3.94', '3.94', '3.94', '3.94', '7.88', '7.88', '7.88', '4.93', '3.94', '3.94', '5.91', '5.91', '5.42', '2.46', '3.94', '5.91', '2.46', null, '1.48', '3.45', '3.94', '2.96');
 INSERT INTO `configtreasurybingzhong` VALUES ('25', '3.88', '3.88', '3.88', '3.88', '3.88', '7.77', '7.77', '7.77', '4.85', '3.88', '3.88', '5.83', '5.83', '5.34', '2.43', '3.88', '5.83', '2.43', '1.46', '1.46', '3.4', '3.88', '2.91');
 
+-- ----------------------------
+-- Table structure for `configbingzhongfight`
+-- ----------------------------
+DROP TABLE IF EXISTS `configbingzhongfight`;
+CREATE TABLE `configbingzhongfight` (
+  `id` int(10) DEFAULT NULL,
+  `x` int(10) DEFAULT NULL,
+  `y` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `configbingzhongfight` VALUES ('1011','7','1');

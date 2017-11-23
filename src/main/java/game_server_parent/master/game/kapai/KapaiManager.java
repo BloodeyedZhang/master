@@ -12,8 +12,10 @@ import game_server_parent.master.game.database.config.ConfigDatasPool;
 import game_server_parent.master.game.database.config.bean.ConfigBingzhong;
 import game_server_parent.master.game.database.config.bean.ConfigSoilderLevel;
 import game_server_parent.master.game.database.config.bean.ConfigXingji;
+import game_server_parent.master.game.database.user.player.Player;
 import game_server_parent.master.game.database.user.storage.Kapai;
 import game_server_parent.master.game.database.user.storage.KapaiId;
+import game_server_parent.master.game.player.PlayerManager;
 import game_server_parent.master.game.player.events.EventAttrChange;
 import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.EventType;
@@ -278,6 +280,12 @@ public class KapaiManager extends CacheService<Long, Kapai> {
         
         // 获取消耗的金币
         int peiyangGold = this.getPeiyangGold(peiyangJizhunJingyan);
+        
+        Player player = PlayerManager.getInstance().get(kapai.getPlayer_id());
+        if(player.getMoney1()<peiyangGold) {
+            return;
+        }
+        
         EventAttrChange eventAttrChange = new EventAttrChange(EventType.MONEY1_DEDUCT, kapai.getPlayer_id());
         eventAttrChange.setMoney1_change(peiyangGold);
         eventAttrChange.setSource_evtType(EventType.KAPAI_UPDATE);

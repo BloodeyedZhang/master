@@ -12,10 +12,13 @@ import game_server_parent.master.game.database.user.storage.Kapai;
 import game_server_parent.master.game.mall.events.EventBuyGoodSuc;
 import game_server_parent.master.game.mall.message.ResBuyMessage;
 import game_server_parent.master.game.player.PlayerManager;
+import game_server_parent.master.game.record.events.EventMallRecord;
+import game_server_parent.master.listener.EventDispatcher;
 import game_server_parent.master.listener.EventType;
 import game_server_parent.master.listener.annotation.EventHandler;
 import game_server_parent.master.listener.annotation.Listener;
 import game_server_parent.master.net.MessagePusher;
+import game_server_parent.master.utils.DateUtil;
 
 /**
  * <p>Filename:MallListener.java</p>
@@ -66,5 +69,11 @@ public class MallListener {
         }
         
         MessagePusher.pushMessage(player_id, message);
+        
+        // 发送记录商品购买记录事件
+        EventMallRecord eventMallRecord = new EventMallRecord(EventType.MALL_BUY_RECORD, player_id);
+        eventMallRecord.setGoods_id(good_id);
+        eventMallRecord.setCreatetime(DateUtil.getCurrentTime());
+        EventDispatcher.getInstance().fireEvent(eventMallRecord);
     }
 }

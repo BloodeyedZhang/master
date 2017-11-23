@@ -168,6 +168,7 @@ public class AchievementManager extends CacheService<Long, KapaiAchievement>  {
             KapaiAchievement kapaiAchievement = list.get(i);
             if(kapaiAchievement.getKapai_id()==kapai_id) {
                 kapaiAchievement.setAchieve_state(OPEN);
+                DbService.getInstance().add2Queue(kapaiAchievement);
             }
         }
         cache(player_id, list);

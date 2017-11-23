@@ -29,6 +29,9 @@ public enum EventType {
     /** 重登事件 */
     RELOGIN,
     
+    /** GM 添加金币，钻石，宝库钥匙事件 */
+    GM_ADD_MONEY,
+    
     /** 升级事件 */
     LEVEL_UP,
     /** 货币1 增加事件*/
@@ -81,6 +84,8 @@ public enum EventType {
     MALL_BUY,
     /** 商城购买成功，发放商品事件 **/
     MALL_BUY_SUC,
+    /** 商城购买记录 **/
+    MALL_BUY_RECORD,
     
     /** 即将进入大厅事件 **/
     PRE_ENTER_DATING,

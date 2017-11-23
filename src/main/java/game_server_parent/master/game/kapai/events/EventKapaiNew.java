@@ -93,4 +93,10 @@ public class EventKapaiNew extends PlayerEvent {
                 + ", xingji=" + xingji + "]";
     }
 
+    @Override
+    public boolean isSynchronized() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 }

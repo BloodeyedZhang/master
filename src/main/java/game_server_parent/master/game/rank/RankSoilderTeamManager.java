@@ -140,7 +140,7 @@ public class RankSoilderTeamManager extends CacheService<Long, RankSoilderTeam> 
          */
         
         Player player = PlayerManager.getInstance().get(player_id);
-        int expect_fight = player.getFight()+150*player.getRank_score();
+        int expect_fight = player.getFight()+300*player.getRank_score();
         Player enemy = rankqueryOneByFight(expect_fight);
         
         if(enemy==null) {
@@ -158,7 +158,7 @@ public class RankSoilderTeamManager extends CacheService<Long, RankSoilderTeam> 
     private Player rankqueryOneByFight(int expect_fight) {
         String sql= "SELECT * FROM player where fight <= {0} and fight >= {1}";
         int tmp_fight = 250; // 期望战斗力误差范围值
-        int min = expect_fight-tmp_fight;
+        int min = expect_fight-750;
         if(min<1) min=1; // 排除未配置队伍的玩家
         sql = MessageFormat.format(sql, String.valueOf(expect_fight+tmp_fight), String.valueOf(min));
         List<Player> players = null;

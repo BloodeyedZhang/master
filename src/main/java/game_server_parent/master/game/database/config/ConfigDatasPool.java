@@ -21,6 +21,7 @@ import game_server_parent.master.game.database.config.container.ConfigTreasuryRe
 import game_server_parent.master.game.database.config.container.ConfigTreasuryVTContainer;
 import game_server_parent.master.game.database.config.container.ConfigXingjiContainer;
 import game_server_parent.master.game.database.config.container.ConfigXingjiPRContainer;
+import game_server_parent.master.game.database.config.container.ConfigbingzhongfightContainer;
 import game_server_parent.master.logs.LoggerUtils;
 
 /**
@@ -75,6 +76,8 @@ public class ConfigDatasPool {
     public ConfigFubenlevelContainer configFubenlevelContainer = new ConfigFubenlevelContainer();
     
     public ConfigAiContainer configAiContainer = new ConfigAiContainer();
+    
+    public ConfigbingzhongfightContainer configbingzhongfightContainer = new ConfigbingzhongfightContainer();
     
     /**
      * 起服读取所有的配置数据

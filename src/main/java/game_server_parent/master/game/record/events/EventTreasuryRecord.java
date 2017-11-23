@@ -73,6 +73,14 @@ public class EventTreasuryRecord extends PlayerEvent {
     public void setParams(List<int[]> params) {
         this.params = params;
     }
+    
+    
+
+    @Override
+    public boolean isSynchronized() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
     @Override
     public String toString() {

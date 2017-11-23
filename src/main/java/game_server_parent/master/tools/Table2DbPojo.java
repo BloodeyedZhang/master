@@ -140,7 +140,7 @@ public class Table2DbPojo {
     }
 
     public static void main(String[] args) throws Exception {
-        config("ConfigAi");
+        config("Configbingzhongfight");
        // user("kapai_achievement");
     }
 

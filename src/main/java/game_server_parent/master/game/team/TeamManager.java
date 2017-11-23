@@ -12,6 +12,7 @@ import game_server_parent.master.cache.CacheService;
 import game_server_parent.master.db.DbService;
 import game_server_parent.master.game.database.config.ConfigDatasPool;
 import game_server_parent.master.game.database.config.bean.ConfigBingzhong;
+import game_server_parent.master.game.database.config.bean.Configbingzhongfight;
 import game_server_parent.master.game.database.user.storage.Kapai;
 import game_server_parent.master.game.database.user.storage.KapaiId;
 import game_server_parent.master.game.database.user.storage.SoilderTeam;
@@ -191,6 +192,17 @@ public class TeamManager extends CacheService<Long, SoilderTeam> {
     
     // 计算战力
     public float calcuteFight(Kapai kapai) {
+        
+        int bingzhong = kapai.getBingzhong();
+        ConfigBingzhong configBingzhong = ConfigDatasPool.getInstance().configBingzhongContainer.getConfigBy(bingzhong);
+        Configbingzhongfight configbingzhongfight = ConfigDatasPool.getInstance().configbingzhongfightContainer.getConfigBy(bingzhong);
+        
+        //攻击力*攻速修正*范围修正*X+生命值*Y
+        return kapai.getGongjizhi() * configBingzhong.getFix_attack_speed() * configBingzhong.getFix_fanwei() * configbingzhongfight.getX()
+                + kapai.getShengmingzhi() * configbingzhongfight.getY();
+
+        
+        /*
         int dalei = kapai.getDalei();
         ConfigBingzhong configBy = ConfigDatasPool.getInstance().configBingzhongContainer.getConfigBy(kapai.getBingzhong());
         switch(dalei) {
@@ -210,5 +222,6 @@ public class TeamManager extends CacheService<Long, SoilderTeam> {
                 return kapai.getShengmingzhi();
         }
         return 0F;
+        */
     }
 }

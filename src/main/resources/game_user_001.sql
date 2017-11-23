@@ -76,6 +76,14 @@ CREATE TABLE `TreasuryRecord` (
   `createtime` varchar(255) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `mallrecord`;
+CREATE TABLE `mallrecord` (
+  `id` bigint(20) DEFAULT 0 ,
+  `player_id` bigint(20) DEFAULT 0 ,
+  `goods_id` int(10) DEFAULT 0,
+  `createtime` varchar(255) DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- ----------------------------
 -- Table structure for systemrecord
 -- ----------------------------

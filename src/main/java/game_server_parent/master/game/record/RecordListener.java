@@ -6,10 +6,13 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import game_server_parent.master.db.DbService;
 import game_server_parent.master.game.database.user.record.AttrChangeRecord;
+import game_server_parent.master.game.database.user.record.MallRecord;
 import game_server_parent.master.game.database.user.record.TreasuryRecord;
 import game_server_parent.master.game.database.user.storage.Kapai;
 import game_server_parent.master.game.player.events.EventAttrChange;
+import game_server_parent.master.game.record.events.EventMallRecord;
 import game_server_parent.master.game.record.events.EventTreasuryRecord;
 import game_server_parent.master.game.treasury.events.EventTreasuryEnd;
 import game_server_parent.master.game.treasury.message.ResTreasuryBattleEndMessage;
@@ -80,6 +83,7 @@ public class RecordListener {
         int coin = 0;
         int diamond = 0;
         List<Kapai> kapais = new ArrayList<Kapai>();
+        
         try {
             for (TreasuryRecord treasuryRecord : treasuryRecords) {
                 coin += treasuryRecord.getCoins();
@@ -115,6 +119,7 @@ public class RecordListener {
             logger.error("宝库战斗结束  统计宝库掉落", e);
         }
         
+        
         logger.info(getClass().getSimpleName()+"发送返回客户端消息包");
         
         ResTreasuryBattleEndMessage message = new ResTreasuryBattleEndMessage();
@@ -124,5 +129,16 @@ public class RecordListener {
         message.setKapais(kapais);
         
         MessagePusher.pushMessage(player_id, message);
+    }
+    @EventHandler(value=EventType.MALL_BUY_RECORD)
+    public void onBuyGoods(EventMallRecord event) {
+        logger.info(getClass().getSimpleName()+"捕捉到事件 购买商品记录"+event);
+        
+        MallRecord mallRecord = new MallRecord();
+        mallRecord.setPlayer_id(event.getPlayerId());
+        mallRecord.setGoods_id(event.getGoods_id());
+        mallRecord.setCreatetime(event.getCreatetime());
+        mallRecord.setInsert();
+        DbService.getInstance().add2Queue(mallRecord);
     }
 }

@@ -80,9 +80,9 @@ public class MessageEncoder implements ProtocolEncoder {
         Class<Message> msgClazz = (Class<Message>) MessageFactory.INSTANCE.getMessage(moduleId, cmd);
         try {
             System.out.println("moduleId:"+moduleId+";cmd:"+cmd+"msgClazz:"+msgClazz);
-            logger.info("_encode moduleId:"+moduleId+";cmd:"+cmd+"msgClazz:"+msgClazz);
             Codec<Message> codec = ProtobufProxy.create(msgClazz);
             body = codec.encode(message);
+            logger.info("_encode moduleId:"+moduleId+";cmd:"+cmd+"msgClazz:"+msgClazz +"; body_length:"+body.length);
         } catch (IOException e) {
             e.printStackTrace();
             //logger

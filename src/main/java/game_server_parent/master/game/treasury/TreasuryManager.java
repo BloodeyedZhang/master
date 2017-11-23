@@ -206,6 +206,7 @@ public class TreasuryManager extends CacheService<Long, Treasury> {
             cards = new ArrayList<int[]>();
         }
         
+        
         EventTreasuryRecord event = new EventTreasuryRecord(EventType.TREASURY_DESTROY_BOX, player_id);
         event.setCoins(getGold);
         event.setDiamonds(getDiamond);
@@ -213,6 +214,8 @@ public class TreasuryManager extends CacheService<Long, Treasury> {
         event.setParams(cards);
         event.setTreasury_id(treasury.getTreasury_id());
         EventDispatcher.getInstance().fireEvent(event); // 发送宝库宝箱摧毁事件
+        
+        
     }
     
 
