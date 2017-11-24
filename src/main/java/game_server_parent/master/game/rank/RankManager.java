@@ -69,8 +69,7 @@ public class RankManager {
         // 计算积分
         int Re = player.getBp_enemy();
         int fight_enemy = player.getFight_enemy();
-        float t = fight_enemy==0?0:player.getFight() / player.getFight_enemy();
-        player.getFight_enemy();
+        float t = fight_enemy==0?0:(float)player.getFight() / player.getFight_enemy();
         int battleResult = eventType.equals(EventType.BATTLE_WIN)?RankDataPool.BATTLE_WIN:RankDataPool.BATTLE_LOSE;
         PlayerManager.getInstance().calcuteRankScore(player, battleResult);
         bpc_change = PlayerManager.getInstance().calcuteBonusPoints(player, Re , t, battleResult);
@@ -114,7 +113,7 @@ public class RankManager {
 
         
         EventDispatcher.getInstance().fireEvent(eventAttrChange_money1); // 发送金币增加/减少事件
-        //EventDispatcher.getInstance().fireEvent(eventAttrChange_bpc); // 发送积分增加/减少事件
+        EventDispatcher.getInstance().fireEvent(eventAttrChange_bpc); // 发送积分增加/减少事件
         
         
         // 修改数值

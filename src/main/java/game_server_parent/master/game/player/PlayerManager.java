@@ -240,7 +240,7 @@ public class PlayerManager extends CacheService<Long, Player> {
         int Ro = player.getBonus_points();
         int Rn = 0;
         double a = 10.0;
-        double b = (Re-Ro)/400;
+        double b = ((double)Re-(double)Ro)/400;
         double W = 1/(1+Math.pow(a, b));
         if(battleResult == PlayerDataPool.BATTLE_WIN) {
             Rn = (int) (Ro+30*(1-W)*t);
