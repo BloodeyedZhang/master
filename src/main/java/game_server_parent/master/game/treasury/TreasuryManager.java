@@ -135,7 +135,9 @@ public class TreasuryManager extends CacheService<Long, Treasury> {
      * 重置宝库宝箱
      */
     public Treasury resetTreasury(long player_id) {
+        Player player = PlayerManager.getInstance().get(player_id);
         Treasury treasury = get(player_id);
+        treasury.setTreasuryLevel(player.getTreasuryLevel());
         // 获取宝库配置数据
         ConfigTreasury configTreasury = ConfigDatasPool.getInstance().configTreasuryContainer
                 .getConfigBy(treasury.getTreasuryLevel());
