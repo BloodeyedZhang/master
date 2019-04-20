@@ -49,4 +49,5 @@
         <appender-ref ref="console" />
     </root>
 
+
 </log4j:configuration> 
