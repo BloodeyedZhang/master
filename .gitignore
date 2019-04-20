@@ -24,9 +24,9 @@ logs/backup_exception/exception.log.2017-09-15
 configs/jobs/quartz.properties
 configs/jobs/Jobs.xml
 .svn/wc.db
- configs/proxool.xml
- configs/redis.xml
- configs/server.xml
- src/main/resources/proxool.xml
- src/main/resources/redis.xml
- src/main/resources/server.xml
+configs/proxool.xml
+configs/redis.xml
+configs/server.xml
+src/main/resources/proxool.xml
+src/main/resources/redis.xml
+src/main/resources/server.xml

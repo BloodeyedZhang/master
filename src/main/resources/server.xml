@@ -14,5 +14,6 @@
     <redis-server>
         <pwd>foobared-winturn</pwd>
         <ips>127.0.0.1:7000</ips>
+        
     </redis-server>
 </server>
