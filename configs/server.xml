@@ -9,7 +9,7 @@
         <!-- http后台管理 -->
     <http-server>
         <http_port>8080</http_port>
-        <white_ips>127.0.0.1;127.0.0.1;192.168.*;</white_ips>
+        <white_ips>127.0.0.1;192.168.*;</white_ips>
     </http-server>
     <redis-server>
         <pwd>foobared-winturn</pwd>
