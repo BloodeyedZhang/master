@@ -1,4 +1,0 @@
-[19:07:36][NioProcessor-1] - 打开一个客户端连接/127.0.0.1:53800
-[19:07:41][NioProcessor-1] - 收到消息-->ReqLoginMessage [accountId=10000, password=winturn]
-[19:08:19][NioProcessor-1] - 客户端连接错误/127.0.0.1:53800， server exception 远程主机强迫关闭了一个现有的连接。
-[19:08:19][NioProcessor-1] - 客户端/127.0.0.1:53800 断开连接
